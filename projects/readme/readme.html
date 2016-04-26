@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Engelbert Niehaus" />
+  <title>PanDoc Shell Scripts for File Conversion</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">PanDoc Shell Scripts for File Conversion</h1>
+<h2 class="author">Engelbert Niehaus</h2>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#linux">Linux</a><ul>
+<li><a href="#install-pandoc">Install PanDoc</a></li>
+<li><a href="#zenity-for-menu">Zenity for Menu</a></li>
+<li><a href="#editor-geany">Editor Geany</a></li>
+<li><a href="#start-menu">Start Menu</a></li>
+<li><a href="#executable-menu">Executable Menu</a></li>
+<li><a href="#install-latex">Install LaTeX</a></li>
+</ul></li>
+<li><a href="#mac-osx">Mac-OSX</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#homebrew-installer">Homebrew Installer</a></li>
+<li><a href="#zenity-for-menu-1">Zenity for Menu</a></li>
+<li><a href="#editor-geany-1">Editor Geany</a></li>
+<li><a href="#start-menu-1">Start Menu</a></li>
+<li><a href="#executable-menu-1">Executable Menu</a></li>
+<li><a href="#install-latex-1">Install LaTeX</a></li>
+<li><a href="#small-latex-install">Small LaTeX Install</a></li>
+</ul></li>
+<li><a href="#windows">Windows</a><ul>
+<li><a href="#batch-files">Batch Files</a></li>
+<li><a href="#batch-examples">Batch Examples</a></li>
+</ul></li>
+<li><a href="#pandoc-install-homepage">Pandoc Install Homepage</a></li>
+<li><a href="#pandoc-demos">Pandoc Demos</a></li>
+<li><a href="#panconvert-optional">PanConvert (Optional)</a></li>
+<li><a href="#todo">ToDo</a></li>
+<li><a href="#folders-and-content">Folders and Content</a></li>
+</ul>
+</div>
+<h1 id="linux">Linux</h1>
+<h2 id="install-pandoc">Install PanDoc</h2>
+<p>The following apt-get command is one line of code:</p>
+<blockquote>
+<p><code>sudo apt-get install pandoc pandoc-citeproc</code></p>
+</blockquote>
+<h2 id="zenity-for-menu">Zenity for Menu</h2>
+<p>PANDOCmenu.sh is a shell script on Linux to support you in converting files with pandoc. The selection of Formats is performed with zenity therefore it is necessary to install zenity on Linux or with homebrew on MacOS with</p>
+<blockquote>
+<p><code>sudo apt-get install zenity</code></p>
+</blockquote>
+<h2 id="editor-geany">Editor Geany</h2>
+<p>Furthermore the script <code>PANDOCmenu.sh</code> uses an editor <code>geany</code> as an option in the menu to modify the the source file.</p>
+<blockquote>
+<p><code>sudo apt-get install geany</code></p>
+</blockquote>
+<h2 id="start-menu">Start Menu</h2>
+<p>If you want to run the <code>PANDOCmenu.sh</code> start open the Terminal on Linux and star the following script with <code>sh</code></p>
+<blockquote>
+<p><code>sh PANDOCmenu.sh</code></p>
+</blockquote>
+<h2 id="executable-menu">Executable Menu</h2>
+<p>In the terminal or make PANDOCmenu.sh executable with</p>
+<blockquote>
+<p><code>chmod ug+x PANDOCmenu.sh</code></p>
+</blockquote>
+<h2 id="install-latex">Install LaTeX</h2>
+<p>Install the LaTeX package with <code>apt-get</code></p>
+<blockquote>
+<p><code>sudo apt-get install texlive lmodern</code></p>
+</blockquote>
+<p>lmodern.sty install as Package necessary for PDF-Conversion</p>
+<h1 id="mac-osx">Mac-OSX</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The following sections provide details for application on MacOSX with Homebrew. Please install homebrew prior to the following steps</p>
+<h2 id="homebrew-installer">Homebrew Installer</h2>
+<p>On MacOS use <code>homebrew</code> as package manager to install necessary packages especially <code>pandoc</code> and the package for processing of citation.</p>
+<blockquote>
+<p><code>brew install pandoc pandoc-citeproc</code></p>
+</blockquote>
+<h2 id="zenity-for-menu-1">Zenity for Menu</h2>
+<p>PANDOCmenu.sh is a shell script on Linux to support users in converting files with pandoc. Install zenity with homebrew on MacOS:</p>
+<blockquote>
+<p><code>brew install zenity</code></p>
+</blockquote>
+<h2 id="editor-geany-1">Editor Geany</h2>
+<p>Furthermore the script <code>PANDOCmenu.sh</code> uses an editor <code>geany</code> as an option in the menu to modify the the source file.</p>
+<blockquote>
+<p><code>brew install geany</code></p>
+</blockquote>
+<h2 id="start-menu-1">Start Menu</h2>
+<p>If you want to run the PANDOCmenu.sh start open the Terminal on Linux and star the following script with <code>sh</code></p>
+<blockquote>
+<p><code>sh PANDOCmenu.sh</code></p>
+</blockquote>
+<h2 id="executable-menu-1">Executable Menu</h2>
+<p>In the terminal or make PANDOCmenu.sh executable with</p>
+<blockquote>
+<p><code>chmod ug+x PANDOCmenu.sh</code></p>
+</blockquote>
+<h2 id="install-latex-1">Install LaTeX</h2>
+<p>Install the LaTeX package from</p>
+<blockquote>
+<p><a href="https://tug.org/mactex/" class="uri">https://tug.org/mactex/</a></p>
+</blockquote>
+<h2 id="small-latex-install">Small LaTeX Install</h2>
+<p>if you want to fiddle around with a package manager check the MacOS Pandoc section on</p>
+<blockquote>
+<p><a href="http://pandoc.org/installing.html" class="uri">http://pandoc.org/installing.html</a></p>
+</blockquote>
+<h1 id="windows">Windows</h1>
+<h2 id="batch-files">Batch Files</h2>
+<p>If you run converter on Linux the converter will create a windows batch file in the project directory. Start</p>
+<blockquote>
+<p><code>win_reveal.bat</code></p>
+</blockquote>
+<h2 id="batch-examples">Batch Examples</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Batch File</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>win_reveal.bat</code></td>
+<td align="left">Batch File for Reveal Presentation</td>
+</tr>
+<tr class="even">
+<td align="left"><code>win_odt.bat</code></td>
+<td align="left">Batch File for LibreOffice Document</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>win_docx.bat</code></td>
+<td align="left">Batch File for MlCR0S0FT Word Document</td>
+</tr>
+<tr class="even">
+<td align="left"><code>win_html.bat</code></td>
+<td align="left">Batch File for HTML Document</td>
+</tr>
+</tbody>
+</table>
+<h1 id="pandoc-install-homepage">Pandoc Install Homepage</h1>
+<p>For more information on installation of PanDoc converter see</p>
+<blockquote>
+<p><a href="http://pandoc.org/installing.html" class="uri">http://pandoc.org/installing.html</a></p>
+</blockquote>
+<h1 id="pandoc-demos">Pandoc Demos</h1>
+<p>Demo calls of PanDoc can be found on:</p>
+<blockquote>
+<p><a href="http://pandoc.org/demos.html" class="uri">http://pandoc.org/demos.html</a></p>
+</blockquote>
+<h1 id="panconvert-optional">PanConvert (Optional)</h1>
+<p>If you want to use PanDoc with a Graphical User Interface please innstall <a href="https://sourceforge.net/projects/panconvert/">PanConvert</a> for Graphical User Interface for PanDoc:</p>
+<blockquote>
+<p><a href="https://sourceforge.net/projects/panconvert/" class="uri">https://sourceforge.net/projects/panconvert/</a></p>
+</blockquote>
+<h1 id="todo">ToDo</h1>
+<p>Create a Windows Batch File PANDOCmenu.bat with zenith: See following URL for command examples for Batch Files on Windows.</p>
+<blockquote>
+<p><a href="https://gist.github.com/breezhang/7732470" class="uri">https://gist.github.com/breezhang/7732470</a></p>
+</blockquote>
+<h1 id="folders-and-content">Folders and Content</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Folder</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>tpl</code></td>
+<td align="left">Templates and Default Files for PanDoc</td>
+</tr>
+<tr class="even">
+<td align="left"><code>projects</code></td>
+<td align="left">Contains all projects</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>bib</code></td>
+<td align="left">Contains all BibTeX Databases/Bib-Styles</td>
+</tr>
+<tr class="even">
+<td align="left"><code>help</code></td>
+<td align="left">Contains Help Files for Installation et. al.</td>
+</tr>
+</tbody>
+</table>
+<div id="refs" class="references">
+
+</div>
+</body>
+</html>

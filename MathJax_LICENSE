@@ -1,0 +1,11 @@
+--2016-04-26 09:42:41--  https://raw.githubusercontent.com/mathjax/MathJax/master/LICENSE
+Resolving raw.githubusercontent.com... 185.31.17.133
+Connecting to raw.githubusercontent.com|185.31.17.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 11358 (11K) [text/plain]
+Saving to: 'LICENSE'
+
+     0K .......... .                                          100% 95.0M=0s
+
+2016-04-26 09:42:42 (95.0 MB/s) - 'LICENSE' saved [11358/11358]
+

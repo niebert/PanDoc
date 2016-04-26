@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+					<h1>First</h1>
+				</section>
+				<section data-state="stats">
+					<h1>Run stats()</h1>
+				</section>
+				<section>
+					<h1>Last</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize();
+			Reveal.addEventListener( 'stats', function() {
+				// console.log( 'stats called!' );
+				alert("function stats() was called to play audio");
+				var audio = new Audio('audio/audio1.mp3');
+				audio.play();
+			} );
+		</script>
+
+	</body>
+</html>

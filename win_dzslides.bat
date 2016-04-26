@@ -1,0 +1,1 @@
+pandoc -s --bibliography .\bib\data\biblio.bib -f markdown+simple_tables+footnotes -t -o \Users\niehausbert\ownCloudLD\PanDoc_DEV\projects\pandocdemos\pandocdemos_dzslides.html \Users\niehausbert\ownCloudLD\PanDoc_DEV\projects\pandocdemos\pandocdemos.md --csl .\bib\csl\apa5.csl

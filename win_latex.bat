@@ -1,0 +1,1 @@
+pandoc -N --template=.\tpl\latex\tpl4paper.tex --bibliography .\bib\data\biblio.bib -f markdown+simple_tables+footnotes --variable mainfont="Palatino" --variable monofont="Consolas" --variable fontsize=12pt --variable version=1.15.2 .\projects\readme\readme.md --latex-engine=xelatex --toc -o .\projects\readme\readme.pdf
