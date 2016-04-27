@@ -1,0 +1,1086 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="keywords" content="shell" />
+  <title>Einführung in die Shell-Programmierung</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Einführung in die Shell-Programmierung</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#einfuehrung-in-die-shell-programmierung">Einfuehrung in die Shell-Programmierung</a></li>
+<li><a href="#allgemein">Allgemein</a></li>
+<li><a href="#erste-schritte">Erste Schritte</a></li>
+<li><a href="#variablen-und-quoting">Variablen und Quoting</a><ul>
+<li><a href="#spezielle-typen-von-variablen">Spezielle Typen von Variablen</a></li>
+<li><a href="#quotierung">Quotierung</a></li>
+</ul></li>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#kommandosubstitution">Kommandosubstitution</a></li>
+<li><a href="#klammererweiterung">1.6 Klammererweiterung</a></li>
+<li><a href="#parameter">Parameter</a><ul>
+<li><a href="#positionsparameter">Positionsparameter</a></li>
+<li><a href="#spezialparameter">Spezialparameter</a></li>
+</ul></li>
+<li><a href="#parametererweiterung">Parametererweiterung</a></li>
+<li><a href="#bedingte-ausfuehrung">Bedingte Ausfuehrung</a></li>
+<li><a href="#tests-verzweigungen-und-schleifen">Tests, Verzweigungen und Schleifen</a><ul>
+<li><a href="#statement-ifthen">Statement if … then</a></li>
+<li><a href="#statement-fordo">Statement for … do</a></li>
+<li><a href="#statement-while-und-until">Statement while und until</a></li>
+<li><a href="#case-statement">case Statement</a></li>
+</ul></li>
+<li><a href="#arithmetik">Arithmetik</a></li>
+<li><a href="#funktionen">Funktionen</a></li>
+<li><a href="#ein-ausgabe-umleitungen">Ein-/Ausgabe-Umleitungen</a></li>
+<li><a href="#pipes">Pipes</a></li>
+<li><a href="#textmanipulationen">Textmanipulationen</a></li>
+<li><a href="#reguläre-ausdrücke">reguläre Ausdrücke</a><ul>
+<li><a href="#zeichenklassen">Zeichenklassen</a></li>
+<li><a href="#wiederholungsoperatoren">Wiederholungsoperatoren</a></li>
+</ul></li>
+<li><a href="#rep">[rep</a></li>
+<li><a href="#sed-stream-editor">sed Stream Editor</a><ul>
+<li><a href="#optionen-von-sed">Optionen von <code>sed</code></a></li>
+<li><a href="#beispiele">Beispiele</a></li>
+</ul></li>
+</ul>
+</div>
+<hr />
+<h1 id="einfuehrung-in-die-shell-programmierung">Einfuehrung in die Shell-Programmierung</h1>
+<p>Dieses Kapitel widmet sich der Einfuehrung in die Shell-Programmierung. Hierbei handelt es sich keinesfalls um eine vollstaendige Dokumentation. Fuer weiterfuehrende Details empfehle ich dringend einen Blick in die <code>man</code> Pages der jeweiligen Programme sowie der Bash (<code>man bash</code>) zu werfen.</p>
+<h1 id="allgemein">Allgemein</h1>
+<p>Was ist die Shell? Die Shell ist ein Interpreter, der Kommandos entsprechend seiner eigenen Syntax interaktiv oder selbstaendig ausfuehrt. Was im Folgenden als Shell bezeichnet wird, ist ein Metaprogramm dessen Hauptaufgabe es ist, weitere Programm zu laden. Die Shell stellt die Schnittstelle zwischen Benutzer und Betriebssystem dar. In der UNIX-Welt hat sie den Status eines Benutzerprogramms und kann deshalb nach Belieben ausgetauscht werden .</p>
+<p>Im folgenden die wichtigsten Vertreter:</p>
+<table style="width:97%;">
+<colgroup>
+<col width="10%" />
+<col width="23%" />
+<col width="63%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left">sh:</td>
+<td align="left">Bourne Shell</td>
+<td align="left">Die Mutter aller Shells</td>
+</tr>
+<tr class="even">
+<td align="left">csh:</td>
+<td align="left">C-Shell</td>
+<td align="left">Shell mit C-aehnlicher Syntax</td>
+</tr>
+<tr class="odd">
+<td align="left">ksh:</td>
+<td align="left">Korn Shell</td>
+<td align="left">Maechtige, C-orientierte Shell (Solaris)</td>
+</tr>
+<tr class="even">
+<td align="left">zsh:</td>
+<td align="left">Z-Shell</td>
+<td align="left">Erweiterte, komfortableShell, Bash kompatibel<br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left">bash:</td>
+<td align="left">Bourne Again SH</td>
+<td align="left">Erweiterte, komfortable Bourne Shell<br />
+</td>
+</tr>
+</tbody>
+</table>
+<p>In diesem Kapitel wollen wir uns mit der Bash beschaeftigen. Sie ist der Standard Kommandointerpreter unter LINUX. Die Bash ist kompatibel zur Standard-Bourne-Shell welche von Steven R. Bourne fuer AT&amp;T Unix entwickelt wurde.</p>
+<h1 id="erste-schritte">Erste Schritte</h1>
+<p>Im Grunde ist ein Shellscript nichts anderes als eine Textdatei, in der Befehlsfolgen enthalten sind. Diese Befehlsfolgen können mit Hilfe von Schleifen und Variablen gesteuert werden. Man kann solche Befehlsfolgen auch direkt in der Shell eingeben. Denkbar waeren zum Beispiel Folgendes:</p>
+<pre><code>asterix% echo &quot;Hallo Europa&quot;;echo &quot;Hallo Osterhase...&quot;
+Hallo Europa
+Hallo Osterhase...
+asterix%</code></pre>
+<p>Oder aber man schreibt ein kleines Script, daß man dann jederzeit wieder aufrufen kann. Zu diesem Zwecke öffne man einen Editor seiner Wahl (vi, emacs, nedit, …) und gebe folgendes ein:</p>
+<pre><code>#!/bin/sh
+# Das ist ein Kommentar
+echo &quot;Hallo Europa&quot;
+echo &quot;Hallo Osterhase...&quot;</code></pre>
+<p>Danach die Datei unter einem selbstgewaehlten Namen abspeichern und ausfuehrbar machen. Danach kann das Script gestartet werden.</p>
+<pre><code>asterix% chmod 744 meine_datei.sh
+asterix%./meine_datei.sh
+Hallo 
+Hallo Osterhase...
+asterix%</code></pre>
+<p>Eine Shell-Skript beginnt mit der Angabe des Kommandointerpreters. Zeile 1 ist also der Pfad zu dem Programm, das die folgenden Zeilen interpretieren kann. Hier wird auf die Bourne Shell (sh) verwiesen. Die Datei <code>/bin/sh</code> ist in unserem Fall ein Symlink auf die Bash.<br />
+Kommentare werden zeilenweise mit # gekennzeichnet. Das Shellkommando <code>echo</code> existiert in zwei Formen. Zum einen ist es ein in der Shell enthaltendes Kommando, zum anderen ist es aber auch eine Datei, welche sich im Verzeichnis <code>/bin</code> befindet. Linux bietet eine Vielzahl von Tools und Kommandos, die das Arbeiten auf der Textkonsole ermöglichen und erleichern. Doch dazu spaeter mehr.</p>
+<h1 id="variablen-und-quoting">Variablen und Quoting</h1>
+<p>Wie in jeder Programmiersprache gibt es auch in der Shell Variablen. Die Bash unterscheidet bei Variablen nicht nach Typen. Grundsaetzlich wird jede Variable erst einmal als String aufgefaßt. Je nach Kontext kann sie dann auch als Integer interpretiert werden.</p>
+<p>Hier nun einige Beispiele, die den Umgang erlaeutern sollen:</p>
+<pre><code>#!/bin/sh
+# Wertzuweisung
+Variable_1=10
+Variable_2=&quot;Der Mond ist ein gruener Kaese.&quot;
+Variable_3=&quot;A B  C    D&quot;
+Variable_4=$(hostname) # alte Schreibweise: Variable_4=`hostname`
+# Wertabfrage
+echo \$Variable_1 = $Variable_1
+echo &quot;\$Variable_2 = $Variable_2&quot;
+echo &#39;$Variable_1 + $Variable_2&#39; = ${Variable_1}${Variable_2}
+echo $Variable_3
+echo &quot;$Variable_3&quot;
+echo $Variable_4</code></pre>
+<p>Ergibt:</p>
+<pre><code>$Variable_1 = 10
+$Variable_2 = Der Mond ist ein gruener Kaese.
+$Variable_1 + $Variable_2 = 10Der Mond ist ein gruener Kaese.
+A B C D
+A B  C   D
+asterix</code></pre>
+<p>Um <code>$ \ &quot;</code> auf dem Bildschirm darzustellen zu können, muessen sie wie folgt maskiert werden: <code>\$ \\ \&quot;</code>.<br />
+In Zeile 6 wird die Shell angewiesen, erst den rechten Teil der Variablenzuweisung auszufuehren, naemlich den Befehl <code>hostname</code>. Dies wird durch $(…) oder ``Backquotes’’ erreicht . Die Variable wird also mit dem Hostnamen des jeweiligen Rechners belegt.</p>
+<p>Zu lange Befehlszeilen können mit einem <code>\</code> getrennt werden.</p>
+<pre><code>#!/bin/sh
+echo &quot;Dies ist ein wahnsinnig langer, sinnfreier und \
+  unglaublich ueberfluessiger Satz.&quot;</code></pre>
+<h2 id="spezielle-typen-von-variablen">Spezielle Typen von Variablen</h2>
+<dl>
+<dt><strong>local variables</strong></dt>
+<dd>Diese sind nur innerhalb eines Code Blocks ({…}) oder einer Funktion gueltig und werden mit <code>local Variable</code> definiert.
+</dd>
+<dt><strong>environmental variables</strong></dt>
+<dd>Sie bestimmen das Erscheinungsbild der Shell und dienen der Anpassung ihres Verhaltens in der Systemumgebung. Die Prozessumgebung wird vom Elternprozeß an seine Kinder vererbt. D.h. alle Umgebungsvariablen der Bash werden an die von ihr gestarteten Prozesse weitergegeben. Die Kommandos <code>printenv</code> und <code>export</code> geben alle Umgebungsvariablen aus. Mit dem <code>set</code> Kommando könne Umgebungsvariablen gesetzt werden.
+</dd>
+</dl>
+<h2 id="quotierung">Quotierung</h2>
+<p>Quotierung wird benutzt, um die spezielle Bedeutung von Kontrollzeichen, reservierten Wörtern und Namen auszuschalten. Es gibt 3 Formen:</p>
+<dl>
+<dt><strong>Fluchtsymbol</strong></dt>
+<dd>Es entwertet das unmittelbar folgende Sonderzeichen. Ein durch <code>\</code> entwertetes Zeilenende wird ignoriert.
+</dd>
+<dt><strong>Hochkomma <code>'</code> (Quote)</strong></dt>
+<dd>Von Hochkomma eingeschlossene Worte werden von der Shell nicht weiter bearbeitet. Allerdings darf ein Hochkomma nicht in Hochkommas eingeschlossen sein. Auch nicht, wenn es durch <code>\</code> maskiert ist.
+</dd>
+<dt><strong>Anfuehrungszeichen <code>&quot;</code>  (Doublequotes)</strong></dt>
+<dd>Von in Anfuehrungszeichen eingeschlossenen Wörtern erkennt die Shell nur die Sonderzeichen <code>$ ' \</code> als solche. Das Fluchtsymbol behaelt seine Bedeutung fuer die Zeichen <code>$ ' &quot; \</code> oder dem Zeilenende.
+</dd>
+</dl>
+<h1 id="arrays">Arrays</h1>
+<p>Die Bash unterstuetzen auch eindimensionale Arrays. Diese können mit <code>declare -a Variable</code> initialisiert werden, muessen aber nicht. Einzelnen Elemente des Arrays werden mit <code>${variable[xx]}</code> angesprochen.</p>
+<pre><code>#!/bin/bash
+array=( zero one two three four five )
+array[6]=&quot;Dieser Text ist ein Element des Arrays&quot;
+
+echo ${array[0]}        # zero
+echo ${array[1]}        # one
+echo ${array:0}         # zero
+                        # Parametererweiterung, erstes Element.
+echo ${array:1}         # ero
+                        # Parametererweiterung, erstes Element,
+                        # Start an Position #1 (2. Buchstabe).
+echo ${array[1]:1}      # ne
+                        # Parametererweiterung, zweites Element,
+                        # Start an Position #1 (2. Buchstabe).
+echo ${#array[2]}       # 3
+                        # Laenge des dritten Elements.
+element_count=${#array[@]}      # oder
+element_count=${#array[*]}      # Anzahl der Elemente: 7</code></pre>
+<h1 id="kommandosubstitution">Kommandosubstitution</h1>
+<p>Die Kommadosubstituton erlaubt es, die Ausgabe eines Kommandos direkt an eine Variable zu uebergeben. Zwei Formen sind möglich:</p>
+<p>$(<code>Kommando</code>) oder `<code>Kommando</code>`</p>
+<p>Bei der Substitution mit Backquotes (nicht Hochkomma!) muessen Sonderzeichen maskiert werden. Bei der Klammervariante bleiben alle Zeichen unveraendert.</p>
+<p>Damit laeßt sich z.B. der Inhalt eines Textfiles in einen Array laden.</p>
+<pre><code>#!/bin/bash
+filename=sample_file
+# cat sample_file
+#
+# 1 a b c
+# 2 d e fg
+declare -a array1
+array1=($(cat &quot;$filename&quot; | tr &#39;\n&#39; &#39; &#39;))
+ # Loads contents
+ # of $filename into array1.
+ # list file to stdout.
+ # change linefeeds in file to spaces.
+echo ${array1[@]}
+ # List the array:
+ # 1 a b c 2 d e fg
+ #
+ #  Each whitespace-separated &quot;word&quot; in the file
+ #+ has been assigned to an element of the array.
+element_count=${#array1[*]}
+echo $element_count          # 8</code></pre>
+<h1 id="klammererweiterung">1.6 Klammererweiterung</h1>
+<p>Die Klammererweiterung erzeugt aus einer, in geschweiften Klammern eingeschlossenen, Liste von Bausteinen mehrere Zeichenketten. Zum Beispiel erzeugt der Befehl:<br />
+<code>mkdir ~/{dir1,dir2}</code><br />
+die Verzeichnisse dir1 und dir2 im Homeverzeichnis. Der Befehl<br />
+<code>mkdir ~/{dir1,dir2}{1,2,3}</code><br />
+die Verzeichnisse dir11, dir12, dir13, dir21, dir22 und dir23.</p>
+<h1 id="parameter">Parameter</h1>
+<h2 id="positionsparameter">Positionsparameter</h2>
+<p>Einem Shellskript können beim Aufruf auch Parameter mitgegeben werden.</p>
+<pre><code>COMMAND Parameter1 Parameter2 ...</code></pre>
+<p>Diese Parameter lassen sich im Script mit <code>$1, $2, ...</code> abfragen. Ab dem 10. uebergebenen Parameter muessen geschweifte Klammern gesetzt werden (<code>${10}</code>).</p>
+<p>Mit dem <code>shift</code>-Kommando ist es möglich, die Positionsparameter nach links zu verschieben. Das bedeutet, daß der zweite Parameter der Erste wird, der Dritte der Zweite usw. . <code>$0</code> (der Scriptname) bleibt unberuehrt. Dieses Kommando macht zum Beispiel bei Funktionen Sinn:</p>
+<pre><code>#!/bin/bash
+multiply ()           # multipliziert die uebergebenen Parameter
+{                     # Anzahl der Parameter ist variabel
+  local product=1
+  until [-z &quot;$1&quot; ]   # Until nutzt den ersten uebergebenen Parameter ...
+  do
+  let &quot;product *= $1&quot;
+  shift
+  done
+  echo $product         #  wird nicht auf STDOUT ausgegeben,
+}                       #  wenn es an eine Variable uebergeben wird
+mult1=15383; mult2=25211
+val1=`multiply $mult1 $mult2`
+echo &quot;$mult1 X $mult2 = $val1&quot;
+                        # 387820813</code></pre>
+<h2 id="spezialparameter">Spezialparameter</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><code>$*</code></td>
+<td align="left">bezeichnet alle Positionsparameter von 1 an. In Anfuehrungszeichen gesetzt, steht ``<code>$*</code>‘’ fuer ein einziges Wort, bestehend aus dem Inhalt aller Positionsparameter, mit dem ersten ``internen Feldseperator’’ (meistens Leerzeichen, Tab und Zeilenende) als Trennzeichen.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>$@</code></td>
+<td align="left">bezeichnet alle Positionsparameter von 1 an. In Anfuehrungszeichen gesetzt, wird es durch die Werte der einzelnen Positionsparameter (jeweils ein einzelnes Wort) ersetzt.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$#</code></td>
+<td align="left">Anzahl der Positionsparameter</td>
+</tr>
+<tr class="even">
+<td align="left"><code>$?</code></td>
+<td align="left">Rueckgabewert (Status) des zuletzt ausgefuehrten Kommandos</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$-</code></td>
+<td align="left">steht fuer die Optionsflags (von <code>set</code> oder aus der Kommandozeile).</td>
+</tr>
+<tr class="even">
+<td align="left"><code>$$</code></td>
+<td align="left">Prozessnummer der Shell</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$!</code></td>
+<td align="left">Prozessnummer des zuletzt im Hintergrund aufgerufenen Kommandos</td>
+</tr>
+<tr class="even">
+<td align="left"><code>$0</code></td>
+<td align="left">Name des Shellscripts</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>$_</code></td>
+<td align="left">letztes Argument des zuletzt ausgefuehrten Kommandos</td>
+</tr>
+</tbody>
+</table>
+<h1 id="parametererweiterung">Parametererweiterung</h1>
+<dl>
+<dt><strong>${</strong><em>Parameter</em><strong>}</strong></dt>
+<dd>Laeßt sich ein Variablenname nicht eindeutig von den darauffolgenden Zeichen trennen, oder besteht ein Positionsparameter aus mehr als einer Ziffer, muß dieser Parameter in geschweifte Klammern gesetzt werden.
+</dd>
+</dl>
+<p>Die folgenden Konstruktionen stellen verschiedene Arten bedingter Parametererweiterung dar. Enthaelt die Konstruktion einen Doppelpunkt, so wird der Parameter darauf hin getestet, ob er leer oder ungesetzt ist. Wird der Doppelpunkt in diesen Konstruktionen weggelassen, wird nur darauf getestet, ob er gesetzt (auch leer!) oder ungesetzt ist.</p>
+<p>Parametererweiterungen eigenen sich z.B. fuer die Defaultwertzuweisung bei Variablen. Sie duerfen nur als Bestandteil eines Kommandos oder einer Zuweisung durchgefuehrt werden. Soll eine Parametererweiterung als einzelnes Kommando stehen, beispielsweise bei einer Fehlermeldung, dann muß die Zeile mit einem Doppelpunkt begonnen werden.</p>
+<dl>
+<dt><strong>${</strong><em>Parameter:-default</em>}****</dt>
+<dd>Wenn der <em>Parameter</em> ungesetzt oder leer ist, wird <em>default</em> anstelle des gesamten Ausdrucks eingesetzt.
+</dd>
+<dt><strong>${</strong><em>Parameter:=default</em>}****</dt>
+<dd>Wenn der <em>Parameter</em> ungesetzt oder leer ist, wird der Inhalt von <em>default</em> dem Parameter zugewiesen und der neue <em>Parameter</em> eingesetzt. Positionsparametern und Spezialparametern kann allerdings auch auf diese Weise kein Wert zugewiesen werden.
+</dd>
+<dt><strong>${</strong><em>Parameter:?err_msg</em>}****</dt>
+<dd>gibt eine Fehlermeldung wenn der <em>Parameter</em> leer oder ungesetzt ist. <em>err_msg</em> wird als Fehlermeldung auf STDERR ausgegeben. Ist der <em>Parameter</em> gueltig gesetzt, wird sein Inhalt eingesetzt.
+</dd>
+<dt><strong>${</strong><em>Parameter:+alt_value</em>}****</dt>
+<dd>erzwingt die Benutzung eines anderen Wertes. Wenn der <em>Parameter</em> weder leer, noch ungesetzt ist, wird der Inhalt von <em>alt_value</em> eingesetzt. Sonst wird nichts eingesetzt.
+</dd>
+<dt><strong>${</strong><em>Parameter:Offset:Laenge</em>}****</dt>
+<dd>Hier wird <em>Parameter</em>, von <em>Offset</em> an, mit der Laenge <em>Laenge</em> neu gesetzt.
+</dd>
+<dt><strong>${</strong><em>#Parameter</em>}****</dt>
+<dd>gibt die Anzahl der Zeichen im Parameter wieder.
+</dd>
+<dt><strong>${</strong><em>var#Pattern</em>}** und ${<strong><em>var##Pattern</em>}</strong>**</dt>
+<dd>entfernt den uebereinstimmenden Teil von <em>Pattern</em> in <em>var</em> beginnend von links. Bei # wird das kuerzeste treffende Stueck entfernt, bei ## das Laengste.
+</dd>
+<dt><strong>${</strong><em>var%Pattern</em>}** und ${<strong><em>var%%Pattern</em>}</strong>**</dt>
+<dd>entfernt den uebereinstimmenden Teil von <em>Pattern</em> in <em>var</em> beginnend von rechts. Bei % wird das kuerzeste treffende Stueck entfernt, bei %% das Laengste.
+</dd>
+<dt><strong>${</strong><em>var/Pattern/Replacement</em>}** und ${<strong><em>var/Pattern//Replacement</em>}</strong>**</dt>
+<dd><p>Das größte auf <em>Pattern</em> passende Stueck in <em>var</em> wird durch <em>Replacement</em> ersetzt. Bei / wird einmal ersetzt, bei // wird jede auftretende uebereinstimmung ersetzt. Werden Positionsparameter oder Arrays uebergeben, wird das Kommando auf jeder einzelnen Parameter bzw. jedes Feld angewandt.</p>
+<h1 id="binbash">!/bin/bash</h1>
+<p>leer= default=“voll” string=“1234567890” array=( zero one two three four five )</p>
+<p>echo <span class="math inline">${leer-$</span>default} # gibt nichts aus, denn $leer ist definiert echo <span class="math inline">${undef-$</span>default} # gibt “voll” aus, denn # $undef ist nicht definiert echo <span class="math inline">${leer:-$</span>default} # gibt “voll” aus (:)</p>
+<dl>
+<dt>default_filename=generic.data</dt>
+<dd>${1:?“Dateiname wird auf<br />
+generic.data gesetzt.”} # Fehlermeldung, wenn $1 fehlt
+</dd>
+</dl>
+<p>filename=<span class="math inline">${1:=$</span>default_filename} # setzen des Parameters</p>
+<p>leer=<span class="math inline">${leer:+$</span>default} # sollte leer nicht NULL sein, # wird er mit “voll” belegt</p>
+<p>echo ${string:0:1} # von links beginnend mit 0 und einem Zeichen: 1 echo ${string:(-3):2} # von rechts und 2 Zeichen: 89</p>
+<p>laeng_string=${#string} # ergibt 10 echo <span class="math inline">${#array} # Laenge des ersten Elements: 4 element_count=$</span>{#array[@]} # oder element_count=${#array[*]} # Anzahl der Elemente: 6</p>
+<p>var1=abcd12345abc6789 pattern1=a<em>c # </em> (wildcard) trifft alles zwischen ‘a’ und ‘c’ pattern2=b*9 # alles zwischen ‘b’ und ‘9’ echo <span class="math inline">${var1#$</span>pattern1} # d12345abc6789 echo <span class="math inline">${var1##$</span>pattern1} # 6789 echo <span class="math inline">${var1%$</span>pattern2} # abcd12345a echo <span class="math inline">${var1%%$</span>pattern2} # a</p>
+<p>echo ${pattern1/abc/ABC} # “abcd12345abc6789” -&gt; “ABCd12345abc6789” echo ${pattern1//abc/ABC} # “abcd12345abc6789” -&gt; “ABCd12345ABC6789”</p>
+</dd>
+</dl>
+<h1 id="bedingte-ausfuehrung">Bedingte Ausfuehrung</h1>
+<p>Wie in jeder Programmiersprache, können Kommandos auch miteinander verknuepft werden.</p>
+<dl>
+<dt><strong>COMMAND1 &amp;&amp; COMMAND2</strong></dt>
+<dd>stellen eine logische UND-Verknuepfung dar. Wurde Kommando1 fehlerfrei ausgefuehrt (exit status 0 heißt Abarbeitung ohne Fehler), wird auch Kommando2 ausgefuehrt.
+</dd>
+<dt><strong>COMMAND1 || COMMAND2</strong></dt>
+<dd>Stellen eine logische ODER-Verknuepfung dar. Kommando2 wird nur ausgefuehrt, wenn bei Kommando1 ein Fehler aufgetreten ist.
+</dd>
+</dl>
+<h1 id="tests-verzweigungen-und-schleifen">Tests, Verzweigungen und Schleifen</h1>
+<h2 id="statement-ifthen">Statement if … then</h2>
+<p>Syntax: <code>if Liste then Liste [elif Liste then Liste...][else Liste] fi</code></p>
+<p>If … then Konstruktionen ueberpruefen, ob der Exit-Status einer Liste von Kommandos 0 ist. Ist dies der Fall, werden weitere, entsprechend definierte, Kommandos ausgefuehrt.</p>
+<p>Im folgenden Beispiel wird mit dem Kommando <code>grep</code> in einer Textdatei nach Zeilen, die das Wort ``Bash’’ enthalten, gesucht. Existieren solche Zeilen, gibt <code>grep</code> als Exit-Status 0 (= true) aus. Das bedeutet, die folgenden Kommandos werden ausgefuehrt.</p>
+<pre><code>#!/bin/sh
+if grep Bash file.txt
+then echo &quot;File contains at least one occurrence of Bash.&quot;
+fi</code></pre>
+<p>Es existiert auch ein verwandtes Kommando: <code>[...]</code>. Dieser Ausdruck ist ein Synonym fuer das Bash-Kommando <code>test</code>. Es existiert außerdem ein externes Kommando <code>/usr/bin/test</code>.</p>
+<pre><code>if [condition1 ]
+then
+   command1
+   command2
+   command3
+elif [condition2 ]
+# Same as else if
+then
+   command4
+   command5
+else
+   default-command
+fi</code></pre>
+<p>Weitere Informationen zum Kommando <code>test</code> bzw. <code>[...]</code> entnehmen Sie bitte der jeweiligen <code>man</code>-Page.</p>
+<h2 id="statement-fordo">Statement for … do</h2>
+<p>Syntax: <code>for Name [in Wort ] do Liste done</code></p>
+<p>Mit <code>Name</code> wird eine Shellvariable definiert, die in jedem Schleifendurchlauf einen neuen Wert erhaelt. Die Werte werden normalerweise mit dem Schluesselwort <code>in</code> uebergeben. Wird der Teil <code>in Wort</code> weggelassen, wird die Liste fuer jeden gesetzten Parameter <a href="node3.html#ssec:positionsparameter">2.7.1</a>) einmal ausgefuehrt.</p>
+<pre><code>#! /bin/sh
+for planet in Mercury Venus Earth Mars Jupiter Saturn Uranus
+do
+  echo $planet
+done
+# oder aber auch
+NUMBERS=&quot;9 7 3 8 37.53&quot;
+for number in `echo $NUMBERS`  # for number in 9 7 3 8 37.53
+do
+  echo &quot;$number &quot;
+done</code></pre>
+<h2 id="statement-while-und-until">Statement while und until</h2>
+<p>Syntax: <code>while Liste do Liste done</code><br />
+Syntax: <code>until Liste do Liste done</code></p>
+<p>Der Schleifenkörper <code>do Liste done</code> wird so lange wiederholt , bis die in <code>while Liste</code> formulierte Bedingung falsch ist.</p>
+<p>Die <code>until</code>-Schleife entspricht der <code>while</code>-Schleife mit dem Unterschied, daß der <code>do</code>-Teil so lange ausgefuehrt wird, wie das letzte Kommando der <code>until Liste</code> einen Status ungleich 0 liefert.</p>
+<pre><code>#!/bin/sh
+var0=0
+LIMIT=10
+
+while [&quot;$var0&quot; -lt &quot;$LIMIT&quot; ]
+do
+  echo -n &quot;$var0 &quot;        # -n suppresses newline.
+  var0=`expr $var0 + 1`   # var0=$(($var0+1)) also works.
+done</code></pre>
+<h2 id="case-statement">case Statement</h2>
+<p>Syntax: <code>case Wort in [Muster [| Muster ]) Liste ;; ... ] esac</code></p>
+<p>Mit der <code>case</code>-Anweisung können Verzweigungen programmiert werden. <code>Wort</code> wird mit den angegebenen Mustern verglichen. Bei uebereinstimmung wird die <code>Liste</code> von Kommandos ausgefuehrt. In den Suchmustern können auch Wildcards und regulaere Ausdruecke verwendet werden.</p>
+<pre><code>#!/bin/sh
+arch=$1
+case $arch in
+  i386 ) echo &quot;80386-based machine&quot;;;
+  i486 ) echo &quot;80486-based machine&quot;;;
+  i586 ) echo &quot;Pentium-based machine&quot;;;
+  i686 ) echo &quot;Pentium2+-based machine&quot;;;
+  *    ) echo &quot;Other type of machine&quot;;;
+esac</code></pre>
+<h1 id="arithmetik">Arithmetik</h1>
+<p>Arithmetische Operationen werden ueber die Shellkommados <code>expr</code> und <code>let</code> realisiert. Dabei ist <code>let</code> ein internes Kommando der Bash, und <code>expr</code> ein Externes. Es ist sowohl möglich Brechnungen mit Hilfe des Kommandoaufrufes zu machen, als auch durch eine verkuerzte Schreibweise:</p>
+<pre><code>#!/bin/sh
+z=`expr $z + 3` # Aufruf des externen Kommandos expr
+let z=z+3    # Aufruf des internen Kommandos
+let &quot;z += 3&quot; # Mit Quotes sind Leerzeichen und special operators erlaubt.
+z=$(($z+3))  # neue verkuerzte Schreibweise (ab Version 2.0)
+z=$[$z+3]    # alte Schreibweise</code></pre>
+<p>Berechnungen finden, wie in C, mit ``lange Ganzzahlwerten’’ statt. Eine ueberlaufkontrolle gibt es nicht. Division durch Null fuehrt zu einem Fehler, der aber mit Hilfe der <code>trap</code>-Shellfunktion abgefangen werden kann. Folgende Operatoren sind erlaubt (Prioritaetshirarchie):</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">+ -</td>
+<td align="left">Vorzeichen</td>
+</tr>
+<tr class="even">
+<td align="left">! <code>~</code></td>
+<td align="left">logische und bitweise Negation</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>*</code> / %</td>
+<td align="left">Multiplikation, Division, Modulo</td>
+</tr>
+<tr class="even">
+<td align="left">+ -</td>
+<td align="left">Addition und Subtraktion</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&lt;&lt; &gt;&gt;</code></td>
+<td align="left">bitweise links und rechts-Shift-Operation</td>
+</tr>
+<tr class="even">
+<td align="left">&lt;= &gt;= &lt;&gt;</td>
+<td align="left">Vergleiche</td>
+</tr>
+<tr class="odd">
+<td align="left">== !=</td>
+<td align="left">gleich und ungleich</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&amp;</code></td>
+<td align="left">bitweise Addition</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>~</code></td>
+<td align="left">bitweise XOR</td>
+</tr>
+<tr class="even">
+<td align="left">|</td>
+<td align="left">bitweise ODER</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&amp;&amp;</code></td>
+<td align="left">bitweise UND</td>
+</tr>
+<tr class="even">
+<td align="left">||</td>
+<td align="left">logisches ODER</td>
+</tr>
+</tbody>
+</table>
+<h1 id="funktionen">Funktionen</h1>
+<p>Wie auch in C, kann man in der Bash einzelne Programmteile zu Funktionen zusammenfassen. Mit dem <code>local</code>-Shellkommando ist es möglich, lokale Variablen fuer Scriptfunktionen zu erzeugen. Mit <code>return</code> können Werte aus einer Funktion zurueckgegeben werden.</p>
+<pre><code>#! /bin/bash
+myadd() {
+        # $1 erstes Argument
+        tmp=0
+        args=$@
+        for i in $args
+        do
+        tmp=`expr $tmp + $i`
+        done
+        return $tmp
+}
+# main
+myadd 1 2 3 $VAR
+RES=$?
+myadd $RES 5 6 $VAR2
+RES=$?</code></pre>
+<h1 id="ein-ausgabe-umleitungen">Ein-/Ausgabe-Umleitungen</h1>
+<p>Jedes Programm erhaelt beim Start drei offene ’’Datenkanaele``:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Standard Input:</td>
+<td align="left">STDIN (0)</td>
+</tr>
+<tr class="even">
+<td align="left">Standard Output:</td>
+<td align="left">STDOUT (1)</td>
+</tr>
+<tr class="odd">
+<td align="left">Standard Error Output:</td>
+<td align="left">STDERR (2)</td>
+</tr>
+</tbody>
+</table>
+<p>Durch das Umlenken der Ein-/Ausgabekanaele können Dateien oder Dateisysteme zum Lesen bzw. Schreiben fuer Kommandos geöffnet werden. Es gibt viele Möglichkeiten Daten umzuleiten. Hier ist eine kleine Auswahl:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><code>COMMAND&lt;infile</code></td>
+<td align="left">Eingabeumlenkung</td>
+</tr>
+<tr class="even">
+<td align="left"><code>COMMAND&gt;outfile</code></td>
+<td align="left">Ausgabeumlenkung</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>COMMAND»outfile</code></td>
+<td align="left">Ausgabeumlenkung, anhaengen</td>
+</tr>
+<tr class="even">
+<td align="left"><code>COMMAND 2&gt;&amp;1</code></td>
+<td align="left">STDERR mit auf STDOUT legen</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>COMMAND »EofListe Liste EofListe</code></td>
+<td align="left">Zeilen in <em>Liste</em> werden in COMMAND umgeleitet</td>
+</tr>
+</tbody>
+</table>
+<h1 id="pipes">Pipes</h1>
+<p>Bei einer Pipe wird der Standardausgabekanal eines Kommandos mit dem Standardeingabekanal eines anderen Kommandos zusammengelegt. Dabei werden beide Kommandos als separate Prozesse gleichzeitig gestartet.<br />
+Beim folgenden Beispiel wird der Inhalt der Datei .zshrc durch <code>cat</code> auf den Standardausabekanal geschrieben und an <code>grep</code> ueber den Standardeingabekanal uebergeben. <code>Grep</code> sucht nach allen Zeilen die das Wort  ``HISTSIZE’’ enthalten, und gibt diese aus.</p>
+<pre><code>asterix% cat .zshrc|grep -i HISTSIZE
+export HISTSIZE=1000</code></pre>
+<p><br />
+<br />
+————————————————————————</p>
+<h1 id="textmanipulationen">Textmanipulationen</h1>
+<p>In diesem Kapitel soll es um das komplexe Thema ``Suchen und Ersetzen’’ gehen. Im Weiteren wird auf die Grundlagen eingegangen und zwei der mächtigsten Tools auf diesem Gebiet kurz beleuchtet. Wer es wirklich genau wissen will, sollte sich im Internet nach weiterführenden Dokumentationen umsehen.</p>
+<h1 id="reguläre-ausdrücke">reguläre Ausdrücke</h1>
+<p>Es gibt in der UNIX-Welt einige sehr mächtige Tools (sed, awk, grep), die das Durchsuchen von Texten nach bestimmten Mustern ermöglichen. Um diese Tools effektiv nutzen zu können, ist es unbedingt notwendig, sich mit regulären Ausdrücken zu beschäftigen.<br />
+Reguläre Ausdrucke beschreiben eine nicht leere Menge von Zeichenfolgen, die aus Textzeichen (Buchstaben, Ziffern, Sonderzeichen) und/oder Metazeichen mit erweiterter Bedeutung bestehen. Textzeichen stehen für sich selbst, Metazeichen (Spezialzeichen) stellen Operatoren dar, mit deren Hilfe komplexe Textmuster beschrieben werden können. Als Begrenzung der Mustersuche gilt in den meisten Fällen (Tools) das Zeilenende. D.h. es ist nicht möglich reguläre Ausdrücke zu definieren, die über das Zeilenende hinaus prüfen.</p>
+<h2 id="zeichenklassen">Zeichenklassen</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">.</td>
+<td align="left">ist ein Platzhalter und bezeichnet jedes einzelne Zeichen außer das Zeilenende.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[abc$]</code></td>
+<td align="left">trifft alle aufgeführten Zeichen.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>a-c</code></td>
+<td align="left">bezeichnet alle Zeichen im angegebenen Limit.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[^exp]</code></td>
+<td align="left">trifft alle Zeichen außer den angegebenen.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>^abc</code></td>
+<td align="left">trifft das angegebene Muster, wenn es am Zeilenanfang steht.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>abc$</code></td>
+<td align="left">trifft das angegebene Muster, wenn es am Zeilenende steht.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>\</code></td>
+<td align="left">Maskierung des folgenden Zeichens <a href="node3.html#ssec:quotierung">2.3.2</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wiederholungsoperatoren">Wiederholungsoperatoren</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><code>*</code></td>
+<td align="left">trifft den vorangegangenen Ausdruck 0 oder mehrmals.</td>
+</tr>
+<tr class="even">
+<td align="left">+</td>
+<td align="left">trifft den vorangegangenen Ausdruckt ein oder mehrmals.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>?</code></td>
+<td align="left">trifft den vorangegangenen Ausdruck 0 oder einmal.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>|</code></td>
+<td align="left">ist ein Trennzeichen. Trifft entweder den folgenden oder vorangegangenen Ausdruck.</td>
+</tr>
+<tr class="odd">
+<td align="left">(…)</td>
+<td align="left">bildet eine Gruppe von regulären Ausdrücken.</td>
+</tr>
+</tbody>
+</table>
+<p>Die Syntax von <code>grep</code> und <code>egrep</code> variiert in manchen Punkten. Für +, ?, |, (…) ergibt sich für <code>grep</code> eine andere Schreibweise: <code>\</code>+, <code>?</code>, <code>|</code>, <code>\(</code>…<code>\)</code>.</p>
+<p>Reguläre Ausdrücke werden von links nach rechts aufgelöst. Operatoren werden in der folgenden Reihenfolge abgearbeitet:</p>
+<p><code>[</code>… <code>]</code>  ? + * Verkettung Verknüpfungen |</p>
+<p>Abweichungen davon können mit Klammerung einzelner Ausdrücke erreicht werden.</p>
+<p>Die Operatoren ?, +, *, <code>^</code>, $ und | können wiederum auch auf gruppierte (geklammerte) Ausdrücke angewendet werden. Beispielsweise trifft</p>
+<p><code>(AB|CD+)?(EF)+</code></p>
+<p>die Zeichenketten ABEF, CDEF,CDDEF, EFEF, EFEFEF usw.</p>
+<p>Das hinter dem ersten Klammernpaar stehende Fragezeichen bedeutet, daß das Vorkommen, der darin enthaltenden Zeichenketten AB und CD, optional ist. Das Pluszeichen hinter D sagt aus, daß nach einem oder mehreren D’s gesucht wird (CD, CDD, CDDDD, …). Die so gefundenen Zeichenketten der ersten Klammer, müssen unmittelbar gefolgt sein von mindestens einem Vorkommen der Zeichenkette EF. Das Plus bezieht sich hier auf den ganzen Klammerausdruck.</p>
+<p>Wie aus obigen Regeln zu ersehen ist, handelt es sich bei regulären Ausdrücken um eine Wissenschaft. Die hier aufgezeigten Muster stellen nur einen Auszug dar. Noch ein paar Beispiele hinterher:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">.aus</td>
+<td align="left">trifft Haus, raus, Maus, Laus,…</td>
+</tr>
+<tr class="even">
+<td align="left"><code>xy*z</code></td>
+<td align="left">trifft auf xy…was auch immer…z</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>^abc</code></td>
+<td align="left">jede Zeile, die mit abc beginnt</td>
+</tr>
+<tr class="even">
+<td align="left"><code>abc$</code></td>
+<td align="left">jede Zeile, die mit abc endet</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>\*</code></td>
+<td align="left">trifft jeden Stern</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[Mr]aus</code></td>
+<td align="left">trifft Maus und raus</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[[abc]</code></td>
+<td align="left">trifft <code>[</code> (muß am Anfang stehen), a, b, c</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[KT]?ELLER</code></td>
+<td align="left">trifft ELLER, TELLER, KELLER</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[^a-zA-Z]</code></td>
+<td align="left">schließt alle Buchstaben aus</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[0-9]$</code></td>
+<td align="left">trifft jede Zeile, die mit einer Zahl endet</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[0-9][0-9]</code></td>
+<td align="left">trifft jede zweistellige Nummer</td>
+</tr>
+<tr class="even">
+<td align="left"><code>H(e|a)llo</code></td>
+<td align="left">trifft Hallo und Hello</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>(ab)?</code></td>
+<td align="left">trifft entweder ``ab’‘oder nichts (``ab’’ ist optional)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>^$</code></td>
+<td align="left">trifft alle Leerzeilen</td>
+</tr>
+</tbody>
+</table>
+<p>Aber es ist noch mehr möglich.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><code>\{n,m\}</code></td>
+<td align="left">trifft ein Muster mindestens n-mal und höchstens m-mal</td>
+</tr>
+<tr class="even">
+<td align="left"><code>\</code>&lt;<code>abc\</code>&gt;</td>
+<td align="left">trifft das eingeschlossene Muster nur, wenn es sich um ein separates Wort handelt</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>\(abc\)</code></td>
+<td align="left">Die Klammern fassen Ausdrücke zusammen. Jede Zeile wird nach angegebenen Muster durchsucht und jeder Treffer wird in einem Puffer gespeichert (max. 9 dieser Muster sind in einem Befehl möglich).</td>
+</tr>
+<tr class="even">
+<td align="left"><code>\n</code></td>
+<td align="left">referenziert obige Muster</td>
+</tr>
+</tbody>
+</table>
+<p>Es lassen sich des weiteren syntaktische Gruppen bilden. Hierbei handelt es sich nur um eine andere Schreibweise bereits besprochener Ausdrücke. Diese Schreibweise kann die Lesbarkeit regulärer Ausdrücke deutlich verbessern.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><code>[</code>:alnum:<code>]</code></td>
+<td align="left">alle alphanumerischen Zeichen [A-Za-z0-9]</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>:alpha:<code>]</code></td>
+<td align="left">alle Buchstaben [A-Za-z]</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>:blank:<code>]</code></td>
+<td align="left">ein oder mehrere Leerzeichen und Tab</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>:cntrl:<code>]</code></td>
+<td align="left">alle Kontrollzeichen wie z.B. &lt;newline&gt;</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>:digit:<code>]</code></td>
+<td align="left">alle dezimalen Zahlen [0-9]</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>:graph:<code>]</code></td>
+<td align="left">alle druckbaren Zeichen (ASCII 33 - 126) ohne das Leerzeichen</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>:print:<code>]</code></td>
+<td align="left">alle druckbaren Zeichen</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>:lower:<code>]</code></td>
+<td align="left">alle Kleinbuchstaben [a-z]</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>:upper:<code>]</code></td>
+<td align="left">alle Großbuchstaben [A-Z]</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>:space:<code>]</code></td>
+<td align="left">Leerzeichen und horizontales Tab</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>:xdigit:<code>]</code></td>
+<td align="left">alle hexadezimalen Zahlen [0-9A-Fa-f]</td>
+</tr>
+</tbody>
+</table>
+<p>Reguläre Ausdrücke sind zwar allgemein gültig, jedoch ist der Funktionsumfang der einzelnen Tools nicht einheitlich.</p>
+<div align="center">
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"> </td>
+<td align="left"><code>[</code>…<code>]</code></td>
+<td align="left">.</td>
+<td align="left"><code>*</code></td>
+<td align="left">?</td>
+<td align="left">+</td>
+<td align="left"><code>^</code></td>
+<td align="left">$</td>
+<td align="left">|</td>
+<td align="left"><code>()</code></td>
+</tr>
+<tr class="even">
+<td align="left">grep</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"> </td>
+<td align="left"> </td>
+</tr>
+<tr class="odd">
+<td align="left">egrep</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr class="even">
+<td align="left">sed</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr class="odd">
+<td align="left">awk</td>
+<td align="left">   x   </td>
+<td align="left">   x   </td>
+<td align="left">   x   </td>
+<td align="left">   x   </td>
+<td align="left">   x   </td>
+<td align="left">   x   </td>
+<td align="left">   x   </td>
+<td align="left">   x   </td>
+<td align="left">  x   </td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="rep">[rep</h1>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Syntax:</td>
+<td align="left"><code>grep [-CVbchilnsvwx] [-Anzahl] [-AB Anzahl] [[-e] Ausdruck | -f Datei] [Datei...]</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>grep</code> durchsucht die angegebenen Dateien (oder die Daten aus der Standardeingabe) nach einem Ausdruck und gibt die entsprechenden Zeilen aus. Der Status von grep ist 0, wenn der Ausdruck gefunden wurde und sonst 1.</p>
+<p>Wieder ein paar einfache Beispiele:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Befehl</td>
+<td align="left">cat file</td>
+<td align="left">grep b.*g file</td>
+<td align="left">grep b.*g. file</td>
+<td align="left">grep ggg* file</td>
+</tr>
+<tr class="even">
+<td align="left">Resultat</td>
+<td align="left">big</td>
+<td align="left">big</td>
+<td align="left">bigger</td>
+<td align="left">bigger</td>
+</tr>
+<tr class="odd">
+<td align="left"> </td>
+<td align="left">bad bug</td>
+<td align="left">bad bug</td>
+<td align="left">boogy</td>
+<td align="left"> </td>
+</tr>
+<tr class="even">
+<td align="left"> </td>
+<td align="left">bag</td>
+<td align="left">bag</td>
+<td align="left"> </td>
+<td align="left"> </td>
+</tr>
+<tr class="odd">
+<td align="left"> </td>
+<td align="left">bigger</td>
+<td align="left">bigger</td>
+<td align="left"> </td>
+<td align="left"> </td>
+</tr>
+<tr class="even">
+<td align="left"> </td>
+<td align="left">boogy</td>
+<td align="left">boogy</td>
+<td align="left"> </td>
+<td align="left"> </td>
+</tr>
+</tbody>
+</table>
+<p>Stern und Punkt sind Sonderzeichen. Will man nach Mustern suchen, die den Punkt als literarisches Zeichen auffassen, so muß dieser maskiert werden.</p>
+<p><code>ls | grep Name.ext</code></p>
+<p>trifft auch Name0ext , NameBext , usw. .</p>
+<p><code>ls | grep Name\.ext</code></p>
+<p>trifft nur die Datei File mit mit dem Namen <code>Name.ext</code>. .</p>
+<p>Wir wollen in einem Textfile alle Zeilen, die den Namen Fred Feuerstein und Fredericke Feuerstein enthalten. Das bedeutet der Teil ``ericke’’ ist optional.</p>
+<p><code>grep &quot;Fred\(ericke\)\? Feuerstein&quot; textfile</code></p>
+<p>Die Klammern bilden eine Gruppe. Das Fragezeichen bedeutet ein oder kein Vorkommen des vorherigen Musters.</p>
+<p>Hier werden Klammern innerhalb anderer Klammern ausgeschlossen:</p>
+<p><code>grep &quot;([^()]*)&quot;</code></p>
+<p>Trifft <code>(hello)</code> und <code>(aksjdhaksj d ka)</code> aber nicht <code>x=(y+2(x+1))</code> .</p>
+<p>Jetzt wollen wir nach sich wiederholenden Mustern suchen. Eine gutes Beispiel sind Telefonnummern. Wir suchen nach einer Vorwahl (3 Ziffern) und der Nummer (7 Ziffern), getrennt durch einen - , einem Leerzeichen oder garnicht.</p>
+<p><code>grep &quot;[0-9]\{3\}[-]\?[0-9]\{7\}&quot; file</code></p>
+<p><code>[0-9]</code> steht für alle Zahlen, <code>\{3\}</code> besagt, daß sich das vorherige Muster 3 mal wiederholen soll. <code>[-]\?</code> repräsentiert die Auswahl des Trennzeichens (Leerzeichen, - oder garnichts).</p>
+<p>Angenommen, wir suchen eine Zeile in der nur das Wort ``Hallo’‘steht. Es ist zudem noch möglich, daß sich vor und/oder hinter ``Hallo’’ Leerzeichen befinden. Eine Möglichkeit wäre folgendes</p>
+<p><code>grep &quot;^[[:space:]]*Hallo[[:space:]]*$&quot; file</code></p>
+<p><code>^</code> steht für den Zeilenanfang, <code>$</code> für das Zeilenende.</p>
+<p>Manchmal ist es nötig, Zeilen zu suchen, in denen entweder das Eine oder das Andere steht.</p>
+<p><code>grep &quot;Ich habe \(Schröder\|Stoiber\) gewählt&quot; file</code></p>
+<p><code>\|</code> entspricht einem logischen ODER.</p>
+<p>Hat man einmal ein Muster in <code>\(</code>…<code>\)</code> definiert, kann man es mit <code>\Zahl</code> erneut einsetzen.</p>
+<p><code>echo bla blub bla | grep '\(bla\).*\1'</code></p>
+<h1 id="sed-stream-editor">sed Stream Editor</h1>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Syntax:</td>
+<td align="left"><code>sed [-n] [-e Editorkommando] [-f Sriptdatei] [inputfile]</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>sed</code> ist ein Editor zur automatischen Textbearbeitung. Die Bearbeitung erfolgt mit Editorkommandos, die dem <code>sed</code> in einer separaten Scriptdatei oder direkt in der Kommandozeile übergeben werden. Um in der Kommandozeile mehrere Editorkommandos zu übergeben, kann die -e Option mehrfach verwendet werden. Die Editorkommandos können auch durch ein Semikolon getrennt werden. Wird nur ein einziges Editorkommando in der Kommandozeile übergeben, kann die Kennzeichnung mit der -e Option auch weggelassen werden. Damit die Shell keine Veränderungen an der Zeichenkette mit dem Editorkommando vornimmt, muß sie in Hochkommata eingeschlossen werden.</p>
+<p>Eine Scriptdatei kann beliebig viele Editorkommandos enthalten, die durch Zeilenende oder Semikolon von einander getrennt werden müssen.</p>
+<p>Jedes Kommando besteht aus einem Adressteil und einem Funktionsteil. Der Adressteil gibt an, welche Zeilen einer Textdatei mit diesem Kommando bearbeitet werden sollen, und der Funktionsteil beschreibt die Veränderung, die an den im Adressteil bestimmten Zeilen vorgenommen werden soll. Wenn kein Adressteil angegeben ist, wird die Funktion mit jeder Zeile ausgeführt.</p>
+<p>Die Bearbeitung eines Textes erfolgt, indem die Eingabe zeilenweise in einen Arbeitsspeicher gelesen wird, und dann die Adressteil aller Editorkommandos der Reihe nach mit dem Text im Arbeitsspeicher verglichen werden. Die Funktionen der passenden Kommandos werden in der Reihenfolge ihres Auftretens ausgeführt. Normalerweise wird nach der Bearbeitung aller Kommandos der Inhalt des Arbeitsspeichers auf die Standardausgabe ausgegeben und danach durch die nächste Eingabezeile ersetzt. Die automatische Ausgabe des Arbeitsspeichers nach jeder Zeile kann mit der Option -n unterdrückt werden.</p>
+<p>Zusätzlich zu dem Arbeitsspeicher gibt es noch einen Zwischenspeicher (Puffer), der von verschiedenen Funktionen benutzt werden kann.</p>
+<p>Der Arbeitsspeicher kann auch mehrere Zeilen auf einmal enthalten.</p>
+<p>Im Adressteil können die Zeilen entweder durch ihre Zeilennummern, oder durch reguläre Ausdrücke ausgewählt werden. Alle Funktionen außer den a, i, q und = akzeptieren einen Adressbereich, bei dem eine Start- und eine Endadresse durch ein Komma getrennt angegeben werden. Ein Dollarzeichen steht für die letzte Zeile. Wenn eine Endadresse mit einem regulären Ausdruck bezeichnet ist, wird die erste passende Zeile als Bereichsende eingesetzt.</p>
+<p>Reguläre Ausdrücke müssen in einfachen Schrägstrichen (Slashes /) eingeschlossen werden. <code>sed</code> benutzt die gleichen Routinen zur Auswertung regulärer Ausdrücke wie emacs oder grep. Darüberhinaus kann auch die an die <code>sed</code> Syntax angelehnte Konstruktion <code>\#Muster\#</code> (mit jedem beliebigen Zeichen für <code>\#</code>) benutzt werden, die wie /Muster/ interpretiert wird.</p>
+<p>Im Muster kann auch ein <code>\n</code> vorkommen, das auf das Zeilenende paßt.</p>
+<h2 id="optionen-von-sed">Optionen von <code>sed</code></h2>
+<p>Mit <code>sed</code> gibt es schier unendliche Möglichkeiten der Textmanipulation. <code>sed</code> bietet unter anderem folgende Funktionalität:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Operator</td>
+<td align="left">Name</td>
+<td align="left">Effekt</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>Muster/Adressraum<code>]</code>/p</td>
+<td align="left">print</td>
+<td align="left">gibt den mit <code>[</code>Muster/Adressraum<code>]</code> gekennzeichneten Bereichs aus.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>Adressraum<code>]</code>/d</td>
+<td align="left">delete</td>
+<td align="left">Löschen des mit <code>[</code>angegebener Adressraum<code>]</code> gekennzeichneten Bereichs.</td>
+</tr>
+<tr class="even">
+<td align="left">s/Muster1/Muster2/</td>
+<td align="left">substitute</td>
+<td align="left">Ersetze das erste in einer Zeile auftretende Muster1 durch Muster2.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>Adressraum<code>]</code>/s/Muster1/Muster2/</td>
+<td align="left">substitute</td>
+<td align="left">Ersetze über einen angegebenen Adressraum das erste in einer Zeile auftrettende Muster1 durch Muster2.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>Adressraum<code>]</code>/y/Muster1/Muster2/</td>
+<td align="left">transform</td>
+<td align="left">Transformiere über einen angegebenen Adressraum, jedes Zeichen in Muster1 durch das korrespondierende Zeichen in Muster2 (äquivalent zum Befehl <code>tr</code>.)</td>
+</tr>
+<tr class="odd">
+<td align="left">g</td>
+<td align="left">global</td>
+<td align="left">Wendet das vorherstehende Kommando auf jedes vorkommende Ersetzungsmuster einer Zeile an.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>[</code>Anzahl<code>]</code>q</td>
+<td align="left">quit</td>
+<td align="left">beendet <code>sed</code> nach ``Anzahl’’ Zeilen.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>[</code>Muster/Adressraum<code>]</code>/w <code>file</code></td>
+<td align="left">write</td>
+<td align="left">Schreibt gefundene Zeilen in <code>file</code>.</td>
+</tr>
+<tr class="even">
+<td align="left">i Text insert fügt Text vorher ein</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">a Text append fügt Text danach ein</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c Text change ersetzt durch Text</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">=</td>
+<td align="left"> </td>
+<td align="left">Gibt die aktuelle Eingabezeilennummer aus.</td>
+</tr>
+<tr class="even">
+<td align="left">{…}</td>
+<td align="left"> </td>
+<td align="left">Die von den Klammern eingeschlossenen und durch Zeilenende oder Semikolon getrennten Funktionen, werden als Einheit behandelt.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="beispiele">Beispiele</h2>
+<p>Im ersten Beispiel soll das Wort ``UNIX’‘durch das Wort ``Linux’‘ersetzt werden. Das abschließende g sorgt dafür, daß <strong>jedes</strong> in einer Zeile befindliche ``UNIX’‘durch ``Linux’‘ersetzt wird. Ohne g würde nur das erste auftretende ``UNIX’’ ersetzt. Der Befehl ist in Hochkommata eingefaßt, damit Sonderzeichen nicht von der Shell interpretiert werden (in diesem Fall die Klammern). Ohne die Hochkommata sieht der Befehl etwas anders aus. Klammern und Leerzeichen müssen maskiert werden.</p>
+<p><code>sed 's/UNIX (TM)/Linux/g' file</code><br />
+<code>sed -e s/UNIX\ \(TM\)/Linux/g file</code></p>
+<p>Es ist möglich die Befehlsfolgen, die <code>sed</code> abarbeiten soll, in einer Scriptdatei zu speichern. Die Ausgabe läßt sich auf dem üblichen Wege in eine Datei umleiten. Der Befehl sieht dann so aus:</p>
+<p><code>sed -n -f muster_file inputfile &gt;outputfile</code></p>
+<p>Normalerweise gelten die vergegebenen Muster immer für den gesamten Text. Aber es ist auch möglich bestimmte Zeilen und Bereiche zu adressieren. Dies kann mit Zahlen, Mustern und mit dem $-Zeichen, als Kennung für die letzte Zeile, geschehen. Mit dem ! können Zeilen ausgeschlossen werden. Die Syntax sieht dann folgendermaßen aus:</p>
+<p>[<em>Adresse1</em>],[<em>Adresse2</em>] <em>Kommando</em> [<em>Parameter</em>]</p>
+<p>Beispiele sagen mehr als tausend Worte:</p>
+<p><code>sed '/10,$/ s/WWJD/TWJD/g' file</code><br />
+<code>sed '/Josef/ s/WWJD/TWJD/g' file</code><br />
+<code>sed '1!s/WWJD/TWJD/g' file</code></p>
+<p>Im erste Beispiel wird von Zeile 10 bis zum Dateiende der String ``WWJD’‘in ``TWJD’‘geändert. Im zweiten Beispiel wird nur in Zeilen ersetzt, in denen das Wort ``Josef’‘vorkommt. Das letzte Beispiel verändert ``WWJD’‘in ``TWJD’’ überall, außer in der ersten Zeile.</p>
+<p>Noch ein paar nützliche Muster:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><code>8d</code></td>
+<td align="left">löscht die achte Zeile</td>
+</tr>
+<tr class="even">
+<td align="left"><code>/^$/d</code></td>
+<td align="left">löscht alle leeren Zeilen</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>1,/^$/d</code></td>
+<td align="left">löscht alles von Zeile 1 bis einschließlich der ersten leeren Zeile</td>
+</tr>
+<tr class="even">
+<td align="left"><code>/GUI/d</code></td>
+<td align="left">löscht alle Zeilen in denen ``GUI’’ vorkommt</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>/Jones/p</code></td>
+<td align="left">gibt nur Zeilen aus in denen der Name ``Jones’’ vorkommt (mit <code>-n</code>)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>1,10 p</code></td>
+<td align="left">gibt Zeilen 1 bis 10 aus (mit <code>-n</code>)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>/^begin/,/^end/p</code></td>
+<td align="left">gibt jede Zeile aus, die sich zwischen Zeilen die mit ``begin’‘und ``end’’ am Zeilenanfang befindet</td>
+</tr>
+<tr class="even">
+<td align="left"><code>s/Windows/Linux/</code></td>
+<td align="left">ersetzt das erste in einer Zeile vorkommende, ``Windows’‘mit ``Linux’’</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>s/BSOD/stability/g</code></td>
+<td align="left">setzt ``stability’‘für jedes ``BSOD’’ ein</td>
+</tr>
+<tr class="even">
+<td align="left"><code>s/00*/0/g</code></td>
+<td align="left">ersetzt ``00’‘, ``000’‘, …mit ``0’’</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>s/GUI//g</code></td>
+<td align="left">löscht ``GUI’’ in jeder Zeile</td>
+</tr>
+<tr class="even">
+<td align="left"><code>/^[0-9]/s/^/ /</code></td>
+<td align="left">alle Zeilen, die mit einer Zahl beginnen, um 3 Leerzeichen einrücken</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>/^$/s/^/XXX/</code></td>
+<td align="left">alle leeren Zeilen mit ``XXX’’ auffüllen</td>
+</tr>
+<tr class="even">
+<td align="left"><code>10q</code></td>
+<td align="left">zeigt die ersten 10 Zeilen an</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>/^X/w file</code></td>
+<td align="left">schreibt alle Zeilen, die mit ``X’’ beginnen, in <code>file</code></td>
+</tr>
+</tbody>
+</table>
+<p>Kniffeliger wird die Angelegenheit, wenn es sich um die Optionen i, a und c handelt:</p>
+<pre><code>#!/usr/bin/sed -nf
+
+/ganz bestimmter Text/{
+  i\
+  Text gehört davor
+  a\
+  Text der danach stehen soll
+}</code></pre>
+<p>Kommando und Ergebnis sehen dann so aus:</p>
+<pre><code>asterix% echo &#39;ganz bestimmter Text&#39; | sed -f scriptdatei
+Text gehört davor
+ganz bestimmter Text
+Text der danach stehen soll
+asterix%</code></pre>
+<p>Aber es geht natürlich auch ohne Scriptdatei:</p>
+<pre><code>asterix% echo &#39;ganz bestimmter Text&#39; | \
+sed -e &#39;/ganz bestimmter Text/{;i\&#39; \
+-e &#39;Text gehört davor&#39; -e &#39;a\&#39; -e &#39;Text der danach stehen soll&#39; -e &#39; }&#39;</code></pre>
+<p>An diesem Beispiel kann man des weiteren erkennen, daß es möglich ist, Befehlsgruppen zu bilden. Eine Gruppe wird durch die geschweiften Klammern zusammengefaßt. Das angegebene Suchmuster ‘’/ganz bestimmter Text/’’ wird dadurch von a und i gemeinsam genutzt.</p>
+<p>Nichts verstanden? Macht nichts, es ist auch nicht einfach! Im Internet gibt es eine Vielzahl von Tutorien zu regulaeren Ausdruecken, sowie zu <code>sed</code> und <code>grep</code>. Und wie immer kann auch ein Blick in die <code>man</code>-Page nicht schaden. [LE,RO] [LO,RE]</p>
+<p><br />
+ </p>
+<p>  Pawel Slabiak 2004-08-02</p>
+<div id="refs" class="references">
+
+</div>
+</body>
+</html>

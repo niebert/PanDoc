@@ -17,7 +17,7 @@ Dieses Kapitel widmet sich der Einfuehrung in die Shell-Programmierung.
 Hierbei handelt es sich keinesfalls um eine vollstaendige Dokumentation.
 Fuer weiterfuehrende Details empfehle ich dringend einen Blick in die
 `man` Pages der jeweiligen Programme sowie der Bash (`man bash`) zu
-werfen.\
+werfen.
 
 Allgemein
 =========
@@ -162,7 +162,7 @@ Quotierung
 Quotierung wird benutzt, um die spezielle Bedeutung von Kontrollzeichen,
 reservierten Wörtern und Namen auszuschalten. Es gibt 3 Formen:
 
-**Fluchtsymbol ![\$\\backslash\$](img2.png){width="13" height="34"}**
+**Fluchtsymbol**
 :   Es entwertet das unmittelbar folgende Sonderzeichen. Ein durch `\`
     entwertetes Zeilenende wird ignoriert.
 
@@ -472,7 +472,6 @@ Mit `Name` wird eine Shellvariable definiert, die in jedem
 Schleifendurchlauf einen neuen Wert erhaelt. Die Werte werden
 normalerweise mit dem Schluesselwort `in` uebergeben. Wird der Teil
 `in Wort` weggelassen, wird die Liste fuer jeden gesetzten Parameter
-(![\$\\rightarrow\$](img1.png){width="22" height="16"}
 [2.7.1](node3.html#ssec:positionsparameter)) einmal ausgefuehrt.
 
     #! /bin/sh
@@ -667,7 +666,7 @@ Zeichenklassen
   `[^exp]`   trifft alle Zeichen außer den angegebenen.
   `^abc`     trifft das angegebene Muster, wenn es am Zeilenanfang steht.
   `abc$`     trifft das angegebene Muster, wenn es am Zeilenende steht.
-  `\`        Maskierung des folgenden Zeichens (![\$\\rightarrow\$](img1.png){width="22" height="16"}[2.3.2](node3.html#ssec:quotierung))
+  `\`        Maskierung des folgenden Zeichens [2.3.2](node3.html#ssec:quotierung))
   ---------- ------------------------------------------------------------------------------------------------------------------------------
 
 Wiederholungsoperatoren
@@ -688,9 +687,7 @@ Die Syntax von `grep` und `egrep` variiert in manchen Punkten. Für +, ?,
 Reguläre Ausdrücke werden von links nach rechts aufgelöst. Operatoren
 werden in der folgenden Reihenfolge abgearbeitet:
 
-`[`... `]` ![\$\\rightarrow\$](img1.png){width="22" height="16"}  ? + \*
-![\$\\rightarrow\$](img1.png){width="22" height="16"} Verkettung
-![\$\\rightarrow\$](img1.png){width="22" height="16"} Verknüpfungen |
+`[`... `]`  ? + \*  Verkettung  Verknüpfungen |
 
 Abweichungen davon können mit Klammerung einzelner Ausdrücke erreicht
 werden.
@@ -932,9 +929,9 @@ Mit `sed` gibt es schier unendliche Möglichkeiten der Textmanipulation.
   g                                                            global       Wendet das vorherstehende Kommando auf jedes vorkommende Ersetzungsmuster einer Zeile an.
   `[`Anzahl`]`q                                                quit         beendet `sed` nach \`\`Anzahl'' Zeilen.
   `[`Muster/Adressraum`]`/w `file`                             write        Schreibt gefundene Zeilen in `file`.
-  i![\$\\backslash\$](img2.png){width="13" height="34"} Text   insert       fügt Text vorher ein
-  a![\$\\backslash\$](img2.png){width="13" height="34"} Text   append       fügt Text danach ein
-  c![\$\\backslash\$](img2.png){width="13" height="34"} Text   change       ersetzt durch Text
+  i Text   insert       fügt Text vorher ein
+  a Text   append       fügt Text danach ein
+  c Text   change       ersetzt durch Text
   =                                                                         Gibt die aktuelle Eingabezeilennummer aus.
   {...}                                                                     Die von den Klammern eingeschlossenen und durch Zeilenende oder Semikolon getrennten Funktionen, werden als Einheit behandelt.
   ------------------------------------------------------------ ------------ --------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,1 @@
+pandoc -S --reference-docx .\tpl\docx\tpldefault.docx --bibliography .\bib\data\biblio.bib -f mediawiki+simple_tables+footnotes -t docx -o .\projects\bert\bert.docx .\projects\bert\bert.wiki --csl .\bib\csl\apa5.csl

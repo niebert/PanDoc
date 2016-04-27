@@ -1,1 +1,1 @@
-pandoc -S --bibliography .\bib\data\biblio.bib -f markdown+simple_tables+footnotes -t beamer -o .\projects\readme\readme_beamer.pdf .\projects\readme\readme.md --csl .\bib\csl\apa5.csl
+pandoc -S --bibliography .\bib\data\biblio.bib -f markdown+simple_tables+footnotes -t beamer -o \Users\niehausbert\ownCloudLD\PanDoc\projects\shellprog\shellprog_beamer.pdf \Users\niehausbert\ownCloudLD\PanDoc\projects\shellprog\shellprog.md --csl .\bib\csl\apa5.csl
