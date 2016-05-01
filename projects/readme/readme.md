@@ -26,6 +26,13 @@ to modify the the source file.
 
 >  `sudo apt-get install geany`
 
+PDF-Viewer
+------------
+The script `PANDOCmenu.sh` uses an viewer `evince` for displaying PDF-results of pandoc
+to modify the the source file.
+
+>  `sudo apt-get install evince`
+
 
 Start Menu
 ----------
@@ -78,6 +85,13 @@ Furthermore the script `PANDOCmenu.sh` uses an editor `geany` as an option in th
 to modify the the source file.
 
 >  `brew install geany`
+
+PDF-Viewer
+------------
+The script `PANDOCmenu.sh` uses an viewer `evince` for displaying PDF-results of pandoc
+to modify the the source file.
+
+>  `brew install evince`
 
 
 Start Menu
@@ -156,8 +170,8 @@ See following URL for command examples for Batch Files on Windows.
 >  [https://gist.github.com/breezhang/7732470](https://gist.github.com/breezhang/7732470)
 
 
-Folders and Content 
-===================
+Main Folders
+============
 
 **Folder**            **Description**
 --------------------  ----------------------------------------------         
@@ -167,5 +181,21 @@ Folders and Content
 `help`                Contains Help Files for Installation et. al.
 --------------------  ----------------------------------------------
 
+Folders
+=======
+Project ReadMe
+--------------
+The directory `project/readme` is one sample project that is used at 
+the same time for the readme of this project.  
 
+Project Config
+--------------
+All subdirectory e.g. `project/topologie` contains a subdirectory 
+`project/topologie/config` that contains author name and title for the project. 
+
+ 
+Media Files
+-----------
+If the input file includes media files, the create 
+`/images`, `/videos`, `/audio` store the media files in the subdirectories. 
 
