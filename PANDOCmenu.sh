@@ -32,7 +32,7 @@ defaultEXTENSION="wiki"
 # DIRECTORY SELECT
 # zenity --info --text "PANDOC Menu\n----------\nPlease select the folder of your current PANDOC project or\npress [Cancel] and create a new PanDoc Project"
 # ----------------------
-pandocPROJECT="xx"
+pandocPROJECT="xxx"
 # ----------------------
 baseDIR="$projectDIR"
 #-----BibTeX: Path and Files-----
