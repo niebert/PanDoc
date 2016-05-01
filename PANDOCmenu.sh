@@ -296,8 +296,9 @@ while true; do
 				--title="Do want to select an input file?" \
 				--column="Answer" --column="Operation" \
 				"SELECT" "Select an Input File for the Pandoc project." \
-				"NEW" "Enter a default filename for NEW Pandoc project" `
-	            echo "(3-${pandocPROC}-${Answer}) CREATE Input File for ${pandocPROJECT}: $Answer"
+				"NEW" "Enter a default filename for NEW Pandoc project" \
+	            "DOWNLOAD" "Download and Convert an Input File from Web." `
+				echo "(3-${pandocPROC}-${Answer}) CREATE Input File for ${pandocPROJECT}: $Answer"
 				case $Answer in
 	              SELECT) 
 	              		echo "Perform File Selection for PanDoc Project"
@@ -343,6 +344,41 @@ while true; do
 							 ;;
 						esac # case EXTENSION
 						echo "(3-${pandocCMD}-${Answer})  Input File: $inputFILE "
+	           		;;
+	           	DOWNLOAD) echo "Download and Convert PanDoc Input file"
+				  		## DefaultNAME is set for Text Edit window in zenity ###
+				  		defaultNAME=${pandocPROJECT##*/} # get the part after the last slash
+						defaultNAME="${defaultNAME}.${defaultEXTENSION}"
+						NAMEext=`zenity --title="New PANDOC Filename" --entry --entry-text="web${defaultNAME}"  text="New PANDOC Input Filename"`
+						EXTENSION=${NAMEext##*.}  # get part after the last dor "."
+				    	NAME=${NAMEext%.*}        # get part before the last dot "."	
+				    	#pandocPROJECT="${pandocDIR}/${NAME}"
+	          			URLweb=`zenity --title="Enter URL" --entry --entry-text="http://pandoc.org/demos.html"  text="New PANDOC Input Filename"`
+						echo "PanDoc Project: ${pandocPROJECT}"
+	          			echo "Convert and Download from URL: ${URLweb}"
+	          			case $EXTENSION in 
+							md) 	echo "Markdown as Input Format"
+									inputFILE="${pandocPROJECT}/${NAMEext}"
+									echo "Input File: $inputFILE"
+									inputFORMAT="${EXTENSION}"
+									convertFORMAT="markdown"
+									pandoc -s -r html $URLweb -o $inputFILE
+								;;
+							wiki)  	echo "WikiMedia as Input Format"
+									inputDOWNLOAD="${pandocPROJECT}/${NAME}.md"
+									inputFILE="${pandocPROJECT}/${NAMEext}"
+									inputFORMAT="${EXTENSION}"
+									convertFORMAT="mediawiki"
+									pandoc -s -r html $URLweb -t ${convertFORMAT} -o $inputDOWNLOAD
+									pandoc -s -S -t mediawiki $inputDOWNLOAD -o $inputFILE
+								;;
+									
+							*)  echo "(3-${pandocPROC}-${EXTENSION}) "
+								echo "ERROR-01: No Valid Extension in '$pandocCMD' as Input Format"	
+								
+							 ;;
+						esac # case EXTENSION
+						echo "(3-${pandocCMD}-${Answer})  Download finished for '${URLweb}' and Input File: $inputFILE "
 	           		;;
 	           esac # case Answer
 	           echo "(3-${pandocPROC}) Create Finished NAME=${NAMEext}  inputFORMAT=${EXTENSION}"
