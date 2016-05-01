@@ -1,1 +1,0 @@
-pandoc -t html5 --template=.\tpl\reveal\tpldefault.html --bibliography .\bib\data\biblio.bib -f mediawiki+simple_tables+footnotes --standalone --section-divs --variable theme="sky" --variable transition="sky" .\projects\bert\bert.wiki -o .\projects\bert\bert_reveal.html --csl .\bib\csl\apa5.csl

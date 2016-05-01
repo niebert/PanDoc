@@ -1,1 +1,0 @@
-pandoc -s -S --toc -c pandoc.css --bibliography .\bib\data\biblio.bib -f markdown+simple_tables+footnotes -o \Users\niehausbert\ownCloudLD\PanDoc\projects\shellprog\shellprog.html \Users\niehausbert\ownCloudLD\PanDoc\projects\shellprog\shellprog.md --csl .\bib\csl\apa5.csl

@@ -1,1 +1,0 @@
-pandoc -S --reference-odt .\tpl\odt\tpl4paper.odt --bibliography .\bib\data\biblio.bib -f markdown+simple_tables+footnotes -t odt -o \Users\niehausbert\ownCloudLD\PanDoc\projects\shellprog\shellprog.odt \Users\niehausbert\ownCloudLD\PanDoc\projects\shellprog\shellprog.md --csl .\bib\csl\apa5.csl
