@@ -216,7 +216,7 @@ while true; do
 	            esac
 	            #RELUP="../../"
 	            #TPL="tpl"
-				templateREL="${RELUP}${TPL}/${outputFORMAT}/tpldefault.$outputFORMAT"
+				templateREL="${RELUP}${TPL}/${outputFORMAT}/tpldefault.$outEXTENSION"
 	            echo "(1--${pandocCMD}) Set Template relative to Project Directory"
 	            echo " templateREL='${templateREL}' "
 	            #cslDEFAULT="default.csl"
@@ -409,8 +409,9 @@ while true; do
 						echo "--------------------------------------------"
 						callStr=" pandoc -f ${INtype} -t ${OUTtype} --mathjax --template=${templateREL}  --bibliography ${bibFILEREL} --standalone --section-divs --variable author=\"${author}\" --variable title=\"${title}\" --variable theme=${theme} --variable transition=\"slide\" ${inFILE} -o ${outFILE} --csl ${cslFILEREL}"
 						echo $callStr 
-						$callStr 
-	            		#-------------SED Template Correction--------------------
+						#$callStr 
+	            		pandoc -f ${INtype} -t ${OUTtype} --mathjax --template=${templateREL}  --bibliography ${bibFILEREL} --standalone --section-divs --variable author="${author}" --variable title="${title}" --variable theme=${theme} --variable transition="slide" ${inFILE} -o ${outFILE} --csl ${cslFILEREL}
+						#-------------SED Template Correction--------------------
 						#---- sed corrects an replace error in css path .../css/"beige".css by .../css/beige.css
 						eval "sed 's/css\/\\\"${theme}\\\"/css\/${theme}/g'  ${outFILE} > tmp.txt" 
 						mv ${pandocPROJECT}/tmp.txt  ${outFILE} 

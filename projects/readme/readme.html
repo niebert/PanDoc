@@ -20,6 +20,7 @@
 <li><a href="#install-pandoc">Install PanDoc</a></li>
 <li><a href="#zenity-for-menu">Zenity for Menu</a></li>
 <li><a href="#editor-geany">Editor Geany</a></li>
+<li><a href="#pdf-viewer">PDF-Viewer</a></li>
 <li><a href="#start-menu">Start Menu</a></li>
 <li><a href="#executable-menu">Executable Menu</a></li>
 <li><a href="#install-latex">Install LaTeX</a></li>
@@ -29,6 +30,7 @@
 <li><a href="#homebrew-installer">Homebrew Installer</a></li>
 <li><a href="#zenity-for-menu-1">Zenity for Menu</a></li>
 <li><a href="#editor-geany-1">Editor Geany</a></li>
+<li><a href="#pdf-viewer-1">PDF-Viewer</a></li>
 <li><a href="#start-menu-1">Start Menu</a></li>
 <li><a href="#executable-menu-1">Executable Menu</a></li>
 <li><a href="#install-latex-1">Install LaTeX</a></li>
@@ -42,7 +44,12 @@
 <li><a href="#pandoc-demos">Pandoc Demos</a></li>
 <li><a href="#panconvert-optional">PanConvert (Optional)</a></li>
 <li><a href="#todo">ToDo</a></li>
-<li><a href="#folders-and-content">Folders and Content</a></li>
+<li><a href="#main-folders">Main Folders</a></li>
+<li><a href="#folders">Folders</a><ul>
+<li><a href="#project-readme">Project ReadMe</a></li>
+<li><a href="#project-config">Project Config</a></li>
+<li><a href="#media-files">Media Files</a></li>
+</ul></li>
 </ul>
 </div>
 <h1 id="linux">Linux</h1>
@@ -60,6 +67,11 @@
 <p>Furthermore the script <code>PANDOCmenu.sh</code> uses an editor <code>geany</code> as an option in the menu to modify the the source file.</p>
 <blockquote>
 <p><code>sudo apt-get install geany</code></p>
+</blockquote>
+<h2 id="pdf-viewer">PDF-Viewer</h2>
+<p>The script <code>PANDOCmenu.sh</code> uses an viewer <code>evince</code> for displaying PDF-results of pandoc to modify the the source file.</p>
+<blockquote>
+<p><code>sudo apt-get install evince</code></p>
 </blockquote>
 <h2 id="start-menu">Start Menu</h2>
 <p>If you want to run the <code>PANDOCmenu.sh</code> start open the Terminal on Linux and star the following script with <code>sh</code></p>
@@ -94,6 +106,11 @@
 <p>Furthermore the script <code>PANDOCmenu.sh</code> uses an editor <code>geany</code> as an option in the menu to modify the the source file.</p>
 <blockquote>
 <p><code>brew install geany</code></p>
+</blockquote>
+<h2 id="pdf-viewer-1">PDF-Viewer</h2>
+<p>The script <code>PANDOCmenu.sh</code> uses an viewer <code>evince</code> for displaying PDF-results of pandoc to modify the the source file.</p>
+<blockquote>
+<p><code>brew install evince</code></p>
 </blockquote>
 <h2 id="start-menu-1">Start Menu</h2>
 <p>If you want to run the PANDOCmenu.sh start open the Terminal on Linux and star the following script with <code>sh</code></p>
@@ -168,7 +185,7 @@
 <blockquote>
 <p><a href="https://gist.github.com/breezhang/7732470" class="uri">https://gist.github.com/breezhang/7732470</a></p>
 </blockquote>
-<h1 id="folders-and-content">Folders and Content</h1>
+<h1 id="main-folders">Main Folders</h1>
 <table>
 <thead>
 <tr class="header">
@@ -195,6 +212,13 @@
 </tr>
 </tbody>
 </table>
+<h1 id="folders">Folders</h1>
+<h2 id="project-readme">Project ReadMe</h2>
+<p>The directory <code>project/readme</code> is one sample project that is used at the same time for the readme of this project.</p>
+<h2 id="project-config">Project Config</h2>
+<p>All subdirectory e.g. <code>project/topologie</code> contains a subdirectory <code>project/topologie/config</code> that contains author name and title for the project.</p>
+<h2 id="media-files">Media Files</h2>
+<p>If the input file includes media files, the create <code>/images</code>, <code>/videos</code>, <code>/audio</code> store the media files in the subdirectories.</p>
 <div id="refs" class="references">
 
 </div>
