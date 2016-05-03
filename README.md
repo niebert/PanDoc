@@ -124,7 +124,7 @@ Batch Examples
 | `win_odt.bat`    | Batch File for LibreOffice Document    |
 | `win_docx.bat`   | Batch File for MlCR0S0FT Word Document |
 | `win_html.bat`   | Batch File for HTML Document           |
-|:-----------------|:---------------------------------------|
+-------------------  ----------------------------------------
 
 
 Pandoc Install Homepage
