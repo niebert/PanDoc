@@ -1,1 +1,0 @@
-pandoc -f markdown -t html5 --mathjax --template=..\..\tpl\reveal\tpldefault.html --bibliography ..\..\bib\data\biblio.bib -f markdown+simple_tables+footnotes --standalone --section-divs --variable author="My Author Name" author="My Title" --variable transition=slide readme.md -o readme_reveal.html --csl ..\..\bib\csl\default.csl

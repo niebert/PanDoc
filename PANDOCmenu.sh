@@ -275,26 +275,34 @@ while true; do
 	   *) echo "Exist PANDOC Zenity";exit;;
 	esac
 	#######################################################
-	#------CONFIG DIRECTORY of PROJECT---------------------
+	#------CREATE DIRECTORY of PROJECT---------------------
     #######################################################
-	echo "(2-CONFIG) Check Config Directory: $configDIR"
-	configDIR="${pandocPROJECT}/config"
-	if [ -d "$configDIR" ]; then 
-  		if [ -L "$configDIR" ]; then
-    		# It is a symlink!
-    		# Symbolic link specific commands go here.
-    		rm "$configDIR"
-    		echo "(2-CONFIG) Remove SymLink and create Directory exists: $configDIR"
-    		mkdir "$configDIR"
-  		else
-    		# It's a directory!
-    		# Directory command goes here.
-    		echo "(2-CONFIG) Config Directory exists: $configDIR"
-  		fi
-  	else 
-    	echo "(2-CONFIG) Create Directory exists: $configDIR"
-    	mkdir "$configDIR"
-	fi
+	echo "(2-DIR-CREATE) Check Config Directory: "
+	LIST="config images audio video"
+	for i in $LIST;
+	do
+		#mkdir -p $i"/Dir3/Dir4/"
+		createDIRNEW="${pandocPROJECT}/${i}"
+		if [ -d "$createDIRNEW" ]; then 
+			if [ -L "$createDIRNEW" ]; then
+				# It is a symlink!
+				# Symbolic link specific commands go here.
+				rm "$createDIRNEW"
+				echo "(2-CREATEDIR) Remove SymLink and create Directory exists: $createDIRNEW"
+				mkdir "$createDIRNEW"
+			else
+				# It's a directory!
+				# Directory command goes here.
+				echo "(2-CREATEDIR) Directory exists: $createDIRNEW"
+			fi
+		else 
+			echo "(2-CREATEDIR) Create Directory: $createDIRNEW"
+			mkdir "$createDIRNEW"
+		fi
+	done
+	#######################################################
+	#------LOAD AUTHOR and TITLE---------------------------
+    #######################################################
 	#------CONFIG DIRECTORY: AUTHOR---------------------
     if [ -f "${configDIR}/author.txt" ]
  	 then
@@ -436,34 +444,46 @@ while true; do
 	            	wiki)
 	            		echo "(3-IN) Input Format: $inputFORMAT "
 	            		INtype="mediawiki"
-	            		lvEXTMD="_conv2md.md"
+	            		lvEXTMD="_tmp.md"
 	            		inFILEMD="${inNOEXT}${lvEXTMD}"
-	            		echo "(3-IN-${pandocPROC}-WIKI) Change Directory ${pandocPROJECT} "
-	            		cd "${pandocPROJECT}"
-	            		pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD 
-	            		cd ${RELUP}
-		            	echo "pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD "
-		    			# ---- EDIT AUTHOR ---------
+	            		# ---- EDIT AUTHOR ---------
 	            		author=`zenity --title="Edit Author" --entry --entry-text="${author}"  text="Edit Author for ${outputFORMAT} "`
 						echo "$author" > "${configDIR}/author.txt"						
 						# ---- EDIT TITLE ----------
 	            		title=`zenity --title="Edit Title" --entry --entry-text="${title}"  text="Edit Title for ${outputFORMAT} "`
-						echo "$title" > "${configDIR}/title.txt"	
+						echo "$title" > "${configDIR}/title.txt"
+						####################################################
+						# Convert to "infile_tmp.md"-File
+						####################################################
+						echo "(3-IN-${pandocPROC}-WIKI) Change Directory ${pandocPROJECT} "
+	            		echo "pandoc -t markdown -f mediawiki author=\"${author}\" --variable title=\"${title}\" $inFILE -o $inFILEMD "
+		    			cd "${pandocPROJECT}"
+	            		pandoc -t markdown -f mediawiki --variable author="${author}" --variable title="${title}" $inFILE -o $inFILEMD 
+	            		cd ${RELUP}
+		            	####################################################
+						
 	            		;;
 	            	latex)
 	            		echo "(3-IN) Input Format: $inputFORMAT "
 	            		INtype="mediawiki"
-	            		lvEXTMD="_conv2md.md"
+	            		lvEXTMD="_tmp.md"
 	            		inFILEMD="${inNOEXT}${lvEXTMD}"
-	            		pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD 
-		            	echo "pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD "
-		    			# ---- EDIT AUTHOR ---------
+	            		# ---- EDIT AUTHOR ---------
 	            		author=`zenity --title="Edit Author" --entry --entry-text="${author}"  text="Edit Author for ${outputFORMAT} "`
 						echo "$author" > "${configDIR}/author.txt"						
 						# ---- EDIT TITLE ----------
 	            		title=`zenity --title="Edit Title" --entry --entry-text="${title}"  text="Edit Title for ${outputFORMAT} "`
 						echo "$title" > "${configDIR}/title.txt"	
-	            		;;
+	            		####################################################
+						# Convert to "infile_tmp.md"-File
+						####################################################
+						echo "(3-IN-${pandocPROC}-WIKI) Change Directory ${pandocPROJECT} "
+	            		echo "pandoc -t markdown -f mediawiki author=\"${author}\" --variable title=\"${title}\" $inFILE -o $inFILEMD "
+		    			cd "${pandocPROJECT}"
+	            		pandoc -t markdown -f mediawiki --variable author="${author}" --variable title="${title}" $inFILE -o $inFILEMD 
+	            		cd ${RELUP}
+		            	####################################################
+						;;
 	            	*) echo "(3-IN) Format $inputFORMAT is not allowed!"
 	            		echo "Exit $0 - inputFORMAT=$inputFORMAT "
 	            		exit

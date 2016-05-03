@@ -162,9 +162,15 @@ innstall [PanConvert](https://sourceforge.net/projects/panconvert/) for Graphica
 
 >   [https://sourceforge.net/projects/panconvert/](https://sourceforge.net/projects/panconvert/)
 
+Pandoc Online Converter
+=======================
+Convert Files with PanDoc and standard templates on:
+
+>   [http://pandoc.org/try](http://pandoc.org/try)
+
 ToDo
 ======
-Create a Windows Batch File PANDOCmenu.bat with zenith:
+Create a Windows Batch File PANDOCmenu.bat with zenity:
 See following URL for command examples for Batch Files on Windows.
 
 >  [https://gist.github.com/breezhang/7732470](https://gist.github.com/breezhang/7732470)
@@ -198,4 +204,12 @@ Media Files
 -----------
 If the input file includes media files, the create 
 `/images`, `/videos`, `/audio` store the media files in the subdirectories. 
+
+Software Development
+====================
+Atom and Electron
+----------------
+Create a Multiplattform Application with Atom and Electron for Linux Mac and Windows
+or with Intel XDK Cloud Programming Tool.
+>   [http://electron.atom.io/](http://electron.atom.io/)
 

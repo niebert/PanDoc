@@ -1,1 +1,0 @@
-pandoc -f mediawiki -t html5 --mathjax --template=..\..\tpl\reveal\tpldefault.html --bibliography ..\..\bib\data\biblio.bib -f mediawiki+simple_tables+footnotes --standalone --section-divs --variable author="Engelbert Niehaus" author="Topologie" --variable transition=slide topologie.wiki -o topologie_reveal.html --csl ..\..\bib\csl\default.csl

@@ -111,7 +111,7 @@ Windows
 Batch Files
 -----------
 
-If you run converter on Linux the converter will create a windows batch file in the project directory. Start
+If you run converter on Linux or Mac the converter will create a windows batch file in the project directory. 
 
 > `win_reveal.bat`
 
@@ -123,6 +123,78 @@ Batch Examples
 | `win_reveal.bat` | Batch File for Reveal Presentation     |
 | `win_odt.bat`    | Batch File for LibreOffice Document    |
 | `win_docx.bat`   | Batch File for MlCR0S0FT Word Document |
-| `win_html.bat`   |                                        |
+| `win_html.bat`   | Batch File for HTML Document           |
+|:-----------------|:---------------------------------------|
 
+
+Pandoc Install Homepage
+=======================
+For more information on installation of PanDoc converter see
+
+>   [http://pandoc.org/installing.html](http://pandoc.org/installing.html)
+
+Pandoc Demos
+============
+Demo calls of PanDoc can be found on:
+
+>   [http://pandoc.org/demos.html](http://pandoc.org/demos.html)
+
+Pandoc Online Converter
+=======================
+Convert Files with PanDoc and standard templates on:
+
+>   [http://pandoc.org/try](http://pandoc.org/try)
+
+
+PanConvert (Optional)
+=====================
+If you want to use PanDoc with a Graphical User Interface please 
+innstall [PanConvert](https://sourceforge.net/projects/panconvert/) for Graphical User Interface for PanDoc:
+
+>   [https://sourceforge.net/projects/panconvert/](https://sourceforge.net/projects/panconvert/)
+
+ToDo Windows
+============
+Create a Windows Batch File PANDOCmenu.bat with zenity:
+See following URL for command examples for Batch Files on Windows.
+
+>  [https://gist.github.com/breezhang/7732470](https://gist.github.com/breezhang/7732470)
+
+
+Main Folders
+============
+
+**Folder**            **Description**
+--------------------  ----------------------------------------------         
+`tpl`                 Templates and Default Files for PanDoc
+`projects`            Contains all projects 
+`bib`                 Contains all BibTeX Databases/Bib-Styles
+`help`                Contains Help Files for Installation et. al.
+--------------------  ----------------------------------------------
+
+Folders
+=======
+Project ReadMe
+--------------
+The directory `project/readme` is one sample project that is used at 
+the same time for the readme of this project.  
+
+Project Config
+--------------
+All subdirectory e.g. `project/topologie` contains a subdirectory 
+`project/topologie/config` that contains author name and title for the project. 
+
+
+Media Files
+-----------
+If the input file includes media files, the create 
+`/images`, `/videos`, `/audio` store the media files in the subdirectories. 
+
+Software Development
+====================
+Atom and Electron
+-----------------
+Create a Multiplattform Application with Atom and Electron for Linux Mac and Windows
+or with Intel XDK Cloud Programming Tool.
+>   [http://electron.atom.io/](http://electron.atom.io/)
 
