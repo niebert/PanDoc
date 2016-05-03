@@ -1,0 +1,771 @@
+\documentclass[12pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+    \setmainfont{"Palatino"}
+    \setmonofont[Mapping=tex-ansi]{"Consolas"}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\lhead{\itshape }
+\chead{}
+\rhead{\itshape{\nouppercase{\leftmark}}}
+\lfoot{v 1.0}
+\cfoot{}
+\rfoot{\thepage}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+\date{}
+
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\begin{document}
+
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\subsection{Topologie}\label{topologie}
+
+\subsubsection{Def: Offene Mengen}\label{def-offene-mengen}
+
+Sei \(X\) eine Menge und
+\(\mathfrak{T} \subset \mathcal{P}\left(X\right)\) eine Menge von
+Teilmengen von \(X\). \((X,\mathfrak{T})\) heißt \emph{topologischer
+Raum}, wenn gilt:
+
+\begin{enumerate}
+\tightlist
+\item
+  \(X \in \mathfrak{T}\) und \(\emptyset \in \mathfrak{T}\).
+\item
+  Sei \(I\) eine beliebige Indexmenge und für alle \(i \in I\) gilt:
+  \(T_i \in \mathfrak{T}\), dann ist auch
+  \(\displaystyle\bigcup_{i \in I} T_i \in \mathfrak{T}\).
+\item
+  Für endliche Indexmengen \(I\) und \(T_i \in \mathfrak{T}\) gilt
+  \(\displaystyle\bigcap_{i \in I} T_i \in \mathfrak{T}\).
+\end{enumerate}
+
+\subsubsection{Offene Mengen}\label{offene-mengen}
+
+Ist \((X,\mathfrak{T})\) ein topologischer Raum, so nennt man die
+Elemente von \(\mathfrak{T}\) offene Mengen.
+
+\subsubsection{Ursprung des Begriffs}\label{ursprung-des-begriffs}
+
+Die \textbf{Topologie} ( \emph{} ‚Ort`, ‚Platz` und \url{-logie}) ist
+ein fundamentales \href{Teilgebiete_der_Mathematik}{Teilgebiet der
+Mathematik}. Sie beschäftigt sich mit den Eigenschaften mathematischer
+Strukturen, die unter stetigen Verformungen erhalten bleiben, wobei der
+Begriff der \href{Stetigkeit_(Topologie)}{Stetigkeit} durch die
+Topologie in sehr allgemeiner Form definiert wird. Die Topologie ging
+aus den Konzepten der \url{Geometrie} und \url{Mengenlehre} hervor.
+
+\subsubsection{19.~Jahrhunderts}\label{jahrhunderts}
+
+Gegen Ende des 19.~Jahrhunderts entstand die Topologie als eine
+eigenständige Disziplin, die auf lateinisch \emph{} ‚Geometrie der Lage`
+oder \emph{} (Griechisch-Latein für ‚Analysieren des Ortes`) genannt
+wurde.
+
+\subsubsection{Heutige Bedeutung}\label{heutige-bedeutung}
+
+Seit Jahrzehnten ist die Topologie als Grundlagendisziplin anerkannt.
+Dementsprechend kann sie neben der \url{Algebra} als zweiter
+Stützpfeiler für eine große Anzahl anderer Felder der Mathematik
+angesehen werden. Sie ist besonders wichtig für die \url{Geometrie}, die
+\url{Analysis}, die \url{Funktionalanalysis} und die Theorie der
+\href{Lie-Gruppe}{Lie-Gruppen}. Ihrerseits hat sie auch die
+\url{Mengenlehre} und \url{Kategorientheorie} befruchtet.
+
+\subsubsection{Beispiel für stetige
+Deformation}\label{beispiel-fuxfcr-stetige-deformation}
+
+Tasse und Torus sind zueinander homöomorph
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{./images/mugmorph.gif}
+\caption{Stetige Deformation}
+\end{figure}
+
+\subsubsection{Homöomorphismus}\label{homuxf6omorphismus}
+
+Ein Homöomorphismus ist eine direkte Abbildung zwischen den Punkten der
+Tasse und des Torus, die Zwischenstufen im zeitlichen Verlauf dienen nur
+der Illustration der Stetigkeit dieser Abbildung.
+
+\subsubsection{Abbildung zwischen topologischen
+Räumen}\label{abbildung-zwischen-topologischen-ruxe4umen}
+
+Der grundlegende Begriff der Topologie ist der des
+\href{Topologischer_Raum}{topologischen Raums}, welcher eine
+weitreichende Abstraktion der Vorstellung von „Nähe`` darstellt und
+damit weitreichende Verallgemeinerungen mathematischer Konzepte wie
+\href{Stetige_Funktion}{Stetigkeit} und
+\href{Grenzwert_(Folge)}{Grenzwert} erlaubt.
+
+\subsubsection{Topologische
+Eigenschaften}\label{topologische-eigenschaften}
+
+Viele mathematische Strukturen lassen sich als topologische Räume
+auffassen. \emph{Topologische Eigenschaften} einer Struktur werden
+solche genannt, die nur von der Struktur des zugrundeliegenden
+topologischen Raumes abhängen.
+
+\subsubsection{Nachbarschaftserhaltende
+Abbildungen}\label{nachbarschaftserhaltende-abbildungen}
+
+\href{Homöomorphismus}{Homöomorphismen} sind nachbarschaftserhaltende
+Abbildungen, die durch „Verformungen`` nicht verändert werden. Dazu
+gehört in anschaulichen Fällen das
+
+\begin{itemize}
+\tightlist
+\item
+  Dehnen, Stauchen,
+\item
+  Verbiegen, Verzerren und
+\item
+  Verdrillen einer geometrischen Figur.
+\end{itemize}
+
+\subsubsection{Beispiele für homöomorphe
+Objekte}\label{beispiele-fuxfcr-homuxf6omorphe-objekte}
+
+Zum Beispiel sind eine Kugel und ein Würfel aus Sicht der Topologie
+nicht zu unterscheiden; sie sind homöomorph. Ebenso sind ein Torus und
+eine einhenkelige \url{Tasse} homöomorph.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{./images/mugmorph.gif}
+\caption{Stetige Deformation}
+\end{figure}
+
+\subsubsection{Gliederung der Topologie}\label{gliederung-der-topologie}
+
+Die Topologie gliedert sich selbst in mehrere Teilgebiete. Hierzu zählen
+die \href{algebraische_Topologie}{algebraische Topologie}, die
+\href{geometrische_Topologie}{geometrische Topologie} sowie die
+\href{Topologische_Graphentheorie}{topologische Graphen-} und die
+\url{Knotentheorie}.
+
+\subsubsection{Zentrale Probleme}\label{zentrale-probleme}
+
+Ein zentrales Problem dieser Disziplinen ist der Versuch, Verfahren zu
+entwickeln, zu beweisen, dass zwei Räume nicht homöomorph sind, oder
+allgemeiner, dass stetige Abbildungen mit bestimmten Eigenschaften nicht
+existieren. Die \textbf{mengentheoretische Topologie} kann hierbei als
+Grundlage für all diese Teildisziplinen angesehen werden. In dieser
+werden insbesondere auch topologische Räume betrachtet, deren
+Eigenschaften sich im Allgemeinen besonders weit von denen geometrischer
+Figuren unterscheiden.
+
+\subsection{Geschichte}\label{geschichte}
+
+\subsubsection{Entstehung des Beriffs}\label{entstehung-des-beriffs}
+
+Der Begriff „Topologie`` findet sich erstmals um 1840 bei
+\href{Johann_Benedict_Listing}{Johann Benedict Listing}; die ältere
+Bezeichnung \emph{} (etwa ‚Lageuntersuchung`) blieb aber lange üblich,
+mit einem Bedeutungsschwerpunkt jenseits der neueren,
+„mengentheoretischen`` Topologie.
+
+\subsubsection{Königsberger
+Brückenproblem}\label{kuxf6nigsberger-bruxfcckenproblem}
+
+Die Lösung des
+\href{Königsberger_Brückenproblem}{Sieben-Brücken-Problems von
+Königsberg} durch \href{Leonhard_Euler}{Leonhard Euler} im Jahr 1736
+gilt als die erste topologische und zugleich als die erste
+\href{Graphentheorie}{graphentheoretische} Arbeit in der Geschichte der
+Mathematik.\footnote{}\footnote{}
+
+\subsubsection{Zusammenhang: Ecken, Kanten,
+Flächen}\label{zusammenhang-ecken-kanten-fluxe4chen}
+
+Ein anderer Beitrag Eulers zur sogenannten \emph{Analysis situs} ist der
+nach ihm benannte \url{Polyedersatz} von 1750. Bezeichnet man mit \(e\)
+die Anzahl der Ecken, mit \(k\) die der Kanten und mit \(f\) die der
+\href{Fläche_(Mathematik)}{Flächen} eines \href{Polyeder}{Polyeders}
+(der noch zu präzisierenden Bedingungen genügt), so gilt
+\(e - k + f = 2\). Erst im Jahr 1860 wurde durch eine von
+\href{Gottfried_Wilhelm_Leibniz}{Gottfried Wilhelm Leibniz} angefertigte
+Abschrift eines verlorenen Manuskriptes von \href{René_Descartes}{René
+Descartes} bekannt, dass dieser die Formel bereits gekannt
+hatte.\footnote{Christoph J. Scriba, Peter Schreiber: \emph{5000 Jahre
+  Geometrie: Geschichte, Kulturen, Menschen (Vom Zählstein zum
+  Computer).} Springer, Berlin, Heidelberg, New York, ISBN
+  3-540-67924-3, S. 451.}
+
+\subsubsection{Metrische Räume als
+Spezialfall}\label{metrische-ruxe4ume-als-spezialfall}
+
+\href{Maurice_Fréchet}{Maurice Fréchet} führte 1906 den
+\href{Metrischer_Raum}{metrischen Raum} ein.\footnote{}
+\href{Georg_Cantor}{Georg Cantor} befasste sich mit den Eigenschaften
+offener und abgeschlossener Intervalle, untersuchte Grenzprozesse, und
+begründete dabei zugleich die moderne Topologie und die
+\url{Mengentheorie}.\footnote{} Die Topologie ist der erste Zweig der
+Mathematik, der konsequent mengentheoretisch formuliert wurde -- und gab
+dabei umgekehrt Anstöße zur Ausformung der Mengentheorie.
+
+\subsubsection{Geschichte der
+Definition}\label{geschichte-der-definition}
+
+\paragraph{1914}\label{section}
+
+Eine Definition des \emph{topologischen Raumes} wurde als erstes von
+\href{Felix_Hausdorff}{Felix Hausdorff}\footnote{Felix Hausdorff:
+  \emph{\href{Grundzüge_der_Mengenlehre}{Grundzüge der Mengenlehre}},
+  1914, S 213} im Jahre 1914 aufgestellt. Nach heutigem Sprachgebrauch
+definierte er dort eine offene \href{Basis_(Topologie)}{Umgebungsbasis},
+nicht jedoch eine Topologie.
+
+\paragraph{1924}\label{section-1}
+
+Der Begriff der Topologie wurde erst durch
+\href{Kazimierz_Kuratowski}{Kazimierz Kuratowski}\footnote{\emph{Fund.
+  Math.}, \textbf{3}, 1922} beziehungsweise
+\href{Heinrich_Tietze}{Heinrich Tietze}\footnote{Math. Ann. 88, 1923} um
+1922 eingeführt wurde. In dieser Form wurden die Axiome dann durch die
+Lehrbücher von \href{Kazimierz_Kuratowski}{Kuratowski} (1933),
+\href{Paul_Alexandroff}{Alexandroff}/\href{Heinz_Hopf}{Hopf} (1935),
+\href{Nicolas_Bourbaki}{Bourbaki} (1940) und
+\href{John_Leroy_Kelley}{Kelley} (1955) popularisiert.\footnote{Epple et
+  al., Hausdorff GW II, 2002}
+
+\subsubsection{Bezüge zu anderen
+Disziplinen}\label{bezuxfcge-zu-anderen-disziplinen}
+
+Es stellte sich heraus, dass sich viele mathematische Erkenntnisse auf
+diese Begriffsbasis übertragen ließen. Es wurde beispielsweise erkannt,
+dass zu einer festen Grundmenge unterschiedliche Metriken existieren,
+die zur gleichen topologischen Struktur auf dieser Menge führten, aber
+auch, dass verschiedene Topologien auf der gleichen Grundmenge möglich
+sind.
+
+\subsubsection{Mengentheoretische
+Topologie}\label{mengentheoretische-topologie}
+
+Die mengentheoretische Topologie entwickelte sich auf dieser Grundlage
+zu einem eigenständigen Forschungsgebiet, das sich in gewisser Weise aus
+der \url{Geometrie} ausgegliedert hat, beziehungsweise der
+\url{Analysis} näher steht als der eigentlichen Geometrie.\footnote{Christoph
+  J. Scriba, Peter Schreiber: \emph{5000 Jahre Geometrie: Geschichte,
+  Kulturen, Menschen (Vom Zählstein zum Computer).} Springer, Berlin,
+  Heidelberg, New York, ISBN 3-540-67924-3, S. 515.}
+
+\subsubsection{Ziel der Topologie}\label{ziel-der-topologie}
+
+Ein Ziel der Topologie ist die Entwicklung von
+\href{Invariante_(Mathematik)}{Invarianten} von topologischen Räumen.
+Mit diesen Invarianten können topologische Räume unterschieden werden.
+
+\subsection{Grundbegriffe}\label{grundbegriffe}
+
+\subsubsection{Topologischer Raum}\label{topologischer-raum}
+
+ Die Topologie befasst sich mit Eigenschaften
+\emph{\href{Topologischer_Raum}{topologischer Räume}}. Ein topologischer
+Raum ist zunächst einmal eine Menge von \emph{Punkten}.
+
+\subsubsection{Struktur durch abgeschlossene
+Mengen}\label{struktur-durch-abgeschlossene-mengen}
+
+Die Struktur des Raumes bestimmt sich dann dadurch, dass bestimmte
+Teilmengen von Punkten als \emph{abgeschlossen} ausgezeichnet werden.
+\href{Abgeschlossene_Menge}{Abgeschlossene Mengen} lassen sich als
+Mengen von Punkten vorstellen, die ihren Rand enthalten, oder anders
+ausgedrückt: Wann immer es Punkte der abgeschlossenen Menge gibt, die
+beliebig nah an einen anderen Punkt heranreichen (einen
+\emph{\href{Rand_(Topologie)}{Berührpunkt}}), ist auch dieser Punkt in
+der abgeschlossenen Menge enthalten.
+
+\subsubsection{Grundlegende Eigenschaften abgeschlossener
+Mengen}\label{grundlegende-eigenschaften-abgeschlossener-mengen}
+
+Man überlegt sich, welche grundlegenden Eigenschaften im Begriff der
+abgeschlossenen Menge enthalten sein sollten und nennt dann, von
+spezifischen Definitionen der Abgeschlossenheit, etwa aus der
+\url{Analysis}, abstrahierend, jede mit diesen Bedingungen genügenden
+abgeschlossenen Teilmengen versehene Menge einen topologischen Raum.
+
+\subsubsection{Leere Menge:
+abgeschlossen}\label{leere-menge-abgeschlossen}
+
+Zunächst einmal sollte die leere Menge abgeschlossen sein, denn sie
+enthält keinerlei Punkte, die andere \emph{berühren} könnten. Daraus
+ergibt sich, dass das Komplement von \(\emptyset\) (also \(X\)) offen
+sein muss.
+
+\subsubsection{Gesamte Grundmenge:
+abgeschlossen}\label{gesamte-grundmenge-abgeschlossen}
+
+Ebenso sollte die Menge aller Punkte abgeschlossen sein, denn sie
+enthält bereits alle möglichen Berührpunkte. Ist eine beliebige Menge
+von abgeschlossenen Mengen gegeben, so soll der Schnitt, das heißt die
+Menge der Punkte, die in allen diesen Mengen enthalten sind, ebenfalls
+abgeschlossen sein, denn hätte der Schnitt Berührpunkte, die außerhalb
+seiner liegen, so müsste bereits eine der zu schneidenden Mengen diesen
+Berührpunkt nicht enthalten, und könnte nicht abgeschlossen sein.
+
+\subsubsection{Vereinigung abgeschlossener
+Mengen}\label{vereinigung-abgeschlossener-mengen}
+
+Zudem soll die Vereinigung zweier (oder endlich vieler) abgeschlossener
+Mengen wiederum abgeschlossen sein; bei der Vereinigung zweier
+abgeschlossener Mengen kommen also keine Berührpunkte hinzu. Von der
+Vereinigung unendlich vieler abgeschlossener Mengen dagegen fordert man
+keine Abgeschlossenheit, denn diese könnten sich einem weiteren Punkte
+„immer weiter nähern`` und somit berühren.
+
+\subsubsection{Beliebiger Schnitt abgeschlossener
+Mengen}\label{beliebiger-schnitt-abgeschlossener-mengen}
+
+Ein beliebiger Schnitt abgeschlossener Menge sollte auch wieder
+abgeschlossen sein.
+
+\subsubsection{Definition über abgeschlossene
+Mengen}\label{definition-uxfcber-abgeschlossene-mengen}
+
+In Analogie zur Definition der Topologie über offene Mengen, kann man
+einen topologischen Raum auch über die abgeschlossenen Mengen
+definieren.
+
+\subsubsection{Definition Topologie über abgeschlossene
+Mengen}\label{definition-topologie-uxfcber-abgeschlossene-mengen}
+
+Ein \emph{topologischer Raum} ist eine Menge von Punkten \(X\) versehen
+mit einer Menge \(\mathfrak{S} \subset \mathcal{P}\left(X\right)\) von
+Teilmengen von \(X\) (den abgeschlossenen Mengen;
+\(\mathcal{P}\left(X\right)\) ist die \url{Potenzmenge} von \(X\)), die
+folgenden Bedingungen genügt:
+
+\begin{enumerate}
+\tightlist
+\item
+  \(X \in \mathfrak{S}\) und \(\empty \in \mathfrak{S}\).
+\item
+  Sei \(I\) eine beliebige Indexmenge und für alle \(i \in I\) gilt und
+  \(S_i \in \mathfrak{S}\), so ist auch
+  \(\displaystyle\bigcap_{i \in I} S_i \in \mathfrak{S}\).
+\item
+  Für endliche Indexmengen \(I\) und \(S_i \in \subset \mathfrak{S}\)
+  ist auch \(\displaystyle\bigcup_{i \in I} S_i \in \mathfrak{S}\).
+\end{enumerate}
+
+\subsubsection{Topologie als System offener
+Mengen}\label{topologie-als-system-offener-mengen}
+
+\textbf{Definition Topologie} \emph{(über offene Mengen)}: Ein
+\emph{topologischer Raum} ist eine Menge von Punkten \(X\) versehen mit
+einer Menge von Teilmengen
+\(\mathfrak{T} \subset \mathcal{P}\left(X\right)\) (den offenen Mengen),
+die folgenden Bedingungen genügt:
+
+\begin{enumerate}
+\tightlist
+\item
+  \(X \in \mathfrak{T}\) und \(\emptyset \in \mathfrak{T}\).
+\item
+  Sei \(I\) eine beliebige Indexmenge und für alle \(i \in I\) gilt:
+  \(T_i \in \mathfrak{T}\), dann ist auch
+  \(\displaystyle\bigcup_{in \in I} T_i \in \mathfrak{T}\).
+\item
+  Für endliche Indexmengen \(I\) und \(T_i \in \mathfrak{T}\) gilt auch
+  \(\displaystyle\bigcap_{in \in I} T_i \in \mathfrak{T}\).
+\end{enumerate}
+
+Die Menge \(\mathfrak{T}\) der offenen Mengen wird auch als
+\emph{Topologie} bezeichnet.
+
+\subsubsection{Äquivalenz der
+Definition}\label{uxe4quivalenz-der-definition}
+
+Die Äquivalenz zur vorherigen Definition über abgeschlossene Mengen
+folgt unmittelbar aus den \href{De_Morgan’sche_Gesetze}{De Morgan'schen
+Gesetzen}. Ausgehend von abgeschlossenen beziehungsweise offenen Mengen
+lassen sich zahlreiche topologische Begriffe definieren, etwa die der
+\href{Umgebung_(Mathematik)}{Umgebung}, des Berührpunktes (welche zuvor
+angesprochen wurden), der \href{Stetigkeit_(Topologie)}{Stetigkeit} und
+der \href{Konvergenz_(Mathematik)}{Konvergenz}.
+
+\subsubsection{Weitere Definitionen}\label{weitere-definitionen}
+
+\subsubsection{Homöomorphismus}\label{homuxf6omorphismus-1}
+
+ Ein \emph{Homöomorphismus} ist eine \href{Bijektion}{bijektive
+Abbildung} zwischen zwei topologischen Räumen, sodass durch punktweise
+Überführung der offenen Mengen auch eine Bijektion zwischen den
+Topologien der beiden Räume zustande kommt, dabei muss jede offene Menge
+auf eine offene Menge abgebildet werden. Zwei topologische Räume,
+zwischen denen es einen Homöomorphismus gibt, werden als
+\emph{homöomorph} bezeichnet. Homöomorphe Räume unterscheiden sich nicht
+bezüglich aller topologischen Eigenschaften im engeren Sinne. Die
+Homöomorphismen können als die \href{Isomorphismus}{Isomorphismen} in
+der \href{Kategorientheorie}{Kategorie} der topologischen Räume
+aufgefasst werden.
+
+\subsubsection{Nicht auf topologische Räume bezogene
+Begriffe}\label{nicht-auf-topologische-ruxe4ume-bezogene-begriffe}
+
+Topologische Räume können mit Zusatzstrukturen ausgestattet werden,
+beispielsweise untersucht man \href{Uniformer_Raum}{uniforme Räume},
+\href{Metrischer_Raum}{metrische Räume},
+\href{Topologische_Gruppe}{topologische Gruppen} oder
+\href{Topologische_Algebra}{topologische Algebren}. Eigenschaften, die
+auf solche Zusatzstrukturen zurückgreifen, sind nicht mehr unbedingt
+unter Homöomorphismen erhalten, jedoch auch teils
+Untersuchungsgegenstand verschiedener Teilgebiete der Topologie.
+
+\subsubsection{Verallgemeinerungen Topologischer
+Raum}\label{verallgemeinerungen-topologischer-raum}
+
+Es existieren auch Verallgemeinerungen des Konzepts des topologischen
+Raums: In der \href{Punktfreie_Topologie}{punktfreien Topologie}
+betrachtet man an Stelle einer Menge von Punkten mit als offen
+ausgezeichneten Mengen nur noch die Struktur der offenen Mengen als
+\href{Verband_(Mathematik)}{Verband}.
+\href{Konvergenzstruktur}{Konvergenzstrukturen} definieren, gegen welche
+Werte jeder \href{Filter_(Mathematik)}{Filter} auf einer
+zugrundeliegenden Menge von Punkten konvergiert. Unter dem Schlagwort
+\emph{\href{Convenient_Topology}{Convenient Topology}} wird versucht,
+Klassen von den topologischen oder uniformen Räumen ähnlichen Räumen zu
+finden, die aber „angenehmere``
+\href{Kategorientheorie}{kategorientheoretische} Eigenschaften
+aufweisen.
+
+\subsection{Teilgebiete der Topologie}\label{teilgebiete-der-topologie}
+
+\subsubsection{Topologie
+Differentialgeometrie}\label{topologie-differentialgeometrie}
+
+Die moderne Topologie wird grob in die drei Teilgebiete
+mengentheoretische Topologie, algebraische Topologie und geometrische
+Topologie unterteilt. Außerdem gibt es noch die
+\url{Differentialtopologie}. Dies ist die Grundlage der modernen
+\url{Differentialgeometrie} und wird trotz der umfangreich verwendeten
+topologischen Methoden meist als Teilgebiet der Differentialgeometrie
+betrachtet.
+
+\subsubsection{Mengentheoretische oder Allgemeine
+Topologie}\label{mengentheoretische-oder-allgemeine-topologie}
+
+Die mengentheoretische Topologie umfasst, wie auch die anderen
+Teilgebiete der Topologie, das Studium topologischer Räume und der
+stetigen Abbildungen zwischen ihnen.
+
+\subsubsection{Topologie und Stetigkeit}\label{topologie-und-stetigkeit}
+
+Insbesondere die für die \url{Analysis} fundamentalen Konzepte der
+\href{Stetigkeit_(Topologie)}{Stetigkeit} und der
+\href{Grenzwert_(Folge)}{Konvergenz} werden erst in der Terminologie der
+mengentheoretischen Topologie vollständig transparent. Aber auch in
+vielen anderen mathematischen Teilgebieten werden die Konzepte der
+mengentheoretischen Topologie eingesetzt. Außerdem gibt es viele
+\href{Satz_(Mathematik)}{mathematische Aussagen}, die nur in der
+Terminologie der mengentheoretischen Topologie ihre natürliche und
+allgemeinste Formulierung haben.
+
+\subsubsection{Kompaktheit}\label{kompaktheit}
+
+Beispielsweise ist die \href{Kompakter_Raum}{Kompaktheit eines Raums}
+eine Abstraktion des \href{Satz_von_Heine-Borel}{Heine--Borel-Prinzips}.
+In der allgemeinen Terminologie der mengentheoretischen Topologie gilt,
+dass das Produkt zweier kompakter Räume wieder kompakt ist, was die
+Aussage verallgemeinert, dass ein
+\href{Abgeschlossene_Menge}{abgeschlossener} endlichdimensionaler Würfel
+kompakt ist.
+
+\subsubsection{Kompaktheit und
+Extermstellen}\label{kompaktheit-und-extermstellen}
+
+Außerdem gilt, dass eine stetige Funktion von einer kompakten Menge in
+die reellen Zahlen beschränkt ist und ihr Maximum und Minimum annimmt.
+Dies ist eine Verallgemeinerung des
+\href{Satz_vom_Minimum_und_Maximum}{Satzes vom Minimum und
+Maximum}.\footnote{}
+
+\subsubsection{Trennungseigenschaften}\label{trennungseigenschaften}
+
+Im Allgemeinen können topologische Räume viele etwa von der Topologie
+der reellen Zahlen vertraute Eigenschaften verletzen, die jedoch in
+üblichen Räumen häufig anzutreffen sind. Daher betrachtet man oftmals
+topologische Räume, die gewissen
+\emph{\href{Trennungseigenschaft}{Trennungseigenschaften}} genügen,
+welche minimale Anforderungen für viele weitergehende Sätze darstellen
+und tiefergehende Charakterisierungen der Struktur der Räume
+ermöglichen. Die Kompaktheit ist ein anderes Beispiel für solche
+„vorteilhaften`` Eigenschaften.
+
+\subsubsection{Uniforme Räume, Metrik,
+Vollständigkeit}\label{uniforme-ruxe4ume-metrik-vollstuxe4ndigkeit}
+
+Zudem betrachtet man auch Räume, auf denen gewisse zusätzliche
+Strukturen definiert sind, etwa \href{Uniformer_Raum}{uniforme Räume}
+oder gar \href{topologische_Gruppe}{topologische Gruppen} und
+\href{Metrischer_Raum}{metrische Räume}, welche durch ihre Struktur
+zusätzliche Begrifflichkeiten wie die der
+\href{Vollständiger_Raum}{Vollständigkeit} ermöglichen.
+
+Ein anderer zentraler Begriff dieses Teilgebiets sind unterschiedliche
+Konzepte von \href{Zusammenhängender_Raum}{Zusammenhang}.
+
+\subsubsection{Algebraische Topologie}\label{algebraische-topologie}
+
+Die algebraische Topologie (auch \emph{„kombinatorische Topologie``},
+vor allem in älteren Publikationen) untersucht Fragestellungen zu
+topologischen Räumen, indem die Probleme auf Fragestellungen in der
+\url{Algebra} zurückgeführt werden. Innerhalb der Algebra sind diese
+Fragen oftmals leichter zu beantworten. Ein zentrales Problem innerhalb
+der Topologie ist beispielsweise die Untersuchung topologischer Räume
+auf \href{Invariante_(Mathematik)}{Invarianten}. Mittels der Theorie
+über \href{Homologie_(Mathematik)}{Homologien} und
+\href{Kohomologie}{Kohomologien} sucht man in der algebraischen
+Topologie nach solchen Invarianten.
+
+\subsubsection{Geometrische Topologie}\label{geometrische-topologie}
+
+Die geometrische Topologie befasst sich mit zwei-, drei- und
+vierdimensionalen \href{Mannigfaltigkeit}{Mannigfaltigkeiten}. Der
+Begriff zweidimensionale Mannigfaltigkeit bedeutet das gleiche wie
+\href{Fläche_(Mathematik)}{Fläche} und drei- und vierdimensionalen
+Mannigfaltigkeiten sind entsprechende Verallgemeinerungen. Im Bereich
+der geometrischen Topologie interessiert man sich dafür, wie sich
+Mannigfaltigkeiten unter stetigen Transformationen verhalten.
+
+\subsubsection{Winkel, Löcher, Flächen,
+Knoten}\label{winkel-luxf6cher-fluxe4chen-knoten}
+
+Typische geometrische Größen wie Winkel, Länge und \url{Krümmung}
+variieren unter stetigen Abbildungen. Eine geometrische Quantität, die
+nicht variiert und für die man sich daher interessiert, ist die
+\href{Geschlecht_(Fläche)}{Anzahl der Löcher} einer Fläche.\footnote{}
+Da man sich fast nur mit Mannigfaltigkeiten der Dimension kleiner als
+fünf beschäftigt, nennt man dieses Teilgebiet der Topologie auch
+niedrigdimensionale Topologie. Außerdem gehört die \url{Knotentheorie}
+als Teilaspekt der Theorie dreidimensionaler Mannigfaltigkeiten zur
+geometrischen Topologie.\footnote{}
+
+\subsection{Anwendungen}\label{anwendungen}
+
+\subsubsection{Allgemein}\label{allgemein}
+
+Da das Gebiet der Topologie sehr weit gefächert ist, findet man Aspekte
+von ihr in fast jedem Teilgebiet der Mathematik. Das Studium der
+jeweiligen Topologie bildet daher oft einen integralen Bestandteil einer
+tieferen Theorie. Topologische Methoden und Konzepte sind somit aus
+weiten Teilen der Mathematik nicht mehr wegzudenken. Es seien hier nun
+einige Beispiele angegeben:
+
+\begin{itemize}
+\tightlist
+\item
+  Differentialgeometrie
+\item
+  Mannigfaltigkeiten''
+\end{itemize}
+
+\subsubsection{Differentialgeometrie}\label{differentialgeometrie}
+
+In der \url{Differentialgeometrie} spielt das Studium von
+\href{Mannigfaltigkeit}{Mannigfaltigkeiten} eine zentrale Rolle. Bei
+diesen handelt es sich um spezielle
+\href{Topologischer_Raum}{topologische Räume}, d.~h. Mengen, die eine
+gewisse topologische Struktur aufweisen. Oft werden sie auch
+topologische Mannigfaltigkeiten genannt. Grundlegende Eigenschaften
+werden dann mithilfe topologischer Mittel bewiesen, bevor sie mit
+weiteren Strukturen versehen werden und dann eigenständige (und nicht
+äquivalente) Unterklassen bilden (z.~B.
+\href{differenzierbare_Mannigfaltigkeit}{differenzierbare
+Mannigfaltigkeiten}, PL-Mannigfaltigkeiten etc.).
+
+\subsubsection{Beispiel Klassifikation von
+Flächen}\label{beispiel-klassifikation-von-fluxe4chen}
+
+\emph{Beispielhaftes verwendetes Ergebnis der geometrischen Topologie:
+Klassifikation von Flächen}
+
+Geschlossene Flächen sind spezielle Arten von 2-dimensionalen
+Mannigfaltigkeiten. Mithilfe der algebraischen Topologie lässt sich
+zeigen, dass jede Fläche aus endlich vielen eingebetteten
+\href{Polytop_(Geometrie)}{2-Polytopen} besteht, die miteinander entlang
+ihrer Kanten verklebt sind. Dies erlaubt insbesondere eine
+\href{Klassifikationssatz_für_2-Mannigfaltigkeiten}{Klassifizierung
+aller geschlossener Flächen} in 3 Klassen, weswegen man stets annehmen
+kann, dass die geschlossene Fläche in einer „Normalform`` vorliegt.
+
+\subsubsection{Funktionalanalysis}\label{funktionalanalysis}
+
+Die \url{Funktionalanalysis} entstand aus dem Studium von
+\href{Funktionenraum}{Funktionenräumen}, welche zunächst Abstraktionen
+als \href{Banachraum}{Banach-} und \href{Hilbertraum}{Hilberträume}
+erfuhren.
+
+\subsubsection{Topologischer Vektorraum}\label{topologischer-vektorraum}
+
+Heute befasst sich die Funktionalanalysis auch allgemeiner mit
+unendlichdimensionalen \href{Topologischer_Vektorraum}{topologischen
+Vektorräumen}. Dies sind Vektorräume versehen mit einer Topologie,
+sodass die grundlegenden algebraischen Operationen des Vektorraums
+stetig („kompatibel`` mit der Topologie) sind. Viele in der
+Funktionalanalysis untersuchte Konzepte lassen sich allein auf die
+Struktur topologischer Vektorräume zurückführen, als welche sich
+insbesondere Hilbert- und Banachräume auffassen lassen, sodass sie als
+zentraler Untersuchungsgegenstand der Funktionalanalysis angesehen
+werden können.
+
+\subsubsection{Deskriptive Mengenlehre}\label{deskriptive-mengenlehre}
+
+Die \href{deskriptive_Mengenlehre}{deskriptive Mengenlehre} befasst sich
+mit gewissen „konstruierbaren`` sowie „wohlgeformten`` Teilmengen
+\href{Polnischer_Raum}{polnischer Räume}. Polnische Räume sind spezielle
+topologische Räume (ohne weitere Struktur) und viele untersuchte
+zentrale Konzepte sind rein topologischer Natur. Diese topologischen
+Begriffe stehen in Zusammenhang mit Konzepten der
+„\url{Definierbarkeit}`` und „\url{Berechenbarkeit}`` aus der
+\href{Mathematische_Logik}{mathematischen Logik}, über welche sich so
+mit topologischen Methoden Aussagen machen lassen.
+
+\subsubsection{Harmonische Analysis}\label{harmonische-analysis}
+
+Zentraler Untersuchungsgegenstand der
+\href{Harmonische_Analysis}{harmonischen Analysis} sind
+\href{lokalkompakte_Gruppe}{lokalkompakte Gruppen}, das sind
+\href{Gruppe_(Mathematik)}{Gruppen} versehen mit einer kompatiblen
+\href{lokalkompakt}{lokalkompakten} topologischen Struktur. Diese
+stellen eine Verallgemeinerung der \href{Lie-Gruppe}{Lie-Gruppen} und
+somit von Vorstellungen „kontinuierlicher Symmetrien`` dar.
+
+\subsection{Literatur}\label{literatur}
+
+\subsubsection{Zur Geschichte}\label{zur-geschichte}
+
+\begin{itemize}
+\item
+\item
+  \href{Marie-Luise_Heuser}{Marie-Luise Heuser}: ''Die Anfänge der
+\end{itemize}
+
+Topologie in Mathematik und Naturphilosophie.'' In: Stephan Günzel
+(Hrsg.): \emph{Topologie: Zur Raumbeschreibung in den Kultur- und
+Medienwissenschaften.} Transcript, Bielefeld 2007, S. 183--202.
+
+\subsubsection{Lehrbücher}\label{lehrbuxfccher}
+
+\begin{itemize}
+\item
+\item
+\item
+\item
+\item
+\item
+  * 
+\item
+\item
+  * 
+\item
+\end{itemize}
+
+\subsection{Weblinks}\label{weblinks}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}\url{http://www.mathematik.de/ger/information/landkarte/gebiete/topologie/}
+\end{itemize}
+
+topologie.html Artikel zur Topologie{]} auf mathematik.de * In:
+\emph{The Mathematical Atlas.}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}\url{http://at.yorku.ca/topology/} ''Topology
+\end{itemize}
+
+Atlas''{]} * * \emph{{[}\url{http://www.topologywithouttears.net/}
+Topology without tears{]}} von Sidney A. Morris: Buch zur Topologie zum
+kostenfreien Download (PDF, englisch)
+
+\begin{itemize}
+\tightlist
+\item
+  {[}\url{http://www.savoir-sans-frontieres.com/JPP/telechargeables/Deutch/}
+\end{itemize}
+
+das\_topologikon.htm Comic zur Topologie zum kostenfreien Download (PDF,
+\emph{deutsch}){]}
+
+\subsection{Quelle}\label{quelle}
+
+Modifizierter Artikel aus Wikipedia aus der \href{Kategorie:Topologie}{
+} als \href{Teilgebiet_der_Mathematik}{Teilgebiet der Mathematik}
+
+\hypertarget{refs}{}
+
+\end{document}

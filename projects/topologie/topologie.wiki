@@ -1,4 +1,13 @@
 == Topologie == 
+=== Def: Offene Mengen === 
+Sei <math>X</math> eine Menge und <math>\mathfrak{T} \subset \mathcal{P}\left(X\right)</math> eine Menge von Teilmengen von <math>X</math>. <math>(X,\mathfrak{T})</math> heißt ''topologischer Raum'', wenn gilt:
+# <math>X \in \mathfrak{T}</math> und <math>\emptyset \in \mathfrak{T}</math>.
+# Sei <math>I</math> eine beliebige Indexmenge und für alle <math>i \in I</math> gilt: <math>T_i \in \mathfrak{T}</math>, dann ist auch <math>\displaystyle\bigcup_{i \in I} T_i \in \mathfrak{T}</math>.
+# Für endliche Indexmengen <math>I</math> und <math>T_i \in \mathfrak{T}</math> gilt <math>\displaystyle\bigcap_{i \in I} T_i \in \mathfrak{T}</math>.
+
+=== Offene Mengen === 
+Ist <math>(X,\mathfrak{T})</math>  ein topologischer Raum, so nennt man die Elemente von <math>\mathfrak{T}</math>  offene Mengen. 
+
 === Ursprung des Begriffs === 
 Die '''Topologie'''
 ({{ELSneu|τόπος}} ''{{lang|el-Latn|tópos}}'' ‚Ort‘, ‚Platz‘ und
@@ -196,7 +205,8 @@ einen topologischen Raum.
 === Leere Menge: abgeschlossen ===
 Zunächst einmal sollte die leere Menge
 abgeschlossen sein, denn sie enthält keinerlei Punkte, die andere
-''berühren'' könnten. 
+''berühren'' könnten. Daraus ergibt sich, dass das Komplement von <math>\emptyset</math>
+(also <math>X</math>) offen sein muss.
 
 === Gesamte Grundmenge: abgeschlossen === 
 Ebenso sollte die Menge aller Punkte abgeschlossen
@@ -220,42 +230,27 @@ einem weiteren Punkte „immer weiter nähern“ und somit berühren.
 === Beliebiger Schnitt abgeschlossener Mengen ===
 Ein beliebiger Schnitt abgeschlossener Menge sollte auch wieder abgeschlossen sein.
 
+===Definition über abgeschlossene Mengen===
+In Analogie zur Definition der Topologie über offene Mengen, kann man 
+einen topologischen Raum auch über die abgeschlossenen Mengen definieren.
+
 === Definition Topologie über abgeschlossene Mengen ===
-Ein ''topologischer Raum'' ist eine Menge von Punkten <math>X</math>
-versehen mit einer Menge <math>\mathfrak{S} \subset
-\mathcal{P}\left(X\right)</math> von Teilmengen von <math>X</math> (den
-abgeschlossenen Mengen; <math>\mathcal{P}\left(X\right)</math> ist die 
-[[Potenzmenge]] von <math>X</math>), die folgenden Bedingungen genügt:
-
-* <math>X \in \mathfrak{S}</math> und <math>\emptyset \in \mathfrak{S} </math>. 
-* Für <math>S \subset \mathfrak{S}</math> ist auch
-<math>\textstyle\bigcap S \in \mathfrak{S} </math>. 
-* Für endliche <math>S \subset \mathfrak{S}</math> ist auch <math>\textstyle\bigcup S \in \mathfrak{S} </math>.
-
-=== Offene Mengen === {{Hauptartikel|Offene Menge}}
-
-Ausgehend von den abgeschlossenen Mengen lassen sich die ''offenen
-Mengen'' als die Teilmengen des Raumes definieren, deren Komplemente
-abgeschlossen sind, das heißt für jede abgeschlossene Menge bilden all
-die Punkte, die nicht in ihr enthalten sind, eine offene Menge.
-Üblicherweise werden topologische Räume in Lehrbüchern über die offenen
-Mengen definiert, analog zur Definition über abgeschlossene Mengen,
-definiert man: :Ein ''topologischer Raum'' ist eine Menge von Punkten
-<math>X</math> versehen mit einer Menge von Teilmengen
-<math>\mathfrak{T} \subset \mathcal{P}\left(X\right)</math> (den offenen
-Mengen), die folgenden Bedingungen genügt: 
-:# <math>X \in
-\mathfrak{T}</math> und <math>\emptyset \in \mathfrak{T}</math>. 
-:# Für
-<math>T \subset \mathfrak{T}</math> ist auch <math>\textstyle\bigcup T
-\in \mathfrak{T}</math>. 
-:# Für endliche <math>T \subset \mathfrak{T}</math> ist auch 
-<math>\textstyle\bigcap T \in \mathfrak{T}</math>.
+Ein ''topologischer Raum'' ist eine Menge von Punkten <math>X</math> versehen mit einer Menge <math>\mathfrak{S} \subset \mathcal{P}\left(X\right)</math> von Teilmengen von <math>X</math> (den abgeschlossenen Mengen; <math>\mathcal{P}\left(X\right)</math> ist die  [[Potenzmenge]] von <math>X</math>), die folgenden Bedingungen genügt:
+# <math>X \in \mathfrak{S}</math> und <math>\empty \in \mathfrak{S}</math>.
+# Sei <math>I</math> eine beliebige Indexmenge und für alle <math>i \in I</math> gilt  und <math>S_i \in \mathfrak{S}</math>, so ist auch <math>\displaystyle\bigcap_{i \in I} S_i \in \mathfrak{S}</math>.
+# Für endliche Indexmengen <math>I</math> und <math>S_i \in \subset \mathfrak{S}</math> ist auch <math>\displaystyle\bigcup_{i \in I} S_i \in \mathfrak{S}</math>.
 
 === Topologie als System offener Mengen ===
+'''Definition Topologie''' ''(über offene Mengen)'': Ein ''topologischer Raum'' ist eine Menge von Punkten <math>X</math> versehen mit einer Menge von Teilmengen <math>\mathfrak{T} \subset \mathcal{P}\left(X\right)</math> (den offenen Mengen), die folgenden Bedingungen genügt:
+# <math>X \in \mathfrak{T}</math> und <math>\emptyset \in \mathfrak{T}</math>.
+# Sei <math>I</math> eine beliebige Indexmenge und für alle <math>i \in I</math> gilt: <math>T_i \in \mathfrak{T}</math>, dann ist auch <math>\displaystyle\bigcup_{in \in I} T_i \in \mathfrak{T}</math>.
+# Für endliche Indexmengen <math>I</math> und <math>T_i \in \mathfrak{T}</math> gilt auch <math>\displaystyle\bigcap_{in \in I} T_i \in \mathfrak{T}</math>.
+
+
 Die Menge <math>\mathfrak{T}</math> der offenen Mengen wird auch als
 ''Topologie'' bezeichnet.
 
+=== Äquivalenz der Definition ===
 Die Äquivalenz zur vorherigen Definition über abgeschlossene Mengen
 folgt unmittelbar aus den [[De Morgan’sche Gesetze|De Morgan’schen
 Gesetzen]]. Ausgehend von abgeschlossenen beziehungsweise offenen Mengen
@@ -334,7 +329,10 @@ Abstraktion des [[Satz von Heine-Borel|Heine–Borel-Prinzips]]. In der
 allgemeinen Terminologie der mengentheoretischen Topologie gilt, dass
 das Produkt zweier kompakter Räume wieder kompakt ist, was die Aussage
 verallgemeinert, dass ein [[Abgeschlossene Menge|abgeschlossener]]
-endlichdimensionaler Würfel kompakt ist. Außerdem gilt, dass eine
+endlichdimensionaler Würfel kompakt ist. 
+
+===Kompaktheit und Extermstellen===
+Außerdem gilt, dass eine
 stetige Funktion von einer kompakten Menge in die reellen Zahlen
 beschränkt ist und ihr Maximum und Minimum annimmt. Dies ist eine
 Verallgemeinerung des [[Satz vom Minimum und Maximum|Satzes vom Minimum
@@ -411,10 +409,8 @@ Studium der jeweiligen Topologie bildet daher oft einen integralen
 Bestandteil einer tieferen Theorie. Topologische Methoden und Konzepte
 sind somit aus weiten Teilen der Mathematik nicht mehr wegzudenken. Es
 seien hier nun einige Beispiele angegeben:
-
-'''Differentialgeometrie'''
-
-''Mannigfaltigkeiten''
+* Differentialgeometrie
+* Mannigfaltigkeiten''
 
 
 === Differentialgeometrie ===
@@ -480,62 +476,71 @@ eine Verallgemeinerung der [[Lie-Gruppe]]n und somit von Vorstellungen
 „kontinuierlicher Symmetrien“ dar.
 
 == Literatur ==
-=== Zur Geschichte === * {{Literatur | Herausgeber= I. M. Jones |
+=== Zur Geschichte === 
+* {{Literatur | Herausgeber= I. M. James |
 Titel=History of Topology | Verlag= Elsevier | Jahr= 1999 |
-ISBN=0-444-82375-1}} * [[Marie-Luise Heuser]]: ''Die Anfänge der
+ISBN=0-444-82375-1}} 
+* [[Marie-Luise Heuser]]: ''Die Anfänge der
 Topologie in Mathematik und Naturphilosophie.'' In: Stephan Günzel
 (Hrsg.): ''Topologie: Zur Raumbeschreibung in den Kultur- und
 Medienwissenschaften.'' Transcript, Bielefeld 2007, S. 183–202.
 
-=== Lehrbücher === * {{Literatur | Autor= [[Nicolas Bourbaki]] | Titel=
+=== Lehrbücher === 
+* {{Literatur | Autor= [[Nicolas Bourbaki]] | Titel=
 Topologie générale | Verlag= Hermann | Ort =Paris| Jahr= 1961, 1974|
-ISBN=2-7056-5692-8}} * {{Literatur | Autor= [[Boto von Querenburg]] |
+ISBN=2-7056-5692-8}} 
+* {{Literatur | Autor= [[Boto von Querenburg]] |
 Titel= Mengentheoretische Topologie | Verlag= [[Springer
 Science+Business Media|Springer Verlag]] | Ort= Berlin |  Auflage= 3. |
-Jahr= 2001 |ISBN= 3-540-67790-9}} * {{Literatur|Autor=Stephen
+Jahr= 2001 |ISBN= 3-540-67790-9}} 
+* {{Literatur|Autor=Stephen
 Willard|Titel=General Topology|Verlag=[[Addison-Wesley]]|Ort=Reading,
-Massachusetts|Jahr=1970}} * {{Literatur | Autor= T. Camps, S. Kühling,
+Massachusetts|Jahr=1970}} 
+* {{Literatur | Autor= T. Camps, S. Kühling,
 G. Rosenberger | Titel=[http://www.heldermann.de/BSM/BSM15/bsm15.htm
 Einführung in die mengentheoretische und die algebraische Topologie] |
-Verlag= Heldermann | Jahr= 2006 | Ort=Lemgo | ISBN= 3-88538-115-X}} *
-{{Literatur | Autor= H. Herrlich, H. Bargenda | Titel=
+Verlag= Heldermann | Jahr= 2006 | Ort=Lemgo | ISBN= 3-88538-115-X}} 
+* {{Literatur | Autor= H. Herrlich, H. Bargenda | Titel=
 [http://www.heldermann.de/BSM/bsm02.htm Topologie]|TitelErg= Bd 1.
 Topologische Räume | Verlag= [[Heldermann Verlag|Heldermann]] |  Jahr=
-1986 | Ort= Lemgo | ISBN=3-88538-102-8}} * {{Literatur | Autor=
-Kazimierz Kuratowski | Titel=
+1986 | Ort= Lemgo | ISBN=3-88538-102-8}} 
+* {{Literatur | Autor=Kazimierz Kuratowski | Titel=
 [http://matwbn.icm.edu.pl/kstresc.php?tom=3&wyd=10 Topologie]|Band= Bd 1
 | Jahr= 1933 | Ort= Warschau }} * {{Literatur | Autor= H. Schubert |
 Titel= Topologie | Verlag= Teubner | Ort= Stuttgart |  Jahr= 1964 |
-ISBN=3-519-12200-6 }} * {{Literatur | Autor= [[Klaus Jänich]] | Titel=
+ISBN=3-519-12200-6 }} 
+* {{Literatur | Autor= [[Klaus Jänich]] | Titel=
 Topologie | Verlag= [[Springer Science+Business Media|Springer]]  | Ort=
-Berlin | Auflage= 8. | Jahr= 2005 | ISBN=3-540-21393-7 }} * {{Literatur
-| Autor= Gerhard Preuß | Titel= Allgemeine Topologie | Verlag=
+Berlin | Auflage= 8. | Jahr= 2005 | ISBN=3-540-21393-7 }} 
+* {{Literatur | Autor= Gerhard Preuß | Titel= Allgemeine Topologie | Verlag=
 [[Springer Science+Business Media|Springer]] | Ort= Berlin |  Auflage=
 2. | Jahr= 1975 | ISBN=3-540-07427-9 }} * {{Literatur | Autor= René
 Bartsch | Titel= Allgemeine Topologie| Band= Bd 1 | Verlag= Oldenbourg
 Wissenschaftsverlag | Ort= München  | Auflage= 1. | Jahr= 2007 |
-ISBN=3-486-58158-9 }} * {{Literatur | Autor= Jean-Pierre Petit | Titel=
+ISBN=3-486-58158-9 }} 
+* {{Literatur | Autor= Jean-Pierre Petit | Titel=
 [[Die Abenteuer des Anselm Wüßtegern]], Das Topologikon | Verlag= Vieweg
 Verlagsgesellschaft | Ort= München |  Auflage= 1. | Jahr= 1995 |
 ISBN=3-528-06675-X }}
 
-== Weblinks == {{Commons|Topology|Topologie (Mathematik)}}
-{{Wikibooks|Mathematik: Topologie}} *
-[http://www.mathematik.de/ger/information/landkarte/gebiete/topologie/
+== Weblinks == 
+{{Commons|Topology|Topologie (Mathematik)}}
+{{Wikibooks|Mathematik: Topologie}} 
+* [http://www.mathematik.de/ger/information/landkarte/gebiete/topologie/
 topologie.html Artikel zur Topologie] auf mathematik.de * {{Webarchiv |
 url=http://www.math.niu.edu/~rusin/known-math/index/54-XX.html |
 wayback=20150412183456 | text=''General Topology''}} In: ''The
-Mathematical Atlas.'' * [http://at.yorku.ca/topology/ ''Topology
+Mathematical Atlas.'' 
+* [http://at.yorku.ca/topology/ ''Topology
 Atlas''] * {{MacTutor Biography|id=Topology_in_mathematics|title=A
 history of Topology|page=ht}} * ''[http://www.topologywithouttears.net/
 Topology without tears]'' von Sidney A. Morris: Buch zur Topologie zum
-kostenfreien Download (PDF, englisch) *
-[http://www.savoir-sans-frontieres.com/JPP/telechargeables/Deutch/
+kostenfreien Download (PDF, englisch) 
+* [http://www.savoir-sans-frontieres.com/JPP/telechargeables/Deutch/
 das_topologikon.htm Comic zur Topologie zum kostenfreien Download (PDF,
 ''deutsch'')]
 
-== Einzelnachweise == <references />
+== Quelle == 
 
-{{Normdaten|TYP=s|GND=4060425-1}}
-
-[[Kategorie:Topologie| ]] [[Kategorie:Teilgebiet der Mathematik]]
+Modifizierter Artikel aus Wikipedia aus der 
+[[Kategorie:Topologie| ]] als [[Teilgebiet der Mathematik]]

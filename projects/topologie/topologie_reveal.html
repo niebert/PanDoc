@@ -16,7 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="../../reveal/css/reveal.css">
-		<link rel="stylesheet" href="../../reveal/css/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="../../reveal/css/theme/sky.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
@@ -53,13 +53,26 @@
 
 <section id="topologie" class="level2">
 <h2>Topologie</h2>
+<section id="def-offene-mengen" class="level3">
+<h3>Def: Offene Mengen</h3>
+<p>Sei <span class="math inline">\(X\)</span> eine Menge und <span class="math inline">\(\mathfrak{T} \subset \mathcal{P}\left(X\right)\)</span> eine Menge von Teilmengen von <span class="math inline">\(X\)</span>. <span class="math inline">\((X,\mathfrak{T})\)</span> heißt <em>topologischer Raum</em>, wenn gilt:</p>
+<ol type="1">
+<li><span class="math inline">\(X \in \mathfrak{T}\)</span> und <span class="math inline">\(\emptyset \in \mathfrak{T}\)</span>.</li>
+<li>Sei <span class="math inline">\(I\)</span> eine beliebige Indexmenge und für alle <span class="math inline">\(i \in I\)</span> gilt: <span class="math inline">\(T_i \in \mathfrak{T}\)</span>, dann ist auch <span class="math inline">\(\displaystyle\bigcup_{i \in I} T_i \in \mathfrak{T}\)</span>.</li>
+<li>Für endliche Indexmengen <span class="math inline">\(I\)</span> und <span class="math inline">\(T_i \in \mathfrak{T}\)</span> gilt <span class="math inline">\(\displaystyle\bigcap_{i \in I} T_i \in \mathfrak{T}\)</span>.</li>
+</ol>
+</section>
+<section id="offene-mengen" class="level3">
+<h3>Offene Mengen</h3>
+<p>Ist <span class="math inline">\((X,\mathfrak{T})\)</span> ein topologischer Raum, so nennt man die Elemente von <span class="math inline">\(\mathfrak{T}\)</span> offene Mengen.</p>
+</section>
 <section id="ursprung-des-begriffs" class="level3">
 <h3>Ursprung des Begriffs</h3>
-<p>Die <strong>Topologie</strong> ( <em></em> ‚Ort‘, ‚Platz‘ und <a href="-logie" class="uri" title="wikilink">-logie</a>) ist ein fundamentales <a href="Teilgebiete_der_Mathematik" title="wikilink">Teilgebiet der Mathematik</a>. Sie beschäftigt sich mit den Eigenschaften mathematischer Strukturen, die unter stetigen Verformungen erhalten bleiben, wobei der Begriff der <a href="Stetigkeit_(Topologie)" title="wikilink">Stetigkeit</a> durch die Topologie in sehr allgemeiner Form definiert wird. Die Topologie ging aus den Konzepten der <a href="Geometrie" class="uri" title="wikilink">Geometrie</a> und <a href="Mengenlehre" class="uri" title="wikilink">Mengenlehre</a> hervor.</p>
+<p>Die <strong>Topologie</strong> ( ** ‚Ort‘, ‚Platz‘ und <a href="-logie" class="uri" title="wikilink">-logie</a>) ist ein fundamentales <a href="Teilgebiete_der_Mathematik" title="wikilink">Teilgebiet der Mathematik</a>. Sie beschäftigt sich mit den Eigenschaften mathematischer Strukturen, die unter stetigen Verformungen erhalten bleiben, wobei der Begriff der <a href="Stetigkeit_(Topologie)" title="wikilink">Stetigkeit</a> durch die Topologie in sehr allgemeiner Form definiert wird. Die Topologie ging aus den Konzepten der <a href="Geometrie" class="uri" title="wikilink">Geometrie</a> und <a href="Mengenlehre" class="uri" title="wikilink">Mengenlehre</a> hervor.</p>
 </section>
 <section id="jahrhunderts" class="level3">
 <h3>19. Jahrhunderts</h3>
-<p>Gegen Ende des 19. Jahrhunderts entstand die Topologie als eine eigenständige Disziplin, die auf lateinisch <em></em> ‚Geometrie der Lage‘ oder <em></em> (Griechisch-Latein für ‚Analysieren des Ortes‘) genannt wurde.</p>
+<p>Gegen Ende des 19. Jahrhunderts entstand die Topologie als eine eigenständige Disziplin, die auf lateinisch ** ‚Geometrie der Lage‘ oder ** (Griechisch-Latein für ‚Analysieren des Ortes‘) genannt wurde.</p>
 </section>
 <section id="heutige-bedeutung" class="level3">
 <h3>Heutige Bedeutung</h3>
@@ -113,7 +126,7 @@
 <h2>Geschichte</h2>
 <section id="entstehung-des-beriffs" class="level3">
 <h3>Entstehung des Beriffs</h3>
-<p>Der Begriff „Topologie“ findet sich erstmals um 1840 bei <a href="Johann_Benedict_Listing" title="wikilink">Johann Benedict Listing</a>; die ältere Bezeichnung <em></em> (etwa ‚Lageuntersuchung‘) blieb aber lange üblich, mit einem Bedeutungsschwerpunkt jenseits der neueren, „mengentheoretischen“ Topologie.</p>
+<p>Der Begriff „Topologie“ findet sich erstmals um 1840 bei <a href="Johann_Benedict_Listing" title="wikilink">Johann Benedict Listing</a>; die ältere Bezeichnung ** (etwa ‚Lageuntersuchung‘) blieb aber lange üblich, mit einem Bedeutungsschwerpunkt jenseits der neueren, „mengentheoretischen“ Topologie.</p>
 </section>
 <section id="königsberger-brückenproblem" class="level3">
 <h3>Königsberger Brückenproblem</h3>
@@ -155,7 +168,7 @@
 <h2>Grundbegriffe</h2>
 <section id="topologischer-raum" class="level3">
 <h3>Topologischer Raum</h3>
-<p> Die Topologie befasst sich mit Eigenschaften <em><a href="Topologischer_Raum" title="wikilink">topologischer Räume</a></em>. Ein topologischer Raum ist zunächst einmal eine Menge von <em>Punkten</em>.</p>
+<p>Die Topologie befasst sich mit Eigenschaften <em><a href="Topologischer_Raum" title="wikilink">topologischer Räume</a></em>. Ein topologischer Raum ist zunächst einmal eine Menge von <em>Punkten</em>.</p>
 </section>
 <section id="struktur-durch-abgeschlossene-mengen" class="level3">
 <h3>Struktur durch abgeschlossene Mengen</h3>
@@ -167,7 +180,7 @@
 </section>
 <section id="leere-menge-abgeschlossen" class="level3">
 <h3>Leere Menge: abgeschlossen</h3>
-<p>Zunächst einmal sollte die leere Menge abgeschlossen sein, denn sie enthält keinerlei Punkte, die andere <em>berühren</em> könnten.</p>
+<p>Zunächst einmal sollte die leere Menge abgeschlossen sein, denn sie enthält keinerlei Punkte, die andere <em>berühren</em> könnten. Daraus ergibt sich, dass das Komplement von <span class="math inline">\(\emptyset\)</span> (also <span class="math inline">\(X\)</span>) offen sein muss.</p>
 </section>
 <section id="gesamte-grundmenge-abgeschlossen" class="level3">
 <h3>Gesamte Grundmenge: abgeschlossen</h3>
@@ -181,41 +194,39 @@
 <h3>Beliebiger Schnitt abgeschlossener Mengen</h3>
 <p>Ein beliebiger Schnitt abgeschlossener Menge sollte auch wieder abgeschlossen sein.</p>
 </section>
+<section id="definition-über-abgeschlossene-mengen" class="level3">
+<h3>Definition über abgeschlossene Mengen</h3>
+<p>In Analogie zur Definition der Topologie über offene Mengen, kann man einen topologischen Raum auch über die abgeschlossenen Mengen definieren.</p>
+</section>
 <section id="definition-topologie-über-abgeschlossene-mengen" class="level3">
 <h3>Definition Topologie über abgeschlossene Mengen</h3>
-<p>Ein <em>topologischer Raum</em> ist eine Menge von Punkten <span class="math inline">\(X\)</span> versehen mit einer Menge <span class="math inline">\(\mathfrak{S} \subset
-\mathcal{P}\left(X\right)\)</span> von Teilmengen von <span class="math inline">\(X\)</span> (den abgeschlossenen Mengen; <span class="math inline">\(\mathcal{P}\left(X\right)\)</span> ist die <a href="Potenzmenge" class="uri" title="wikilink">Potenzmenge</a> von <span class="math inline">\(X\)</span>), die folgenden Bedingungen genügt:</p>
-<ul>
-<li><span class="math inline">\(X \in \mathfrak{S}\)</span> und <span class="math inline">\(\emptyset \in \mathfrak{S}\)</span>.</li>
-<li>Für <span class="math inline">\(S \subset \mathfrak{S}\)</span> ist auch</li>
-</ul>
-<p><span class="math inline">\(\textstyle\bigcap S \in \mathfrak{S}\)</span>.</p>
-<ul>
-<li>Für endliche <span class="math inline">\(S \subset \mathfrak{S}\)</span> ist auch <span class="math inline">\(\textstyle\bigcup S \in \mathfrak{S}\)</span>.</li>
-</ul>
-</section>
-<section id="offene-mengen" class="level3">
-<h3>Offene Mengen</h3>
-<p></p>
-<p>Ausgehend von den abgeschlossenen Mengen lassen sich die <em>offenen Mengen</em> als die Teilmengen des Raumes definieren, deren Komplemente abgeschlossen sind, das heißt für jede abgeschlossene Menge bilden all die Punkte, die nicht in ihr enthalten sind, eine offene Menge. Üblicherweise werden topologische Räume in Lehrbüchern über die offenen Mengen definiert, analog zur Definition über abgeschlossene Mengen, definiert man: :Ein <em>topologischer Raum</em> ist eine Menge von Punkten <span class="math inline">\(X\)</span> versehen mit einer Menge von Teilmengen <span class="math inline">\(\mathfrak{T} \subset \mathcal{P}\left(X\right)\)</span> (den offenen Mengen), die folgenden Bedingungen genügt:</p>
-<p>:# <span class="math inline">\(X \in
-\mathfrak{T}\)</span> und <span class="math inline">\(\emptyset \in \mathfrak{T}\)</span>.</p>
-<p>:# Für <span class="math inline">\(T \subset \mathfrak{T}\)</span> ist auch <span class="math inline">\(\textstyle\bigcup T
-\in \mathfrak{T}\)</span>.</p>
-<p>:# Für endliche <span class="math inline">\(T \subset \mathfrak{T}\)</span> ist auch <span class="math inline">\(\textstyle\bigcap T \in \mathfrak{T}\)</span>.</p>
+<p>Ein <em>topologischer Raum</em> ist eine Menge von Punkten <span class="math inline">\(X\)</span> versehen mit einer Menge <span class="math inline">\(\mathfrak{S} \subset \mathcal{P}\left(X\right)\)</span> von Teilmengen von <span class="math inline">\(X\)</span> (den abgeschlossenen Mengen; <span class="math inline">\(\mathcal{P}\left(X\right)\)</span> ist die <a href="Potenzmenge" class="uri" title="wikilink">Potenzmenge</a> von <span class="math inline">\(X\)</span>), die folgenden Bedingungen genügt:</p>
+<ol type="1">
+<li><span class="math inline">\(X \in \mathfrak{S}\)</span> und <span class="math inline">\(\empty \in \mathfrak{S}\)</span>.</li>
+<li>Sei <span class="math inline">\(I\)</span> eine beliebige Indexmenge und für alle <span class="math inline">\(i \in I\)</span> gilt und <span class="math inline">\(S_i \in \mathfrak{S}\)</span>, so ist auch <span class="math inline">\(\displaystyle\bigcap_{i \in I} S_i \in \mathfrak{S}\)</span>.</li>
+<li>Für endliche Indexmengen <span class="math inline">\(I\)</span> und <span class="math inline">\(S_i \in \subset \mathfrak{S}\)</span> ist auch <span class="math inline">\(\displaystyle\bigcup_{i \in I} S_i \in \mathfrak{S}\)</span>.</li>
+</ol>
 </section>
 <section id="topologie-als-system-offener-mengen" class="level3">
 <h3>Topologie als System offener Mengen</h3>
+<p><strong>Definition Topologie</strong> <em>(über offene Mengen)</em>: Ein <em>topologischer Raum</em> ist eine Menge von Punkten <span class="math inline">\(X\)</span> versehen mit einer Menge von Teilmengen <span class="math inline">\(\mathfrak{T} \subset \mathcal{P}\left(X\right)\)</span> (den offenen Mengen), die folgenden Bedingungen genügt:</p>
+<ol type="1">
+<li><span class="math inline">\(X \in \mathfrak{T}\)</span> und <span class="math inline">\(\emptyset \in \mathfrak{T}\)</span>.</li>
+<li>Sei <span class="math inline">\(I\)</span> eine beliebige Indexmenge und für alle <span class="math inline">\(i \in I\)</span> gilt: <span class="math inline">\(T_i \in \mathfrak{T}\)</span>, dann ist auch <span class="math inline">\(\displaystyle\bigcup_{in \in I} T_i \in \mathfrak{T}\)</span>.</li>
+<li>Für endliche Indexmengen <span class="math inline">\(I\)</span> und <span class="math inline">\(T_i \in \mathfrak{T}\)</span> gilt auch <span class="math inline">\(\displaystyle\bigcap_{in \in I} T_i \in \mathfrak{T}\)</span>.</li>
+</ol>
 <p>Die Menge <span class="math inline">\(\mathfrak{T}\)</span> der offenen Mengen wird auch als <em>Topologie</em> bezeichnet.</p>
+</section>
+<section id="äquivalenz-der-definition" class="level3">
+<h3>Äquivalenz der Definition</h3>
 <p>Die Äquivalenz zur vorherigen Definition über abgeschlossene Mengen folgt unmittelbar aus den <a href="De_Morgan’sche_Gesetze" title="wikilink">De Morgan’schen Gesetzen</a>. Ausgehend von abgeschlossenen beziehungsweise offenen Mengen lassen sich zahlreiche topologische Begriffe definieren, etwa die der <a href="Umgebung_(Mathematik)" title="wikilink">Umgebung</a>, des Berührpunktes (welche zuvor angesprochen wurden), der <a href="Stetigkeit_(Topologie)" title="wikilink">Stetigkeit</a> und der <a href="Konvergenz_(Mathematik)" title="wikilink">Konvergenz</a>.</p>
 </section>
 <section id="weitere-definitionen" class="level3">
 <h3>Weitere Definitionen</h3>
-<p></p>
 </section>
 <section id="homöomorphismus-1" class="level3">
 <h3>Homöomorphismus</h3>
-<p> Ein <em>Homöomorphismus</em> ist eine <a href="Bijektion" title="wikilink">bijektive Abbildung</a> zwischen zwei topologischen Räumen, sodass durch punktweise Überführung der offenen Mengen auch eine Bijektion zwischen den Topologien der beiden Räume zustande kommt, dabei muss jede offene Menge auf eine offene Menge abgebildet werden. Zwei topologische Räume, zwischen denen es einen Homöomorphismus gibt, werden als <em>homöomorph</em> bezeichnet. Homöomorphe Räume unterscheiden sich nicht bezüglich aller topologischen Eigenschaften im engeren Sinne. Die Homöomorphismen können als die <a href="Isomorphismus" title="wikilink">Isomorphismen</a> in der <a href="Kategorientheorie" title="wikilink">Kategorie</a> der topologischen Räume aufgefasst werden.</p>
+<p>Ein <em>Homöomorphismus</em> ist eine <a href="Bijektion" title="wikilink">bijektive Abbildung</a> zwischen zwei topologischen Räumen, sodass durch punktweise Überführung der offenen Mengen auch eine Bijektion zwischen den Topologien der beiden Räume zustande kommt, dabei muss jede offene Menge auf eine offene Menge abgebildet werden. Zwei topologische Räume, zwischen denen es einen Homöomorphismus gibt, werden als <em>homöomorph</em> bezeichnet. Homöomorphe Räume unterscheiden sich nicht bezüglich aller topologischen Eigenschaften im engeren Sinne. Die Homöomorphismen können als die <a href="Isomorphismus" title="wikilink">Isomorphismen</a> in der <a href="Kategorientheorie" title="wikilink">Kategorie</a> der topologischen Räume aufgefasst werden.</p>
 </section>
 <section id="nicht-auf-topologische-räume-bezogene-begriffe" class="level3">
 <h3>Nicht auf topologische Räume bezogene Begriffe</h3>
@@ -242,7 +253,11 @@
 </section>
 <section id="kompaktheit" class="level3">
 <h3>Kompaktheit</h3>
-<p>Beispielsweise ist die <a href="Kompakter_Raum" title="wikilink">Kompaktheit eines Raums</a> eine Abstraktion des <a href="Satz_von_Heine-Borel" title="wikilink">Heine–Borel-Prinzips</a>. In der allgemeinen Terminologie der mengentheoretischen Topologie gilt, dass das Produkt zweier kompakter Räume wieder kompakt ist, was die Aussage verallgemeinert, dass ein <a href="Abgeschlossene_Menge" title="wikilink">abgeschlossener</a> endlichdimensionaler Würfel kompakt ist. Außerdem gilt, dass eine stetige Funktion von einer kompakten Menge in die reellen Zahlen beschränkt ist und ihr Maximum und Minimum annimmt. Dies ist eine Verallgemeinerung des <a href="Satz_vom_Minimum_und_Maximum" title="wikilink">Satzes vom Minimum und Maximum</a>.<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a></p>
+<p>Beispielsweise ist die <a href="Kompakter_Raum" title="wikilink">Kompaktheit eines Raums</a> eine Abstraktion des <a href="Satz_von_Heine-Borel" title="wikilink">Heine–Borel-Prinzips</a>. In der allgemeinen Terminologie der mengentheoretischen Topologie gilt, dass das Produkt zweier kompakter Räume wieder kompakt ist, was die Aussage verallgemeinert, dass ein <a href="Abgeschlossene_Menge" title="wikilink">abgeschlossener</a> endlichdimensionaler Würfel kompakt ist.</p>
+</section>
+<section id="kompaktheit-und-extermstellen" class="level3">
+<h3>Kompaktheit und Extermstellen</h3>
+<p>Außerdem gilt, dass eine stetige Funktion von einer kompakten Menge in die reellen Zahlen beschränkt ist und ihr Maximum und Minimum annimmt. Dies ist eine Verallgemeinerung des <a href="Satz_vom_Minimum_und_Maximum" title="wikilink">Satzes vom Minimum und Maximum</a>.<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a></p>
 </section>
 <section id="trennungseigenschaften" class="level3">
 <h3>Trennungseigenschaften</h3>
@@ -255,7 +270,6 @@
 </section>
 <section id="algebraische-topologie" class="level3">
 <h3>Algebraische Topologie</h3>
-<p></p>
 <p>Die algebraische Topologie (auch <em>„kombinatorische Topologie“</em>, vor allem in älteren Publikationen) untersucht Fragestellungen zu topologischen Räumen, indem die Probleme auf Fragestellungen in der <a href="Algebra" class="uri" title="wikilink">Algebra</a> zurückgeführt werden. Innerhalb der Algebra sind diese Fragen oftmals leichter zu beantworten. Ein zentrales Problem innerhalb der Topologie ist beispielsweise die Untersuchung topologischer Räume auf <a href="Invariante_(Mathematik)" title="wikilink">Invarianten</a>. Mittels der Theorie über <a href="Homologie_(Mathematik)" title="wikilink">Homologien</a> und <a href="Kohomologie" title="wikilink">Kohomologien</a> sucht man in der algebraischen Topologie nach solchen Invarianten.</p>
 </section>
 <section id="geometrische-topologie" class="level3">
@@ -272,8 +286,10 @@
 <section id="allgemein" class="level3">
 <h3>Allgemein</h3>
 <p>Da das Gebiet der Topologie sehr weit gefächert ist, findet man Aspekte von ihr in fast jedem Teilgebiet der Mathematik. Das Studium der jeweiligen Topologie bildet daher oft einen integralen Bestandteil einer tieferen Theorie. Topologische Methoden und Konzepte sind somit aus weiten Teilen der Mathematik nicht mehr wegzudenken. Es seien hier nun einige Beispiele angegeben:</p>
-<p><strong>Differentialgeometrie</strong></p>
-<p><em>Mannigfaltigkeiten</em></p>
+<ul>
+<li>Differentialgeometrie</li>
+<li>Mannigfaltigkeiten''</li>
+</ul>
 </section>
 <section id="differentialgeometrie" class="level3">
 <h3>Differentialgeometrie</h3>
@@ -305,22 +321,52 @@
 <h2>Literatur</h2>
 <section id="zur-geschichte" class="level3">
 <h3>Zur Geschichte</h3>
-<p>*  * <a href="Marie-Luise_Heuser" title="wikilink">Marie-Luise Heuser</a>: <em>Die Anfänge der Topologie in Mathematik und Naturphilosophie.</em> In: Stephan Günzel (Hrsg.): <em>Topologie: Zur Raumbeschreibung in den Kultur- und Medienwissenschaften.</em> Transcript, Bielefeld 2007, S. 183–202.</p>
+<ul>
+<li><ul>
+<li><a href="Marie-Luise_Heuser" title="wikilink">Marie-Luise Heuser</a>: ''Die Anfänge der</li>
+</ul></li>
+</ul>
+<p>Topologie in Mathematik und Naturphilosophie.'' In: Stephan Günzel (Hrsg.): <em>Topologie: Zur Raumbeschreibung in den Kultur- und Medienwissenschaften.</em> Transcript, Bielefeld 2007, S. 183–202.</p>
 </section>
 <section id="lehrbücher" class="level3">
 <h3>Lehrbücher</h3>
-<p>*  *  *  *  *  *  *  *  *  *  * </p>
+<ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li>*</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><ul>
+<li>*</li>
+</ul></li>
+<li></li>
+</ul>
 </section>
 </section>
 <section id="weblinks" class="level2">
 <h2>Weblinks</h2>
-<p>  * [<a href="http://www.mathematik.de/ger/information/landkarte/gebiete/topologie/" class="uri">http://www.mathematik.de/ger/information/landkarte/gebiete/topologie/</a> topologie.html Artikel zur Topologie] auf mathematik.de *  In: <em>The Mathematical Atlas.</em> * <a href="http://at.yorku.ca/topology/"><em>Topology Atlas</em></a> *  * <em>[<a href="http://www.topologywithouttears.net/" class="uri">http://www.topologywithouttears.net/</a> Topology without tears]</em> von Sidney A. Morris: Buch zur Topologie zum kostenfreien Download (PDF, englisch) * [<a href="http://www.savoir-sans-frontieres.com/JPP/telechargeables/Deutch/" class="uri">http://www.savoir-sans-frontieres.com/JPP/telechargeables/Deutch/</a> das_topologikon.htm Comic zur Topologie zum kostenfreien Download (PDF, <em>deutsch</em>)]</p>
+<ul>
+<li>[<a href="http://www.mathematik.de/ger/information/landkarte/gebiete/topologie/" class="uri">http://www.mathematik.de/ger/information/landkarte/gebiete/topologie/</a></li>
+</ul>
+<p>topologie.html Artikel zur Topologie] auf mathematik.de * In: <em>The Mathematical Atlas.</em></p>
+<ul>
+<li>[<a href="http://at.yorku.ca/topology/" class="uri">http://at.yorku.ca/topology/</a> ''Topology</li>
+</ul>
+<p>Atlas''] * * <em>[<a href="http://www.topologywithouttears.net/" class="uri">http://www.topologywithouttears.net/</a> Topology without tears]</em> von Sidney A. Morris: Buch zur Topologie zum kostenfreien Download (PDF, englisch)</p>
+<ul>
+<li>[<a href="http://www.savoir-sans-frontieres.com/JPP/telechargeables/Deutch/" class="uri">http://www.savoir-sans-frontieres.com/JPP/telechargeables/Deutch/</a></li>
+</ul>
+<p>das_topologikon.htm Comic zur Topologie zum kostenfreien Download (PDF, <em>deutsch</em>)]</p>
 </section>
-<section id="einzelnachweise" class="level2">
-<h2>Einzelnachweise</h2>
-<references />
-
-<p><a href="Kategorie:Topologie" title="wikilink"> </a> <a href="Kategorie:Teilgebiet_der_Mathematik" title="wikilink">Kategorie:Teilgebiet der Mathematik</a></p>
+<section id="quelle" class="level2">
+<h2>Quelle</h2>
+<p>Modifizierter Artikel aus Wikipedia aus der <a href="Kategorie:Topologie" title="wikilink"></a> als <a href="Teilgebiet_der_Mathematik" title="wikilink">Teilgebiet der Mathematik</a></p>
 <div id="refs" class="references">
 
 </div>
@@ -328,19 +374,19 @@
 <section class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><a href="#fnref1">↩</a></li>
-<li id="fn2"><a href="#fnref2">↩</a></li>
-<li id="fn3">Christoph J. Scriba, Peter Schreiber: <em>5000 Jahre Geometrie: Geschichte, Kulturen, Menschen (Vom Zählstein zum Computer).</em> Springer, Berlin, Heidelberg, New York, ISBN 3-540-67924-3, S. 451.<a href="#fnref3">↩</a></li>
-<li id="fn4"><a href="#fnref4">↩</a></li>
+<li id="fn1"></li>
+<li id="fn2"></li>
+<li id="fn3"><p>Christoph J. Scriba, Peter Schreiber: <em>5000 Jahre Geometrie: Geschichte, Kulturen, Menschen (Vom Zählstein zum Computer).</em> Springer, Berlin, Heidelberg, New York, ISBN 3-540-67924-3, S. 451.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"></li>
 <li id="fn5"></li>
-<li id="fn6">Felix Hausdorff: <em><a href="Grundzüge_der_Mengenlehre" title="wikilink">Grundzüge der Mengenlehre</a></em>, 1914, S 213<a href="#fnref6">↩</a></li>
-<li id="fn7"><em>Fund. Math.</em>, <strong>3</strong>, 1922<a href="#fnref7">↩</a></li>
-<li id="fn8">Math. Ann. 88, 1923<a href="#fnref8">↩</a></li>
-<li id="fn9">Epple et al., Hausdorff GW II, 2002<a href="#fnref9">↩</a></li>
-<li id="fn10">Christoph J. Scriba, Peter Schreiber: <em>5000 Jahre Geometrie: Geschichte, Kulturen, Menschen (Vom Zählstein zum Computer).</em> Springer, Berlin, Heidelberg, New York, ISBN 3-540-67924-3, S. 515.<a href="#fnref10">↩</a></li>
-<li id="fn11"><a href="#fnref11">↩</a></li>
-<li id="fn12"><a href="#fnref12">↩</a></li>
-<li id="fn13"><a href="#fnref13">↩</a></li>
+<li id="fn6"><p>Felix Hausdorff: <em><a href="Grundzüge_der_Mengenlehre" title="wikilink">Grundzüge der Mengenlehre</a></em>, 1914, S 213<a href="#fnref6">↩</a></p></li>
+<li id="fn7"><p><em>Fund. Math.</em>, <strong>3</strong>, 1922<a href="#fnref7">↩</a></p></li>
+<li id="fn8"><p>Math. Ann. 88, 1923<a href="#fnref8">↩</a></p></li>
+<li id="fn9"><p>Epple et al., Hausdorff GW II, 2002<a href="#fnref9">↩</a></p></li>
+<li id="fn10"><p>Christoph J. Scriba, Peter Schreiber: <em>5000 Jahre Geometrie: Geschichte, Kulturen, Menschen (Vom Zählstein zum Computer).</em> Springer, Berlin, Heidelberg, New York, ISBN 3-540-67924-3, S. 515.<a href="#fnref10">↩</a></p></li>
+<li id="fn11"></li>
+<li id="fn12"></li>
+<li id="fn13"></li>
 </ol>
 </section>
 			</div>

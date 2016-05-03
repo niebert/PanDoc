@@ -13,7 +13,7 @@ author="My Author Name"
 # to template folder tpl/ bib/ and projects/
 REL="./"
 RELUP="../../"
-PWD=`pwd`
+PWD="`pwd`"
 # Name of Directory, where PanDoc projects are stored
 PROJECTS="projects"
 # add the relative path to project directory according to PANDOCmenu.sh
@@ -23,12 +23,13 @@ projectDIRABS="${PWD}/${PROJECTS}"
 inputDIR="$projectDIR"
 outputDIR="$projectDIR"
 inputFORMAT="md"
-outputFORMAT="odt"
+outputFORMAT="html"
 inputFILE="$inputDIR"
 outputFILE=""
 bibtexFILE=""
 tplFILE=""
 defaultEXTENSION="wiki"
+INtypeMD="markdown"
 # DIRECTORY SELECT
 # zenity --info --text "PANDOC Menu\n----------\nPlease select the folder of your current PANDOC project or\npress [Cancel] and create a new PanDoc Project"
 # ----------------------
@@ -112,22 +113,32 @@ while true; do
 			  pandocPROJECT=${inputFILE%/*}  # get the part before the last slash "/"
  			  NAMEext=${inputFILE##*/}  # get the part after the last slash
 			  EXTENSION=${NAMEext##*.}  # get part after the last dor "."
-	    	  NAME=${NAMEext%.*}        # get part before the last dot "."									
+	    	  NAME=${NAMEext%.*}        # get part before the last dot "."	
 			  case $? in
 						 0) if [ -z "$inputFILE" ]; then
 								echo "Error: Input File is empty"
 								echo "Quit: $0 "
 								exit
 							else
+								echo "------------------------------------"
 								echo "(1-${pandocCMD}-OK) \"$inputFILE\" selected."
-								echo "Project:    ${pandocPROJECT} "
-								echo "Input File: ${NAMEext} "
-								echo "Extension:  ${EXTENSION} "
+								echo "Project:      ${pandocPROJECT} "
+								echo "Input File:   ${NAMEext} "
+								echo "Extension:    ${EXTENSION} "
+								case $EXTENSION in
+	            					tex) inputFORMAT="latex"
+	            					;;
+	            					*)   inputFORMAT="${EXTENSION}"
+	            					;;
+	            				esac
+	            				echo "Input Format: ${EXTENSION} "
+								echo "------------------------------------"
 							fi		
 							;;
 						 1)
 								echo "${pandocCMD}: No input file selected"
 								echo "Will copy default input to $pandocPROJECT"
+								echo "DEFAULT FORMAT is set to 'wiki' "
 								inputFORMAT="wiki"
 								echo "Input Format: ${inputFORMAT} "
 								nameFILE="default.${inputFORMAT}"
@@ -163,11 +174,16 @@ while true; do
 					  "reveal" "Reveal JS Presentation" \
 					  "odt" "Libre Office Format" \
 					  "docx" "0ffice DOCX Format" \
-					  "latex" "LaTeX Source File" \
-			  		  "beamer" "LaTeX Beamer Presentation" \
 					  "html" "HTML for Browsers" \
 					  "dzslides" "DZ Slides Presentation" \
-					  "wiki" "WikiMedia Output"`
+					  "imgslides" "Image Slides Presentation" \
+					  "latex" "LaTeX Source File" \
+			  		  "quit" "Quit"`
+	            	
+	            	# "wiki" "WikiMedia Output"
+	            	# "latex" "LaTeX Source File" \
+			  		#  "beamer" "LaTeX Beamer Presentation" \
+					  
 	            
 	            echo "Output format: $outputFORMAT"	
 	            inFILE=${inputFILE##*/}  # get the part before the last dot "."
@@ -204,6 +220,11 @@ while true; do
 	            		outEXTENSION="html"
 	            		OUTtype="$outputFORMAT"
 	            		;;
+	            imgslides) ##### DZSLIDES ###########################
+	            		echo "(3-OUT) Output Format: $outputFORMAT "
+	            		outEXTENSION="html"
+	            		OUTtype="$outputFORMAT"
+	            		;;
 	            latex) ##### DZSLIDES ###########################
 	            		echo "(3-OUT) Output Format: $outputFORMAT "
 	            		outEXTENSION="tex"
@@ -213,6 +234,10 @@ while true; do
 	            		outEXTENSION="${outputFORMAT}"
 	            		OUTtype="mediawiki"
 						;;
+				  quit) #### QUIT #################################
+				        echo "Quit $0"
+				        exit
+				        ;;
 	            esac
 	            #RELUP="../../"
 	            #TPL="tpl"
@@ -236,6 +261,7 @@ while true; do
 				--column="Type" --column="Template" \
 			  "TPL" "Select Template Default" \
 			  "BIB" "Select BibTeX Default" \
+			  "CSL" "Select Citation Style" \
 			  "Remove" "Remove Project Files" \
 			  "QUIT" "Quit Configuration"`
 	            
@@ -343,7 +369,7 @@ while true; do
 								
 							 ;;
 						esac # case EXTENSION
-						echo "(3-${pandocCMD}-${Answer})  Input File: $inputFILE "
+						echo "(3-${pandocCMD}-${Answer})  Input File: $inputFILE inputFORMAT='${inputFORMAT}' "
 	           		;;
 	           	DOWNLOAD) echo "Download and Convert PanDoc Input file"
 				  		## DefaultNAME is set for Text Edit window in zenity ###
@@ -357,22 +383,29 @@ while true; do
 						echo "PanDoc Project: ${pandocPROJECT}"
 	          			echo "Convert and Download from URL: ${URLweb}"
 	          			case $EXTENSION in 
-							md) 	echo "Markdown as Input Format"
+							md) 	echo "DOWNLOAD: Markdown as Input Format"
 									inputFILE="${pandocPROJECT}/${NAMEext}"
 									echo "Input File: $inputFILE"
 									inputFORMAT="${EXTENSION}"
 									convertFORMAT="markdown"
 									pandoc -s -r html $URLweb -o $inputFILE
 								;;
-							wiki)  	echo "WikiMedia as Input Format"
-									inputDOWNLOAD="${pandocPROJECT}/${NAME}.md"
+							wiki)  	echo "DOWNLOAD: WikiMedia as Input Format"
+									inputDOWNLOAD="${pandocPROJECT}/${NAME}_download.md"
 									inputFILE="${pandocPROJECT}/${NAMEext}"
 									inputFORMAT="${EXTENSION}"
 									convertFORMAT="mediawiki"
 									pandoc -s -r html $URLweb -t ${convertFORMAT} -o $inputDOWNLOAD
 									pandoc -s -S -t mediawiki $inputDOWNLOAD -o $inputFILE
 								;;
-									
+							tex) 	echo "DOWNLOAD: LaTeX as Input Format"
+									inputFILE="${pandocPROJECT}/${NAMEext}"
+									echo "Input File: $inputFILE"
+									inputFORMAT="latex"
+									convertFORMAT="markdown"
+									pandoc -s -r html $URLweb -o $inputDOWNLOAD
+									pandoc -s -S -t latex $inputDOWNLOAD -o $inputFILE
+								;;
 							*)  echo "(3-${pandocPROC}-${EXTENSION}) "
 								echo "ERROR-01: No Valid Extension in '$pandocCMD' as Input Format"	
 								
@@ -386,16 +419,45 @@ while true; do
 	   Editor)  echo "(3-${pandocPROC}) Check Scanned Files execute PANDOC recognize: $pandocCMD "
 	           geany $inputFILE
 	            ;;
-	  Convert)  echo "(3-${pandocPROC}) Process Case for Input Format $inputFORMAT "
+	  Convert)  inputFORMAT=${inputFILE##*.}  # EXTENSION: get the part after the last dot "."
+	  			inFILE=${inputFILE##*/}       # NAME.EXT:  get the part after the last dot "/"
+	  			inNOEXT=${inFILE%.*}          # get the part before the last dot "."
+	            echo "(3-${pandocPROC}) Process Case for Input Format '${inputFORMAT}' " 
+	            echo "inFILE:   '${inFILE}' " 
+	            echo "inNOEXT:  '${inNOEXT}' "
+	            echo "(3-${pandocPROC}) Change Directory ${pandocPROJECT} "
+	            cd "${pandocPROJECT}"
 	            case $inputFORMAT in
 	            	md)
 	            		echo "(3-IN) Input Format: $inputFORMAT "
 	            		INtype="markdown"
+	            		inFILEMD="${inFILE}"
 	            		;;
 	            	wiki)
 	            		echo "(3-IN) Input Format: $inputFORMAT "
 	            		INtype="mediawiki"
-	            		# ---- EDIT AUTHOR ---------
+	            		lvEXTMD="_conv2md.md"
+	            		inFILEMD="${inNOEXT}${lvEXTMD}"
+	            		echo "(3-IN-${pandocPROC}-WIKI) Change Directory ${pandocPROJECT} "
+	            		cd "${pandocPROJECT}"
+	            		pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD 
+	            		cd ${RELUP}
+		            	echo "pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD "
+		    			# ---- EDIT AUTHOR ---------
+	            		author=`zenity --title="Edit Author" --entry --entry-text="${author}"  text="Edit Author for ${outputFORMAT} "`
+						echo "$author" > "${configDIR}/author.txt"						
+						# ---- EDIT TITLE ----------
+	            		title=`zenity --title="Edit Title" --entry --entry-text="${title}"  text="Edit Title for ${outputFORMAT} "`
+						echo "$title" > "${configDIR}/title.txt"	
+	            		;;
+	            	latex)
+	            		echo "(3-IN) Input Format: $inputFORMAT "
+	            		INtype="mediawiki"
+	            		lvEXTMD="_conv2md.md"
+	            		inFILEMD="${inNOEXT}${lvEXTMD}"
+	            		pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD 
+		            	echo "pandoc -t markdown -f mediawiki  $inFILE -o $inFILEMD "
+		    			# ---- EDIT AUTHOR ---------
 	            		author=`zenity --title="Edit Author" --entry --entry-text="${author}"  text="Edit Author for ${outputFORMAT} "`
 						echo "$author" > "${configDIR}/author.txt"						
 						# ---- EDIT TITLE ----------
@@ -407,13 +469,12 @@ while true; do
 	            		exit
 	            		;;
 	            esac
-	            inNOEXT=${inFILE%.*}  # get the part before the last dot "."
-	            echo "(3-${pandocPROC}) Change Directory ${pandocPROJECT} "
-	            cd "${pandocPROJECT}"
 	            echo "(3-${pandocCMD}) Output Format: '$outputFORMAT' for inNOEXT='${inNOEXT}'"	
 	            template="${tplbaseDIR}/${outputFORMAT}/tpldefault.${outEXTENSION}"
 	            echo "--------------------------------------------"
 				echo "(3-OUT) Output Format: $outputFORMAT "
+				cd "${pandocPROJECT}"
+				echo "PWD: `pwd` "
 	            case $outputFORMAT in
 	            	reveal) ##### REVEAL PRESENTATION #####################
 	            		theme=`zenity --list \
@@ -433,20 +494,19 @@ while true; do
 	            		lvEXT="_${outputFORMAT}.${outEXTENSION}"
 	            		outFILE="${inNOEXT}${lvEXT}"
 	            		echo "--------------------------------------------"
-						echo "PROJECT:      ${pandocPROJECT}"
-						echo "Title:        ${title}"
-						echo "Author:       ${author}"
-						echo "Reveal Theme: ${theme} "          
-						echo "Input File:   ${inFILE}"
-						echo "Output File:  ${outFILE}"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Input File:      ${inFILE}"
+						echo "Input File MD:   ${inFILEMD}"
+						echo "Output File:     ${outFILE}"
+						echo "Reveal Theme:    ${theme} "          
 						echo "Template:        ${template}"
 						echo "BibTeX-File:     ${bibFILE}"
 						echo "Bib Style Sheet: ${cslFILE}"
 						echo "--------------------------------------------"
-						callStr=" pandoc -f ${INtype} -t ${OUTtype} --mathjax --template=${templateREL}  --bibliography ${bibFILEREL} --standalone --section-divs --variable author=\"${author}\" --variable title=\"${title}\" --variable theme=${theme} --variable transition=\"slide\" ${inFILE} -o ${outFILE} --csl ${cslFILEREL}"
+						callStr=" pandoc -f ${INtypeMD} -t ${OUTtype} --mathjax --template=${templateREL}  --bibliography ${bibFILEREL} --standalone --section-divs --variable author=\"${author}\" --variable title=\"${title}\" --variable theme=${theme} --variable transition=\"slide\" ${inFILEMD} -o ${outFILE} --csl ${cslFILEREL}"
 						echo $callStr 
 						#$callStr 
-	            		pandoc -f ${INtype} -t ${OUTtype} --mathjax --template=${templateREL}  --bibliography ${bibFILEREL} --standalone --section-divs --variable author="${author}" --variable title="${title}" --variable theme=${theme} --variable transition="slide" ${inFILE} -o ${outFILE} --csl ${cslFILEREL}
+	            		pandoc -f ${INtypeMD} -t ${OUTtype} --mathjax --template=${templateREL}  --bibliography ${bibFILEREL} --standalone --section-divs --variable author="${author}" --variable title="${title}" --variable theme=${theme} --variable transition="slide" ${inFILEMD} -o ${outFILE} --csl ${cslFILEREL}
 						#-------------SED Template Correction--------------------
 						#---- sed corrects an replace error in css path .../css/"beige".css by .../css/beige.css
 						eval "sed 's/css\/\\\"${theme}\\\"/css\/${theme}/g'  ${outFILE} > tmp.txt" 
@@ -464,18 +524,19 @@ while true; do
 	            		lvEXT=".${outEXTENSION}"
 	            		outFILE="${inNOEXT}${lvEXT}"
 	            		echo "-------------------------------------------"
-						echo "PROJECT:     ${pandocPROJECT}/"
-						echo "Input File:  ${inFILE}"
-						echo "Output File: ${outFILE}"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Input File:      ${inFILE}"
+						echo "Input File MD:   ${inFILEMD}"
+						echo "Output File:     ${outFILE}"
 						echo "Template:        ${template}"
 						echo "BibTeX-File:     ${bibFILE}"
 						echo "Bib Style Sheet: ${cslFILE}"
 						echo "-------------------------------------------"
-						callStr="pandoc -S --reference-${outEXTENSION} ${templateREL} --bibliography ${bibFILEREL} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILE} --csl ${cslFILEREL}"
+						callStr="pandoc -S --reference-${outEXTENSION} ${templateREL} --bibliography ${bibFILEREL} -f ${INtypeMD}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILEMD} --csl ${cslFILEREL}"
 						echo $callStr
 						$callStr
 	            		#---EXPORT BATCH FILE------------------------------------
-						callStr="pandoc -S --reference-${outEXTENSION} ${template} --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outfileBAT} ${infileBAT} --csl ${cslFILE}"
+						callStr="pandoc -S --reference-${outEXTENSION} ${template} --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILE} --csl ${cslFILE}"
 						callStr="$(echo ${callStr} | sed 's/\//\\\\/g')"
 						echo "$callStr" > "./win_${outputFORMAT}.bat"
 						echo "PanDoc ${outputFORMAT}-Conversion Done"
@@ -519,15 +580,16 @@ while true; do
 	            		lvEXT="_${outputFORMAT}.${outEXTENSION}"
 	            		outFILE="${inNOEXT}${lvEXT}"
 	            		echo "-------------------------------------------"
-						echo "PROJECT:     ${pandocPROJECT}/"
-						echo "Input File:  ${inFILE}"
-						echo "Output File: ${outFILE}"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Input File:      ${inFILE}"
+						echo "Input File MD:   ${inFILEMD}"
+						echo "Output File:     ${outFILE}"
 						echo "BibTeX-File:     ${bibFILE}"
 						echo "Bib Style Sheet: ${cslFILE}"
 						echo "-------------------------------------------"
-						callStr="pandoc -S --bibliography ${bibFILEREL} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILE} --csl ${cslFILEREL}"
-						#pandoc -t beamer SLIDES -o example8.pdf
-	            		$callStr 
+						callStr="pandoc -S --bibliography ${bibFILEREL} -f ${INtypeMD}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILEMD} --csl ${cslFILEREL}"
+						pandoc -t beamer ${inFILEMD} -o ${outFILE}
+	            		#$callStr 
 	            		#---EXPORT BATCH FILE------------------------------------
 						callStr="$(echo ${callStr} | sed 's/\//\\\\/g')"
 						echo "$callStr" > "./win_${outputFORMAT}.bat"
@@ -539,16 +601,17 @@ while true; do
 	            		lvEXT=".${outEXTENSION}"
 	            		outFILE="${inNOEXT}${lvEXT}"
 	            		echo "-------------------------------------------"
-						echo "PROJECT:     ${pandocPROJECT}/"
-						echo "Input File:  ${inFILE}"
-						echo "Output File: ${outFILE}"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Input File:      ${inFILE}"
+						echo "Input File MD:   ${inFILEMD}"
+						echo "Output File:     ${outFILE}"
 						echo "Template:        ${template}"
 						echo "BibTeX-File:     ${bibFILE}"
 						echo "Bib Style Sheet: ${cslFILE}"
 						echo "-------------------------------------------"
 						echo pandoc -S --reference-${outEXTENSION} ${templateREL} --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILE} --csl ${cslFILEREL}
 						#pandoc -S --reference-${outEXTENSION} ${template} --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outfile} ${inputFILE} --csl ${cslFILE}
-						callStr="pandoc -S --reference-${outEXTENSION} ${templateREL} --bibliography ${bibFILEREL} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILE} --csl ${cslFILEREL}"
+						callStr="pandoc -S --reference-${outEXTENSION} ${templateREL} --bibliography ${bibFILEREL} -f ${INtypeMD}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILEMD} --csl ${cslFILEREL}"
 						$callStr 
 	            		#---EXPORT BATCH FILE------------------------------------
 						#callStr="pandoc -S --reference-${outEXTENSION} ${template} --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outfileBAT} ${infileBAT} --csl ${cslFILE}"
@@ -565,15 +628,16 @@ while true; do
 	            		lvEXT=".${outEXTENSION}"
 	            		outFILE="${inNOEXT}${lvEXT}"
 	            		echo "-------------------------------------------"
-						echo "PROJECT:     ${pandocPROJECT}/"
-						echo "Input File:  ${inFILE}"
-						echo "Output File: ${outFILE}"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Input File:      ${inFILE}"
+						echo "Input File MD:   ${inFILEMD}"
+						echo "Output File:     ${outFILE}"
 						echo "CSS-File:        ${cssFILE}"
 						echo "BibTeX-File:     ${bibFILE}"
 						echo "Bib Style Sheet: ${cslFILE}"
 						echo "-------------------------------------------"
 						#pandoc -s -S --toc -c pandoc.css -A footer.html README -o example3.html
-	            		callStr="pandoc -s -S --toc  -c ${cssFILE} --bibliography ${bibFILEREL} -f ${INtype}+simple_tables+footnotes -o ${outFILE} ${inFILE} --csl ${cslFILEREL}"
+	            		callStr="pandoc -s -S --toc  -c ${cssFILE} --bibliography ${bibFILEREL} -f ${INtypeMD}+simple_tables+footnotes -o ${outFILE} ${inFILEMD} --csl ${cslFILEREL}"
 	            		$callStr 
 	            		#---EXPORT BATCH FILE------------------------------------
 						# callStr="pandoc -s -S --toc  -c ${cssFILE} --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -o ${outfileBAT} ${infileBAT} --csl ${cslFILE}"
@@ -587,14 +651,15 @@ while true; do
 	            		lvEXT=".${outEXTENSION}"
 	            		outFILE="${inNOEXT}${lvEXT}"
 	            		echo "-------------------------------------------"
-						echo "PROJECT:     ${pandocPROJECT}/"
-						echo "Input File:  ${inFILE}"
-						echo "Output File: ${outFILE}"
-						echo "Output Type: ${OUTtype}"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Input File:      ${inFILE}"
+						echo "Input File MD:   ${inFILEMD}"
+						echo "Output File:     ${outFILE}"
+						echo "Output Type:     ${OUTtype}"
 						echo "BibTeX-File:     ${bibFILE}"
 						echo "Bib Style Sheet: ${cslFILE}"
 						echo "-------------------------------------------"
-						callStr="pandoc -s -S --toc --bibliography ${bibFILEREL} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILE} --csl ${cslFILEREL}"
+						callStr="pandoc -s -S --toc --bibliography ${bibFILEREL} -f ${INtypeMD}+simple_tables+footnotes -t ${OUTtype} -o ${outFILE} ${inFILEMD} --csl ${cslFILEREL}"
 	            		$callStr 
 	            		#---EXPORT BATCH FILE------------------------------------
 						callStr="$(echo ${callStr} | sed 's/\//\\\\/g')"
@@ -606,27 +671,75 @@ while true; do
 	            	dzslides) #### DZSLIDES ######################
 	            		lvEXT="_${outputFORMAT}.${outEXTENSION}"
 	            		outFILE="${inNOEXT}${lvEXT}"
+	            		inputFORMAT=${inFILE##*.}  # get the part after the last dot "."
 	            		echo "-------------------------------------------"
-						echo "PROJECT:     ${pandocPROJECT}/"
-						echo "Input File:  ${inFILE}"
-						echo "Output File: ${outFILE}"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Input File:      ${inFILE}"
+						echo "Input File MD:   ${inFILEMD}"
+						echo "Output File:     ${outFILE}"
 						#echo "Template:        ${template}"
 						echo "BibTeX-File:     ${bibFILE}"
 						echo "Bib Style Sheet: ${cslFILE}"
 						echo "-------------------------------------------"
-						#pandoc -S "--reference-${outEXTENSION} ${template}" --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outfile} ${inputFILE} --csl ${cslFILE}
+						case $inputFORMAT in
+	            			md) 
+	            				echo "(3-IN-MD) Input Format: $inputFORMAT "
+		            			echo "" > "./win_${outputFORMAT}.bat"
+							;;
+			            	wiki)
+	            				echo "(3-IN-WIKI2MD) Input Format: $inputFORMAT "
+		            			#pandoc -t markdown -f mediawiki topologie.wiki -o topologie_dzslides.md
+		            			callStr="pandoc -f mediawiki -t markdown $inFILE -o $inFILEMD \n"
+								echo "$callStr" > "./win_${outputFORMAT}.bat"
+							;;
+			            	*)  echo "(3-DZSLIDES) Format $inputFORMAT is not allowed!"
+	        		    		echo "Exit $0 - inputFORMAT=$inputFORMAT "
+	            				exit
+	            			;;
+	            		esac
+	            		#pandoc -S "--reference-${outEXTENSION} ${template}" --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -t ${OUTtype} -o ${outfile} ${inputFILE} --csl ${cslFILE}
 						# pandoc -s --mathml -i -t dzslides SLIDES -o example16a.html
-						callStr="pandoc -s  --mathml -i -t ${OUTtype} --bibliography ${bibFILEREL} -f ${INtype}+simple_tables+footnotes  -o ${outFILE} ${inFILE} --csl ${cslFILEREL}"
+						callStr="pandoc -s  --mathml -i -t ${OUTtype} --bibliography ${bibFILEREL}  -o ${outFILE} ${inFILEMD} --csl ${cslFILEREL}"
 						$callStr 			
 	            		#---EXPORT BATCH FILE------------------------------------
 						#callStr="pandoc -s  --mathml -i -t ${OUTtype} --bibliography ${bibFILE} -f ${INtype}+simple_tables+footnotes -o ${outfileBAT} ${infileBAT} --csl ${cslFILE}"
 						callStr="$(echo ${callStr} | sed 's/\//\\\\/g')"
-						echo "$callStr" > "./win_${outputFORMAT}.bat"
+						echo "$callStr" >> "./win_${outputFORMAT}.bat"
 						echo "PanDoc ${outputFORMAT}-Conversion Done"
 						echo "-------------------------------------------"
-
 	            		;;
-	            	*)  echo "(3-OUT) Output Format: $outputFORMAT is not allowed"
+	            	imgslides) #### IMAGE SLIDES ######################
+	            		lvEXT="_${outputFORMAT}.${outEXTENSION}"
+	            		outFILE="${inNOEXT}${lvEXT}"
+	            		inputFORMAT=${inFILE##*.}  # get the part after the last dot "."
+	            		templateIMG="${RELUP}${TPL}/${outputFORMAT}/tpldefault.html"
+	            		MAXSLIDES=`zenity --title="Number of Slides" --entry --entry-text="10"  text="Enter the Number of Slides for ${outputFORMAT} "`
+						inSECTION="${RELUP}${TPL}/${outputFORMAT}/audiosection.txt"
+						cp "${RELUP}${TPL}/${outputFORMAT}/preaudioslide.txt" $outFILE
+	            		echo "-------------------------------------------"
+						echo "PROJECT:         ${pandocPROJECT}/"
+						echo "Slide Count:     ${MAXSLIDES}"
+						echo "Section File:    ${inSECTION}"
+						echo "Output File:     ${outFILE}"
+						echo "Template:        ${templateIMG}"
+						echo "BibTeX-File:     ${bibFILE}"
+						echo "Bib Style Sheet: ${cslFILE}"
+						echo "-------------------------------------------"
+						COUNTER=0
+						$tplSECTION=`cat ${inSECTION}`
+						while [  $COUNTER -lt $MAXSLIDES ]; do
+             				let COUNTER=COUNTER+1 
+             				echo "Create Audio Slide $COUNTER "
+             				# $content=`cat file.txt` 
+             				sedSECTION=$(sed s/___NR___/${COUNTER}/g ${inSECTION})
+             				echo $sedSECTION >> $outFILE
+             			done
+             			postFILE="${RELUP}${TPL}/${outputFORMAT}/postaudioslide.txt"
+             			cat $postFILE  >> $outFILE
+         				echo "PanDoc ${outputFORMAT}-Conversion Done"
+						echo "-------------------------------------------"
+	            		;;
+					*)  echo "(3-OUT) Output Format: $outputFORMAT is not allowed"
 	            	    exit
 	            	    ;;
 	            esac
@@ -653,6 +766,10 @@ while true; do
 	            		echo "firefox file://$pandocPROJECTABS/${NAME}_${outputFORMAT}.html"
 	            		firefox "file://$pandocPROJECTABS/${NAME}_${outputFORMAT}.html"
 	            		;;
+	            	imgslides) echo "Firefox View ${outputFORMAT}-Presentation in HTML"
+	            		echo "firefox file://$pandocPROJECTABS/${NAME}_${outputFORMAT}.html"
+	            		firefox "file://$pandocPROJECTABS/${NAME}_${outputFORMAT}.html"
+	            		;;
 	            	html) echo "Firefox View in HTML"
 	            		echo "firefox $pandocPROJECTABS/${NAME}.html"
 	            		firefox "file://$pandocPROJECTABS/${NAME}.html"
@@ -674,18 +791,19 @@ while true; do
 	            esac
 	   ;;
 	  BIB)  echo "(3-${pandocCMD}-${pandocPROC}) Select the BibTeX-File for Project "
-	   		   bibFILENEW=`zenity --file-selection --filename="${PWD}/${BIB}/"--title="Select a PANDOC BibTeX File"`
+	   		   bibFILENEW=`zenity --file-selection --filename="${PWD}/${BIBDATA}/"--title="Select a PANDOC BibTeX File"`
 			   case $? in
 						 0)
 								echo "\"$bibFILENEW\" selected."
+								defaultCSL
 								BIBLIOext=${bibFILENEW##*/}  # get the part after the last slash
 			  					EXTENSIONbib=${BIBLIOext##*.}  # get part after the last dot "."
-								if [ "$BIBLIOext" == "biblio.bib" ]; then
-  									echo "Used existing 'biblio.bib'"
+								if [ "$BIBLIOext" == "$bibDEFAULT" ]; then
+  									echo "Used existing '${bibDEFAULT}'"
   								else 
   									if ["$EXTENSIONbib" -eq "bib" ]; then
-  										echo "Copy '${bibFILENEW}' to 'biblio.bib'"
-  										cp "${bibFILENEW}"  "${bibDIR}/biblio.bib"
+  										echo "Copy '${bibFILENEW}' to '${bibDEFAULT}'"
+  										cp "${bibFILENEW}"  "${bibDIR}/${bibDEFAULT}"
   									else 
   										echo "ERROR: $BIBLIOext has wrong file format"
   									fi
@@ -704,6 +822,45 @@ while true; do
 								else
 									echo "(1-${pandocCMD}) ERROR:"
 									echo "$bibFILE not found. Copy default file to directory!"
+									exit
+								fi
+							;;
+						-1)
+								echo "An unexpected error has occurred."
+							;;
+				esac			   	
+	          ;;
+	  CSL)  echo "(3-${pandocCMD}-${pandocPROC}) Select the Citation Style for Project "
+	   		   cslFILENEW=`zenity --file-selection --filename="${PWD}/${BIBCSL}/"--title="Select a Citation Style File"`
+			   case $? in
+						 0)
+								echo "\"$bibFILENEW\" selected."
+								CSLext=${cslFILENEW##*/}  # get the part after the last slash
+			  					EXTENSIONcsl=${CSLext##*.}  # get part after the last dot "."
+								if [ "$CSLext" == "default.csl" ]; then
+  									echo "Used existing 'default.csl'"
+  								else 
+  									if ["$EXTENSIONcsl" -eq "csl" ]; then
+  										echo "Copy '${cslFILENEW}' to '${cslDEFAULT}'"
+  										cp "${cslFILENEW}"  "${bibDIR}/${cslDEFAULT}"
+  									else 
+  										echo "ERROR: $BIBLIOext has wrong file format"
+  									fi
+								fi		
+							;;
+						 1)
+								echo "${pandocCMD}: No Citation Style file selected"
+								echo "Select default Citation Style to $pandocPROJECT"
+								nameFILE="default.csl"
+								# defaultFILE="${bibDIR}/${nameFILE}"
+								# echo "    $defaultFILE"
+								cslFILE="${cslDIR}/${nameFILE}"
+								if [ -f "$cslFILE" ]
+								then
+									echo "$cslFILE found."
+								else
+									echo "(1-${pandocCMD}) ERROR:"
+									echo "$cslFILE not found. Copy default file to directory!"
 									exit
 								fi
 							;;
@@ -764,9 +921,12 @@ while true; do
 done
 # -----Demo Code-----------------------------------
 # MYVAR="usr/var/cpanel/users/joebloggs.dotDNS9=domain.com.pdf" 
-# NAME=${MYVAR%.*}  # get the part before the last dot "."
+# NAME=${NAME##*.}  # EXTENSION: get the part after the last dot "."
+# NAME=${NAME##*/}  # NAME: get the part after the last slash "/"
+# NAME=${NAME##/*}  # PATH: get the part before the last slash "/"
+# NAME=${MYVAR%.*}  # REMOVE EXTENSION: get the part before the last dot "."
+#
 # NAME=${MYVAR%%.*} # get the part before the first dot "."
-# NAME=${NAME##*/}  # get the part after the last slash "/"
 # NAME=${NAME#*/}   # get the part after the first slash "/"
 # ------------------------------------------------
 # Extract filename="/home/myuser/Documents/mypaper.md"
