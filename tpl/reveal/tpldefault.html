@@ -34,13 +34,16 @@ $endif$
 $for(css)$
   <link rel="stylesheet" href="$css$"/>
 $endfor$
+  <!-- Original Settings do not have the following CSS inserted directly -->
+  <link rel="stylesheet" href="$revealpath$/css/print/paper.css"/>
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
     link.rel = 'stylesheet';
     link.type = 'text/css';
     link.href = window.location.search.match( /print-pdf/gi ) ? '$revealpath$/css/print/pdf.css' : '$revealpath$/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
+    //---Uncomment the follow appendChild if you remove the CSS paper.css---
+   //  document.getElementsByTagName( 'head' )[0].appendChild( link );
   </script>
   <!--[if lt IE 9]>
   <script src="$revealpath$/lib/js/html5shiv.js"></script>

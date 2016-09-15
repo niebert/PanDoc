@@ -3,15 +3,15 @@
 % Date: April 10th, 2016
 
 
-Folders & Organisation
-----------------------
+Folder Structure:
+----------------  
 
 The list describes the purpose of these folders and
 provides a small survey about the files that are stored in these folders:
 
 * <b>reveal:</b> Presentation Libraries (<https://github.com/hakimel/reveal.js>).
 * <b>mathjax:</b> Render Mathemematical Formulas (<https://github.com/mathjax/MathJax>).
-* <b>mypresentation:</b> Media files for the reveal presentation "mypresentation.html"
+* <b>mypresentation:</b> Media files for the reveal presentation e.g. "mypresentation.html"
 
 
 Folder reveal:
@@ -80,7 +80,7 @@ pandoc -f mediawiki -t html5 --template=tpl4reveal.html \
      wikipedia.wiki -o wikipedia.html
 ```
 
-Learning Markdown & WikiMedia
+Learn Markdown and WikiMedia
 -----------------------------
 
 * Learning Markdown <http://www.markdowntutorial.com>

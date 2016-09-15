@@ -1,4 +1,4 @@
-== Folders &amp; Organisation ==
+== Folder Structure ==
 
 The list describes the purpose of these folders and provides a small survey about the files that are stored in these folders:
 
@@ -53,7 +53,7 @@ Separate Math Form
      --variable theme="beige" \
      --variable transition="slide" --mathjax \
      wikipedia.wiki -o wikipedia.html </pre>
-== Learning Markdown &amp; WikiMedia ==
+== Learn Markdown and WikiMedia ==
 
 * Learning Markdown http://www.markdowntutorial.com
 * Learning WikiMedia https://en.wikipedia.org/wiki/Wikipedia:Tutorial
