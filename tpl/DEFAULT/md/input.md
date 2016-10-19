@@ -2,11 +2,11 @@
 % Name: Engelbert Niehaus
 % Date: April 10th, 2016
 
-Presentation Features:
+Presentation Reveal Features:
 ----------------  
 * Press "F" for Full Screen
 * Press "B" for Black Screen
-* Press "ESC" for Slide Selection 
+* Press "ESC" for Slide Selection
 
 Folder Structure:
 ----------------  

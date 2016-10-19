@@ -1,5 +1,5 @@
-== Presentation Features ==
- 
+== Presentation Reveal ==
+
 * Press "F" for Full Screen
 * Press "B" for Black Screen
 * Press "ESC" for Slide Selection
