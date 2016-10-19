@@ -1,3 +1,9 @@
+== Presentation Features ==
+ 
+* Press "F" for Full Screen
+* Press "B" for Black Screen
+* Press "ESC" for Slide Selection
+
 == Folder Structure ==
 
 The list describes the purpose of these folders and provides a small survey about the files that are stored in these folders:
