@@ -1,0 +1,52 @@
+<EPROOF>
+  <VARIABLE NAME='Theorem_Title' VALUE='My Title' />
+  <VARIABLE NAME='Theorem_Label' VALUE='Theorem' />
+  <VARIABLE NAME='Author' VALUE='My Name' />
+  <VARIABLE NAME='eMail' VALUE='mymail@example.net' />
+  <VARIABLE NAME='LANGUAGE' VALUE='EN' />
+  <VARIABLE NAME='Theorem_Appendix' VALUE='See __lt__a  href__eq____qu__https://en.wikipedia.org/wiki/__qu__ target__eq____qu__blank__qu____gt__Wikipedia Link__lt__/a__gt__ for a more details.' />
+  <VARIABLE NAME='Per_Error_Minus_Percent' VALUE='10' />
+  <VARIABLE NAME='Assessment_Minus_Percent' VALUE='2' />
+  <VARIABLE NAME='Suggestion_Minus_Percent' VALUE='17' />
+  <VARIABLE NAME='unnecessary_connections' VALUE='3' />
+  <VARIABLE NAME='unnecessary_proofsteps' VALUE='3' />
+  <VARIABLE NAME='unnecessary_justifications' VALUE='3' />
+  <VARIABLE NAME='selectbox_proofsteps' VALUE='1' />
+  <VARIABLE NAME='allow_own_proofsteps' VALUE='1' />
+  <VARIABLE NAME='remap_proofstep_IDs' VALUE='1' />
+  <VARIABLE NAME='randomize_proofstep_IDs' VALUE='1' />
+  <VARIABLE NAME='cryptkey' VALUE='ACBSD' />
+  <VARIABLE NAME='show_Load_Save_Control' VALUE='0' />
+  <VARIABLE NAME='show_Main_Control' VALUE='0' />
+  <VARIABLE NAME='show_links' VALUE='1' />
+  <VARIABLE NAME='show_assessment' VALUE='1' />
+  <VARIABLE NAME='show_suggestions' VALUE='1' />
+  <VARIABLE NAME='show_proof_solution' VALUE='1' />
+  <VARIABLE NAME='AuthoringMode' VALUE='0' />
+  <VARIABLE NAME='AssessmentMode' VALUE='0' />
+  <VARIABLE NAME='CODE_ID_I' VALUE='4001' />
+  <VARIABLE NAME='CODE_ID_II' VALUE='4002' />
+  <VARIABLE NAME='CODE_ID_III' VALUE='4200' />
+  <VARIABLE NAME='vQID' VALUE='Q78234X' />
+  <VARIABLE NAME='Offline' VALUE='1' />
+  <VARIABLE NAME='alertDOM' VALUE='1' />
+  <VARLIST NAME='PRECONDITION_OPTIONS'>
+    <STEPDEF SIZE='2' ID='P1' VALUE='My Precondition  __math__ a__CO__b in RR __math__ ' />
+  </VARLIST>
+  <VARLIST NAME='CONCLUSION_OPTIONS'>
+    <STEPDEF SIZE='2' ID='C1' VALUE='My Conclusion __math__ ( a+b )^2 __eq__a^2 + 2ab + b^2__math__' />
+  </VARLIST>
+  <VARLIST NAME='JUSTIFICATION_OPTIONS'>
+    <STEPDEF SIZE='2' ID='CLA' VALUE=' __math__AA_(x__CO__y in RR) : x + y __eq__ y + x __math__' />
+    <STEPDEF SIZE='2' ID='CLM' VALUE=' __math__AA_(x__CO__y in RR) : x * y __eq__ y *x __math__' />
+    <STEPDEF SIZE='2' ID='DL' VALUE=' __math__AA_(x__CO__y__CO__z in M) : x * (y + z) __eq__ x * y + x * z __math__ ' />
+    <STEPDEF SIZE='2' ID='ALA' VALUE=' __math__AA_(x__CO__y__CO__z in M) : (x + y) + z __eq__ x + (y + z)__math__ ' />
+    <STEPDEF SIZE='2' ID='SQ' VALUE=' __math__AA_(x in RR) : x^2 __eq__ x * x __math__' />
+  </VARLIST>
+  <VARLIST NAME='PROOFSTEP_OPTIONS'>
+    <STEPDEF SIZE='2' ID='P1' VALUE='' />
+    <STEPDEF SIZE='2' ID='S1' VALUE='First Step ' />
+    <STEPDEF SIZE='2' ID='MY1' VALUE='Step that can be edited  by Students __math__2*a+2*b__math__' />
+    <STEPDEF SIZE='5' ID='C1' CONNECTION='__eq____gt__' JUST='' OPTJUST='' VALUE='' />
+  </VARLIST>
+</EPROOF>

@@ -1,15 +1,20 @@
 # PanDoc
 PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other formats (e.g. OpenOffice or Word) with Templates.
 This repository contains adapted templates for <tt>pandoc</tt>. This repository is used by the following Open Source applications:
-* [PanDocElectron](http://niebert.github.io/PanDocElectron) Electron based wrapper for [PanDoc](http://pandoc.org)
-* [PanDocZenity](http://www.github.com/niebert/PanDocZenity) Shell script based wrapper for [PanDoc](http://pandoc.org) that used [Zenity](https://help.gnome.org/users/zenity/stable/) (recommended to us PanDocElectron)
+* [PanDocElectron](http://niebert.github.io/PanDocElectron) Electron based wrapper/Graphical User Interface (GUI) for [PanDoc](http://pandoc.org)
+* [PanDocZenity](http://www.github.com/niebert/PanDocZenity) Shell script based wrapper for [PanDoc](http://pandoc.org) that used [Zenity](https://help.gnome.org/users/zenity/stable/) (it is recommended to use PanDocElectron instead of PanDocZenity)
 * [eProofJS](http://www.github.com/niebert/eProofJS) is a Authoring Tool for creating electronic proofs. It uses support files (e.g. MathJax) to generate, display and render for mathematical proofs as learning environments.
 
 
 The following explaination show the basic installation of the underlying tool <tt>pandoc</tt> created by [John Mac Farlane](http://johnmacfarlane.net/tools.html) (Thank you very much for providing this great tool to the Open Source Community).
 
+The following section refers to the Installation of PanDocZenity. For installation guides for other applications refer to the GitHub-pages of the desired project.
+
 Linux
 =====
+
+The following commands assume, that you have Debian/Ubuntu/Mint Linux Operating System installed. If you use other
+Linux Distribution install packages with you Package Manager.
 
 Install PanDoc
 --------------
@@ -84,8 +89,8 @@ Furthermore the script `PANDOCmenu.sh` uses an editor `geany` as an option in th
 
 > `brew install geany`
 
-Start Menu
-----------
+Start Zenity Menu
+-----------------
 
 If you want to run the PANDOCmenu.sh start open the Terminal on Linux and star the following script with `sh`
 
@@ -172,12 +177,12 @@ Main Folders
 ============
 
 **Folder**            **Description**
---------------------  ----------------------------------------------         
+--------------------  -------------------------------------------------------------         
 `tpl`                 Templates and Default Files for PanDoc
 `projects`            Contains all projects
 `bib`                 Contains all BibTeX Databases/Bib-Styles
-`help`                Contains Help Files for Installation et. al.
---------------------  ----------------------------------------------
+`help`                Contains Help Files for Installation et. al. if available
+--------------------  -------------------------------------------------------------
 
 Folders
 =======
