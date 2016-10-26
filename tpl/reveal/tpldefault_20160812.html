@@ -45,8 +45,6 @@ $endfor$
     //---Uncomment the follow appendChild if you remove the CSS paper.css---
    //  document.getElementsByTagName( 'head' )[0].appendChild( link );
   </script>
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
   <!--[if lt IE 9]>
   <script src="$revealpath$/lib/js/html5shiv.js"></script>
   <![endif]-->
@@ -228,20 +226,6 @@ $endif$
 $if(maxScale)$
         maxScale: $maxScale$,
 $endif$
-		menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
-					controls: true,
-					themes: false,
-					transitions: false,
-					markers: true,
-					hideMissingTitles: true,
-					keyboard: false,
-					custom: [
-				            { title: 'Plugins', icon: '<i class="fa fa-external-link"></i>', src: 'toc.html' },
-				            { title: 'About', icon: '<i class="fa fa-info"></i>', src: 'about.html' }
-				        ]
-				},
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // none/fade/slide/convex/concave/zoom
 
         math: {
           // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
@@ -250,61 +234,17 @@ $endif$
         },
 
         // Optional reveal.js plugins
-      dependencies: [
-					{ src: '$revealpath$/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '$revealpath$/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '$revealpath$/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '$revealpath$/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '$revealpath$/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '$revealpath$/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-//__AUDIORECORDER__//					{ src: '$revealpath$/plugin/audio-slideshow/slideshow-recorder.js'},
-//__AUDIOPLAYER__//					{ src: '$revealpath$/plugin/audio-slideshow/audio-slideshow.js'},
-					{ src: '$revealpath$/plugin/chalkboard/chalkboard.js'},
-					{ src: '$revealpath$/plugin/menu/menu.js'},
-				],
-				audio: {
-					prefix: 'chalkboard/',
-					suffix: '.ogg',
-					defaultDuration: 5,
-//					textToSpeechURL: "http://api.voicerss.org/?key=[YOUR_KEY]&hl=en-gb&c=ogg&src=",
-					advance: 500,
-					autoplay: false,
-					defaultText: true,
-					playerOpacity: 0.2,
-				},
-				chalkboard: { // font-awesome.min.css must be available
-					//src: "$revealpath$/plugin/chalkboard/chalkboard.json",
-					//src: "chalkboard/chalkboard.json",
-					toggleChalkboardButton: { left: "80px" },
-					toggleNotesButton: { left: "130px" },
-					theme: "whiteboard",
-					background: [ 'rgba(127,127,127,.1)' , '$revealpath$/plugin/chalkboard/img/whiteboard.png' ],
-					pen: [ '$revealpath$/plugin/chalkboard/img/boardmarker.png' , '$revealpath$/plugin/chalkboard/img/boardmarker.png' ],
-//				        color: [ 'rgba(0,0,255,1)', 'rgba(0,0,255,0.5)' ],
-//				        draw: [ (RevealChalkboard) ?  RevealChalkboard.drawWithPen : null , (RevealChalkboard) ? RevealChalkboard.drawWithPen : null ],
-				},
-				keyboard: {
-				    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle chalkboard when 'c' is pressed
-				    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
-				    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
-				     8: function() { RevealChalkboard.reset() },	// reset all chalkboard data when 'BACKSPACE' is pressed
-				    68: function() { RevealChalkboard.download() },	// download chalkboard drawing when 'd' is pressed
-					90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
-					84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
-				},
-
-//    dependencies: [
-//          { src: '$revealpath$/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-//          { src: '$revealpath$/plugin/zoom-js/zoom.js', async: true },
-//          { src: '$revealpath$/plugin/notes/notes.js', async: true },
-//          { src: '$revealpath$/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-//		  { src: '$revealpath$/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-//		  { src: '$revealpath$/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-//          { src: '$revealpath$/plugin/zoom-js/zoom.js', async: true },
-//          { src: '$revealpath$/plugin/notes/notes.js', async: true },
-//          { src: '$revealpath$/plugin/math/math.js', async: true }
-//
-//				]
+        dependencies: [
+          { src: '$revealpath$/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '$revealpath$/plugin/zoom-js/zoom.js', async: true },
+          { src: '$revealpath$/plugin/notes/notes.js', async: true },
+          { src: '$revealpath$/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		  { src: '$revealpath$/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		  { src: '$revealpath$/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '$revealpath$/plugin/zoom-js/zoom.js', async: true },
+          { src: '$revealpath$/plugin/notes/notes.js', async: true },
+          { src: '$revealpath$/plugin/math/math.js', async: true }
+				]
       });
     </script>
   $for(include-after)$
