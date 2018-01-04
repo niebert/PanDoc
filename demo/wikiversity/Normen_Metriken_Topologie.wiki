@@ -1,0 +1,86 @@
+== Topologischer Raum ==
+Ein '''Topologischer Raum''' ist der grundlegende Gegenstand der Teildisziplin [https://de.wikipedia.org/wiki/Topologie_(Mathematik) Topologie] der [https://de.wikipedia.org/wiki/Mathematik Mathematik]. Durch die Einführung einer topologischen Struktur auf einer Menge lassen sich 
+* intuitive Lagebeziehungen wie „Nähe“ und 
+* „Konvergenz gegen“ aus den reellen Zahlen <math>{\mathbb R}</math> bzw. aus dem <math>{\mathbb R}^{n}</math> 
+auf viele und sehr allgemeine Strukturen übertragen (wie z.B. die Topologie von Funktionenräumen).
+
+== Definition: Topologie ==
+Eine ''Topologie'' ist ein [https://de.wikipedia.org/wiki/Mengensystem Mengensystem] <math>\cal T</math> bestehend aus Teilmengen (''[https://de.wikipedia.org/wiki/offene_Menge offene Mengen]'' genannt) einer Grundmenge <math>X</math>, für die  die folgenden [https://de.wikipedia.org/wiki/Axiom Axiome] erfüllt sind:
+
+* (T1) <math>\emptyset, X \in \cal T</math>
+* (T2) <math>U \cap V \in \cal T</math> für alle <math>U,V \in  \cal T</math>.
+* (T3) Für eine beliebige Indexmenge <math>I</math> und <math>U_i \in \cal T</math> für alle <math>i \in I</math> gilt: <math>\bigcup_{i \in I} U_i \in \cal T</math>.
+
+Eine Menge <math>X</math> zusammen mit einer Topologie <math>\cal T</math> auf <math>X</math> heißt ''[https://de.wikipedia.org/wiki/Topologischer_Raum topologischer Raum]'' <math>(X,T)</math>.
+
+== Beispiel ==
+In der Regel geht man davon aus, dass Topologien auf mathematischen Objekten definiert werden (z.B. Zahlenräume, Funktionenräume, (topologische) Gruppen, Vektorräume, ...). Die Allgemeinheit der Definition macht es aber auch möglich, eine [https://de.wikiversity.org/wiki/Topologie_auf_Texten Topologie auf Texten] zu definieren. Dies Beispiel wurde ergänzt, weil rein anschaulich z.B. Texte in der deutschen Sprache 
+* eine ähnliche Aussage haben können und
+* unterschiede Wörter verwenden.
+Diese Ähnlichkeit der Semantik oder auch Syntax wird als Übung in "[https://de.wikiversity.org/wiki/Topologie_auf_Texten Topologie auf Texten]" näher untersucht.
+
+== Hierachie Topologiescher Räume == 	
+[[File:https://de.wikiversity.org/wiki/Special:Redirect/file/Beziehungen zwischen mathematischen Räumen.svg|300px|Hierarchie Topologischer Räume]]
+
+== Bedeutung: Notation Topologie ==
+* (T1) <math>\emptyset, X \in X</math> [https://de.wikipedia.org/wiki/leere_Menge leere Menge] und die [https://de.wikipedia.org/wiki/Grundmenge Grundmenge] <math>X</math> sind offene Mengen
+* (T2) <math>U \cap V \in T</math> für alle <math>U,V \in T</math>: Der [https://de.wikipedia.org/wiki/Schnittmenge Durchschnitt] endlich vieler offener Mengen ist eine offene Menge.
+* (T3) Die [https://de.wikipedia.org/wiki/Vereinigungsmenge Vereinigung] beliebig vieler offener Mengen ist wieder eine offene Menge.
+
+== Normierter Raum ==
+Ein normierter Raum ist zugleich auch ein metrischer Raum. Ein Norm ordnet einem Vektor seine Vektorlänge zu.
+
+== Definition: Norm ==
+Eine Norm ist eine [https://de.wikipedia.org/wiki/Funktion_(Mathematik) Abbildung] <math>\|\cdot\|</math> von einem [https://de.wikipedia.org/wiki/Vektorraum Vektorraum] <math>V</math> über dem [https://de.wikipedia.org/wiki/Körper_(Algebra) Körper] <math>\mathbb K</math> der [https://de.wikipedia.org/wiki/Reelle_Zahl reellen] oder der [https://de.wikipedia.org/wiki/Komplexe_Zahl komplexen Zahlen] in die Menge der nichtnegativen [https://de.wikipedia.org/wiki/Reelle Zahl reellen Zahlen] <math>{\mathbb R}_0^{+}</math>. 
+
+:<math>\|\cdot\|\colon V\to{\mathbb R}_0^{+}, \; x \mapsto \| x \|,</math>
+
+Erfüllt <math>\|\cdot\|</math> die [https://de.wikipedia.org/wiki/Axiom Axiome] N1,N2, N3, so heißt <math>\|\cdot\|</math> Norm auf <math>V</math>.
+
+* (N1) [https://de.wikipedia.org/wiki/Definitheit Definitheit]:  <math>\|x\| = 0  \;\Rightarrow\;  x = 0</math> für alle  <math>x \in V</math>,
+* (N2) [https://de.wikipedia.org/wiki/Homogene_Funktion absolute Homogenität]:  <math>\|\lambda\cdot x\| = |\lambda|\cdot\|x\|</math> für alle  <math>x\in V</math> und  <math>\lambda\in \mathbb K</math>
+* (N3) [https://de.wikipedia.org/wiki/Dreiecksungleichung Dreiecksungleichung]:  <math>\|x + y\| \leq \|x\| + \|y\|</math> für alle <math>x, y\in V</math>.
+
+== Notation: Norm ==
+* In dem Axiom (N2) <math> \| \lambda \cdot x \| = | \lambda | \cdot \|x\| </math> bezeichnet <math>| \cdot |</math> den [https://de.wikipedia.org/wiki/Betragsfunktion Betrag] des [https://de.wikipedia.org/wiki/Skalar Skalars].
+* <math>\|x\|</math> gibt die Länge des Vektors <math>x\in V</math> an.
+
+== Äquivalenz: Normen ==
+Seien zwei Normen <math>\|\cdot\|_1 </math> und <math>\|\cdot\|_2</math> auf dem <math>\mathbb K</math>-Vektorraum <math>V</math> gegeben. Die beiden Normen sind äquivalent, wenn gilt:
+
+:<math>\exists_{C_1,C_2 >0} \forall_{x \in V} \ : \ C_1 \|x\|_1 \leq \|x\|_2 \leq C_2 \|x\|_1</math>
+
+
+== Veranschaulichung: Norm Dreiecksungleichung ==
+[[File:https://de.wikiversity.org/wiki/Special:Redirect/file/Vector-triangle-inequality.svg|300px|Nach der Dreiecksungleichung ist die Länge der Summe zweier Vektoren höchstens so groß wie die Summe der Längen]]
+
+== Historische Anmerkung: Norm ==
+Diese axiomatische Definition der Norm wurde von [https://de.wikipedia.org/wiki/Stefan_Banach Stefan Banach] 1922 in seiner Dissertation aufgestellt Das heute übliche Normsymbol wurde erstmals von [https://de.wikipedia.org/wiki/Erhard_Schmidt Erhard Schmidt] 1908 als Abstand <math>\|x-y\|</math> zwischen Vektoren <math>x</math> und <math>y</math> verwendet.
+
+== Metrik ==
+Eine Metrik <math>d</math> ordnet mit <math>d(x,y)</math> zwei Elementen <math>x,y \in X</math> aus einem Grundraum <math>X</math> den Abstand <math>d(x,y)</math> zwischen <math>x</math> und <math>y</math> zu.
+
+== Formale Definition: Metrik ==
+Sei <math>X</math> eine beliebige Menge. Eine [https://de.wikipedia.org/wiki/Funktion_(Mathematik) Abbildung] <math>d\colon X\times X\to \mathbb{R}</math> heißt Metrik auf <math>X</math>, wenn für beliebige Elemente <math>x</math>, <math>y</math> und <math>z</math> von <math>X</math> die folgenden [https://de.wikipedia.org/wiki/Axiom Axiome] erfüllt sind:
+
+* (M1) Positive Definitheit: <math>d\left(x,y\right) \geq 0</math> &nbsp; &nbsp; und &nbsp; &nbsp; <math>d\left(x,y\right) = 0 \Leftrightarrow x = y</math>,
+* (M2) Symmetrie: <math>d\left(x,y\right) = d(y,x)</math>,
+*(M3) [https://de.wikipedia.org/wiki/Dreiecksungleichung Dreiecksungleichung]:  <math>d\left(x,y\right) \leq d(x,z) + d(z,y)</math>.
+
+== Veranschaulichung: Metrik Dreiecksungleichung ==
+[[File:https://de.wikiversity.org/wiki/Special:Redirect/file/Metrik_triangle_inequality.svg|300px|Nach der Dreiecksungleichung ist der Abstand zwischen zwei Punkten X,Y höchstens so groß wie Summe der Abstände von X zu Z und von Z zu Y, also einem Umweg über den Punkt Z]]
+
+== Anmerkungen: Metrikdefinition ==
+Die Forderung <math>d(x,y)\geq0</math> kann weggelassen werden, denn sie folgt aus den anderen, da
+
+<math>0 = \frac{1}{2} d(x, x) \leq \frac{1}{2}(d(x, y) + d(y, x)) = \frac{1}{2}(d(x, y) + d(x, y)) = d(x, y).</math>
+
+== Seiten-Information ==
+Der '''[https://niebert.github.io/FA1Reveal/FA1/topologie1/Normen_Metriken_Topologie_reveal.html Foliensatz]''' wurde für den '''[https://de.wikiversity.org/wiki/Kurs:Funktionalanalysis Kurs:Funktionalanalysis]''' erstellt.
+* Inhalte der Seite basieren auf: 
+** [https://de.wikipedia.org/wiki/Topologie_(Mathematik) https://de.wikipedia.org/wiki/Topologie_(Mathematik)]
+** [https://de.wikipedia.org/wiki/Metrischer_Raum https://de.wikipedia.org/wiki/Metrischer_Raum]
+** [https://de.wikipedia.org/wiki/Normierter_Raum https://de.wikipedia.org/wiki/Normierter_Raum]
+* Diese Seite ist eine [https://de.wikiversity.org/wiki/PanDocElectron-Presentation PanDocElectron-SLIDE] Dokumententyp
+* Quelle: Wikiversity DE https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie
+* Nächste Inhalte des Kurses sind [https://de.wikiversity.org/wiki/Netze_(Mathematik) Netze]

@@ -17,6 +17,7 @@ $endif$
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="$revealpath$/css/reveal.css">
+  <!-- link rel="stylesheet" href="$revealpath$/css/font-awesome.min.css" -->
   <style type="text/css">code{white-space: pre;}</style>
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
@@ -35,7 +36,7 @@ $for(css)$
   <link rel="stylesheet" href="$css$"/>
 $endfor$
   <!-- Original Settings do not have the following CSS inserted directly -->
-  <link rel="stylesheet" href="$revealpath$/css/print/paper.css"/>
+  <!-- <link rel="stylesheet" href="$revealpath$/css/print/paper.css"/> -->
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
@@ -49,9 +50,10 @@ $endfor$
   <!--[if lt IE 9]>
   <script src="$revealpath$/lib/js/html5shiv.js"></script>
   <![endif]-->
-$if(math)$
-  <script src="$mathjaxpath$/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-$endif$
+
+ <!-- MathJax Path injected by PanDocElectron
+  <Xscript src="$mathjaxpath$/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></Xscript>
+-->
 $for(header-includes)$
   $header-includes$
 $endfor$
@@ -243,23 +245,26 @@ $endif$
 				transition: Reveal.getQueryHash().transition || 'default', // none/fade/slide/convex/concave/zoom
 
         math: {
-          // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+          // mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          // EN: standard reveal installation needed an npm-call "npm install mathjax --save-dev"
+          // EN: called in directory reveal once that local MathJax works
           mathjax: '$mathjaxpath$/MathJax.js',
           config: 'TeX-AMS_HTML-full'
         },
 
         // Optional reveal.js plugins
       dependencies: [
-					{ src: '$revealpath$/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '$revealpath$/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '$revealpath$/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '$revealpath$/lib/js/classList.js', async: true , condition: function() { return !document.body.classList; } },
+					{ src: '$revealpath$/plugin/math/math.js', async: true },
+          { src: '$revealpath$/plugin/markdown/marked.js', async: true , condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '$revealpath$/plugin/markdown/markdown.js', async: true , condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '$revealpath$/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '$revealpath$/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: '$revealpath$/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-//__AUDIORECORDER__//					{ src: '$revealpath$/plugin/audio-slideshow/slideshow-recorder.js'},
-//__AUDIOPLAYER__//					{ src: '$revealpath$/plugin/audio-slideshow/audio-slideshow.js'},
-					{ src: '$revealpath$/plugin/chalkboard/chalkboard.js'},
+//__AUDIORECORDER__//					{ src: '$revealpath$/plugin/audio-slideshow/slideshow-recorder.js', async: true },
+//__AUDIOPLAYER__//					{ src: '$revealpath$/plugin/audio-slideshow/audio-slideshow.js', async: true },
 					{ src: '$revealpath$/plugin/menu/menu.js'},
+          { src: '$revealpath$/plugin/chalkboard/chalkboard.js', async: true }
 				],
 				audio: {
 					prefix: 'chalkboard/',
@@ -288,8 +293,8 @@ $endif$
 				    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
 				     8: function() { RevealChalkboard.reset() },	// reset all chalkboard data when 'BACKSPACE' is pressed
 				    68: function() { RevealChalkboard.download() },	// download chalkboard drawing when 'd' is pressed
-					90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
-					84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+            90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+  					84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
 				},
 
 //    dependencies: [

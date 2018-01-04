@@ -1,0 +1,49 @@
+{
+    "DOMID": {
+        "outputTITLE": "Normen, Metriken, Topologie",
+        "outputAUTHOR": "de.wikiversity.org",
+        "inputSERVER": "de.wikiversity.org",
+        "wikiARTICLE": "Normen, Metriken, Topologie",
+        "inputWEBPROJECT": "demo/wikiversity",
+        "inputFORMAT": "mediawiki",
+        "outputFORMAT": "reveal",
+        "sWikiDomain": ".wikiversity.org",
+        "sWikiLanguage": "de",
+        "themeREVEAL": "beige",
+        "colorBG": "white",
+        "remoteMathJaxPath": "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2"
+    },
+    "InnerHTMLID": {
+        "bibFILE": "",
+        "cslFILE": "",
+        "inputFILE": "/Users/niehaus/Documents/PanDoc/demo/wikiversity/Normen_Metriken_Topologie.wiki",
+        "outputFILE": "/Users/niehaus/Documents/PanDoc/demo/wikiversity/Normen_Metriken_Topologie_reveal.html",
+        "divMediaWikiDOWNLOAD": "<hr><b>Download Media Files for URL: <a href=\"#\" onclick=\"openFileInBrowser('https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie')\">https://de.wikiversity.org/wiki/Normen,_Metriken,_Topologie</a></b>\n<ul>\n  <li>(1) \n <button onclick=\"downloadMediaClick('Beziehungen zwischen mathematischen Räumen.svg');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3ABeziehungen zwischen mathematischen Räumen.svg')\">Beziehungen zwischen mathematischen Räumen.svg</a>\n  </li>\n  <li>(2) \n <button onclick=\"downloadMediaClick('Vector-triangle-inequality.svg');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AVector-triangle-inequality.svg')\">Vector-triangle-inequality.svg</a>\n  </li>\n  <li>(3) \n <button onclick=\"downloadMediaClick('Metrik_triangle_inequality.svg');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AMetrik_triangle_inequality.svg')\">Metrik_triangle_inequality.svg</a>\n  </li>\n</ul><hr>",
+        "DEFAULTTPL": "/Users/niehaus/Documents/PanDoc/tpl/DEFAULT/md/input.md",
+        "revealTPL": "/Users/niehaus/Documents/PanDoc/tpl/reveal/tpldefault.html",
+        "audioslidesTPL": "/Users/niehaus/Documents/PanDoc/tpl/audioslides/tpldefault.html",
+        "dzslidesTPL": "/Users/niehaus/Documents/PanDoc/tpl/dzslides/tpldefault.html",
+        "latexTPL": "/Users/niehaus/Documents/PanDoc/tpl/latex/tpldefault.tex",
+        "odtTPL": "/Users/niehaus/Documents/PanDoc/tpl/odt/tpldefault.xml",
+        "odtREF": "/Users/niehaus/Documents/PanDoc/tpl/odt/tpldefault.odt",
+        "odt2colREF": "/Users/niehaus/Documents/PanDoc/tpl/odt2col/tpldefault.odt",
+        "docxREF": "/Users/niehaus/Documents/PanDoc/tpl/docx/tpldefault.docx",
+        "docx2colREF": "/Users/niehaus/Documents/PanDoc/tpl/docx2col/tpldefault.docx",
+        "htmlREF": "/Users/niehaus/Documents/PanDoc/tpl/html/tpldefault.css",
+        "mathjaxDIR": "/Users/niehaus/Documents/PanDoc/mathjax",
+        "revealDIR": "/Users/niehaus/Documents/PanDoc/reveal",
+        "pandoctemplateDIR": "/Users/niehaus/Documents/PanDoc/tpl/pandoctemplates"
+    },
+    "CheckBoxID": {
+        "bibFILE": false,
+        "cslFILE": false,
+        "inputFILE": false,
+        "outputFILE": true,
+        "DEFAULTTPL": true,
+        "revealTPL": true,
+        "audioslidesTPL": false,
+        "dzslidesTPL": false,
+        "latexTPL": false,
+        "odtTPL": false
+    }
+}

@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /Users/niehaus/Documents/PanDoc/demo/wikiversity
+/usr/local/bin/pandoc -f mediawiki -t html5  "/Users/niehaus/Documents/PanDoc/demo/wikiversity/Normen_Metriken_Topologie.wiki" -o "/Users/niehaus/Documents/PanDoc/demo/wikiversity/Normen_Metriken_Topologie_reveal.html"  --variable title="Normen, Metriken, Topologie"  --variable author="de.wikiversity.org"  --variable revealpath="../../reveal"  --variable theme=beige  --mathjax  --variable mathjaxpath="../../mathjax" --standalone --section-divs --template=/Users/niehaus/Documents/PanDoc/tpl/reveal/tpldefault.html

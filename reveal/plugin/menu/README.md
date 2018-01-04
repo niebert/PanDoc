@@ -66,7 +66,6 @@ Reveal.initialize({
 
 You can configure the menu for your presentation by providing a ```menu``` option in the reveal.js initialization options. Note that all config values are optional and will default as specified below.
 
-
 ```javascript
 Reveal.initialize({
 	// ...
@@ -88,6 +87,10 @@ Reveal.initialize({
 		// Note: that a section data-menu-title attribute or an element
 		// with a menu-title class will take precedence over this option
 		titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+		// If slides do not have a matching title, attempt to use the
+		// start of the text content as the title instead
+		useTextContentForMissingTitles: false,
 
 		// Hide slides from the menu that do not have a title.
 		// Set to 'true' to only list slides with titles.
@@ -133,10 +136,40 @@ Reveal.initialize({
 		// If true allows the user to open and navigate the menu using
 		// the keyboard. Standard keyboard interaction with reveal
 		// will be disabled while the menu is open.
-		keyboard: true
+		keyboard: true,
+
+		// Normally the menu will close on user actions such as
+		// selecting a menu item, or clicking the presentation area.
+		// If 'true', the sticky option will leave the menu open
+		// until it is explicitly closed, that is, using the close
+		// button or pressing the ESC or m key (when the keyboard 
+		// interaction option is enabled).
+		sticky: false,
+
+		// If 'true' standard menu items will be automatically opened
+		// when navigating using the keyboard. Note: this only takes 
+		// effect when both the 'keyboard' and 'sticky' options are enabled.
+		autoOpen: true,
+
+		// If 'true' the menu will not be created until it is explicitly
+		// requested by calling RevealMenu.init(). Note this will delay
+		// the creation of all menu panels, including custom panels, and
+		// the menu button.
+		delayInit: false,
+
+		// By default the menu will load it's own font-awesome library
+		// icons. If your presentation needs to load a different
+		// font-awesome library the 'loadIcons' option can be set to false
+		// and the menu will not attempt to load the font-awesome library.
+		loadIcons: true
 	},
 
 });
+```
+
+If you are using the themes panel you need to ensure the theme stylesheet in the presentation uses the ```id="theme"``` attribute. For example...
+```html
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
 ```
 
 ## Slide Titles
@@ -240,8 +273,8 @@ You are not limited to linking to presentation slides. You can provide any link 
 ```html
 <h1>External Links</h1>
 <ul class="slide-menu-items">
-	<li class="slide-menu-item"><a href="https://github.com/denehyg/reveal.js-menu" target="_blank">Reveal.js-menu</a></li>
-	<li class="slide-menu-item"><a href="https://github.com/hakimel/reveal.js" target="_blank">Reveal.js</a></li>
+	<li class="slide-menu-item"><a href="https://github.com/denehyg/reveal.js-menu">Reveal.js-menu</a></li>
+	<li class="slide-menu-item"><a href="https://github.com/hakimel/reveal.js">Reveal.js</a></li>
 </ul>
 ```
 
