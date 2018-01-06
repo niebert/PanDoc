@@ -27,17 +27,21 @@ PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other format
   - [Clone this PanDoc-Repository](#clone-this-pandoc-repository-1)
   - [Install LaTeX](#install-latex-2)
   - [Install Image Magick](#install-image-magick)
+  - [Install Script for Windows](#install-script-for-windows)
+- [PanDoc Tools](#pandoc-tools)
   - [Pandoc Demos](#pandoc-demos)
   - [Pandoc Online Converter](#pandoc-online-converter)
   - [PanConvert (Optional)](#panconvert-optional)
-  - [Install Script for Windows](#install-script-for-windows)
+  - [PanDocElectron](#pandocelectron)
+  - [PanDocZenity](#pandoczenity)
 - [Main Folders](#main-folders)
 - [Folders and Files](#folders-and-files)
   - [Project ReadMe](#project-readme)
   - [Project Config](#project-config)
   - [Media Files](#media-files)
-- [Software Development](#software-development)
+- [Software Development and Tool](#software-development-and-tool)
   - [Atom and Electron](#atom-and-electron)
+  - [DocToc for Table of Contents](#doctoc-for-table-of-contents)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -184,6 +188,15 @@ Needed for converting/transcoding MediaWiki files to LaTeX or PDF.
 
 [Image Magick](https://www.imagemagick.org/script/advanced-windows-installation.php#download) is an command line image processing tool. In PanDocElectron and PanDocZenity it is used to split a PDF presentation into single images for a creating a web-based presentation
 
+### Install Script for Windows
+Create a Windows Batch File `install_pandoc.bat`:
+See following URL for command examples for Batch Files on Windows.
+
+>  [https://gist.github.com/breezhang/7732470](https://gist.github.com/breezhang/7732470)
+
+
+## PanDoc Tools
+
 ### Pandoc Demos
 Demo calls of PanDoc can be found on:
 
@@ -200,11 +213,12 @@ innstall [PanConvert](https://sourceforge.net/projects/panconvert/) for Graphica
 
 >   [https://sourceforge.net/projects/panconvert/](https://sourceforge.net/projects/panconvert/)
 
-### Install Script for Windows
-Create a Windows Batch File `install_pandoc.bat`:
-See following URL for command examples for Batch Files on Windows.
+### PanDocElectron
+[PanDocElectron](http://niebert.github.io/PanDocElectron) Electron based wrapper/Graphical User Interface (GUI) for [PanDoc](http://pandoc.org)
 
->  [https://gist.github.com/breezhang/7732470](https://gist.github.com/breezhang/7732470)
+### PanDocZenity
+Similar to `PanDocElectron` but runs from the command line with the Zenity for handling user interactions. In comparison to the Electron based tool `PanDocZenity` has less features but it might be better for command line processes and automatisation of transcoding of documents.
+[PanDocZenity](http://www.github.com/niebert/PanDocZenity) Shell script based wrapper for [PanDoc](http://pandoc.org) that used [Zenity](https://help.gnome.org/users/zenity/stable/) (it is recommended to use PanDocElectron instead of PanDocZenity)
 
 
 ## Main Folders
