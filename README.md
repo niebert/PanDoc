@@ -1,5 +1,48 @@
 # PanDoc
 PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other formats (e.g. OpenOffice or Word) with Templates.
+
+<h2> Table of Contents</h2>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Other Repositories Depending on PanDoc Repository](#other-repositories-depending-on-pandoc-repository)
+- [Linux](#linux)
+  - [Package Manager](#package-manager)
+  - [Install PanDoc](#install-pandoc)
+  - [Editor Geany](#editor-geany)
+  - [Install LaTeX](#install-latex)
+- [Mac-OSX](#mac-osx)
+  - [Introduction](#introduction)
+  - [Homebrew Installer](#homebrew-installer)
+  - [Install PanDoc with HomeBrew](#install-pandoc-with-homebrew)
+  - [Install Git and Download PanDoc Repository](#install-git-and-download-pandoc-repository)
+  - [Clone this PanDoc-Repository](#clone-this-pandoc-repository)
+  - [Editor Geany](#editor-geany-1)
+  - [Install LaTeX](#install-latex-1)
+  - [PanDoc Documentation about Installation](#pandoc-documentation-about-installation)
+- [Windows](#windows)
+  - [Pandoc Install Homepage](#pandoc-install-homepage)
+  - [Install Git and Download PanDoc Repository](#install-git-and-download-pandoc-repository-1)
+  - [Clone this PanDoc-Repository](#clone-this-pandoc-repository-1)
+  - [Install LaTeX](#install-latex-2)
+  - [Install Image Magick](#install-image-magick)
+  - [Pandoc Demos](#pandoc-demos)
+  - [Pandoc Online Converter](#pandoc-online-converter)
+  - [PanConvert (Optional)](#panconvert-optional)
+  - [Install Script for Windows](#install-script-for-windows)
+- [Main Folders](#main-folders)
+- [Folders and Files](#folders-and-files)
+  - [Project ReadMe](#project-readme)
+  - [Project Config](#project-config)
+  - [Media Files](#media-files)
+- [Software Development](#software-development)
+  - [Atom and Electron](#atom-and-electron)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+## Other Repositories Depending on PanDoc Repository
 This repository contains adapted templates for <tt>pandoc</tt>. This repository is used by the following Open Source applications:
 * [PanDocElectron](http://niebert.github.io/PanDocElectron) Electron based wrapper/Graphical User Interface (GUI) for [PanDoc](http://pandoc.org)
 * [PanDocZenity](http://www.github.com/niebert/PanDocZenity) Shell script based wrapper for [PanDoc](http://pandoc.org) that used [Zenity](https://help.gnome.org/users/zenity/stable/) (it is recommended to use PanDocElectron instead of PanDocZenity)
@@ -10,171 +53,161 @@ The following explaination show the basic installation of the underlying tool <t
 
 The following section refers to the Installation of PanDocZenity. For installation guides for other applications refer to the GitHub-pages of the desired project.
 
-Linux
-=====
+## Linux
 
 The following commands assume, that you have Debian/Ubuntu/Mint Linux Operating System installed. If you use other
 Linux Distribution install packages with you Package Manager.
 
-Install PanDoc
---------------
+### Package Manager
+Assume that you have a Linux distribution with the package manager `apt-get`. If you have a different Linux distro installed, then use the similar packages in package manager on your distro.
 
-The following apt-get command is one line of code:
+### Install PanDoc
+
+The following apt-get command is one line of code to install the `pandoc` software on your computer:
 
 > `sudo apt-get install pandoc pandoc-citeproc`
 
-Zenity for Menu
----------------
+### Editor Geany
 
-PANDOCmenu.sh is a shell script on Linux to support you in converting files with pandoc. The selection of Formats is performed with zenity therefore it is necessary to install zenity on Linux or with homebrew on MacOS with
-
-> `sudo apt-get install zenity`
-
-Editor Geany
-------------
-
-Furthermore the script `PANDOCmenu.sh` uses an editor `geany` as an option in the menu to modify the the source file.
+Furthermore you can use an editor `geany` as an option to edit the source file.
 
 > `sudo apt-get install geany`
 
-Start Menu
-----------
 
-If you want to run the `PANDOCmenu.sh` start open the Terminal on Linux and star the following script with `sh`
-
-> `sh PANDOCmenu.sh`
-
-Executable Menu
----------------
-
-In the terminal or make PANDOCmenu.sh executable with
-
-> `chmod ug+x PANDOCmenu.sh`
-
-Install LaTeX
--------------
+### Install LaTeX
 
 Install the LaTeX package with `apt-get`
 
 > `sudo apt-get install texlive lmodern`
 
-lmodern.sty install as Package necessary for PDF-Conversion
+`lmodern.sty` install as Package necessary for PDF-Conversion
 
-Mac-OSX
-=======
+## Mac-OSX
 
-Introduction
-------------
+### Introduction
 
-The following sections provide details for application on MacOSX with Homebrew. Please install homebrew prior to the following steps
+The following sections provide details for application on MacOSX with `Homebrew`. Please install `homebrew` prior to the following steps
 
-Homebrew Installer
-------------------
+### Homebrew Installer
 
-On MacOS use `homebrew` as package manager to install necessary packages especially `pandoc` and the package for processing of citation.
+On [MacOS use HomeBrew Package Management](https://brew.sh) as package manager to install necessary packages especially `pandoc` and the package for processing of citation.
+
+Follow the instruction on https://brew.sh to install `homebrew` on your Mac
+
+### Install PanDoc with HomeBrew
 
 > `brew install pandoc pandoc-citeproc`
 
-Zenity for Menu
----------------
+### Install Git and Download PanDoc Repository
 
-PANDOCmenu.sh is a shell script on Linux to support users in converting files with pandoc. Install zenity with homebrew on MacOS:
+Open terminal and install git:
 
-> `brew install zenity`
+> `brew install git`
 
-Editor Geany
-------------
+Now you navigate to your documents folder e.g.
 
-Furthermore the script `PANDOCmenu.sh` uses an editor `geany` as an option in the menu to modify the the source file.
+> `cd /home/USERNAME/Documents`
+
+### Clone this PanDoc-Repository
+
+Clone the online `PanDoc` repository:
+
+> `git clone https://github.com/niebert/PanDoc.git`
+
+
+### Editor Geany
+
+Furthermore you can use an editor `geany` as an option to edit the source file.
 
 > `brew install geany`
 
-Start Zenity Menu
------------------
+You can use `TextWrangler` or other prefered editors instead.
 
-If you want to run the PANDOCmenu.sh start open the Terminal on Linux and star the following script with `sh`
-
-> `sh PANDOCmenu.sh`
-
-Executable Menu
----------------
-
-In the terminal or make PANDOCmenu.sh executable with
-
-> `chmod ug+x PANDOCmenu.sh`
-
-Install LaTeX
--------------
+### Install LaTeX
 
 Install the LaTeX package from
 
 > <https://tug.org/mactex/>
 
-Small LaTeX Install
--------------------
+LaTeX in necessary for `pandoc` to process `LaTeX` file and/or generate `PDF` files.
 
-if you want to fiddle around with a package manager check the MacOS Pandoc section on
+### PanDoc Documentation about Installation
+
+if you want to get more information about `PanDoc` installation, see section on
 
 > <http://pandoc.org/installing.html>
 
-Windows
-=======
+## Windows
 
-Batch Files
------------
+Install PanDoc on Windows
 
-If you run converter on Linux or Mac the converter will create a windows batch file in the project directory.
+If you run [PanDoc Converter on Windows](https://pandoc.org/installing.html#windows) please follow the documentation on:
 
-> `win_reveal.bat`
-
-Batch Examples
---------------
-
-| **Batch File**   | **Description**                        |
-|:-----------------|:---------------------------------------|
-| `win_reveal.bat` | Batch File for Reveal Presentation     |
-| `win_odt.bat`    | Batch File for LibreOffice Document    |
-| `win_docx.bat`   | Batch File for MlCR0S0FT Word Document |
-| `win_html.bat`   | Batch File for HTML Document           |
--------------------  ----------------------------------------
+> `https://pandoc.org/installing.html#windows`
 
 
-Pandoc Install Homepage
-=======================
+### Pandoc Install Homepage
 For more information on installation of PanDoc converter see
 
->   [http://pandoc.org/installing.html](http://pandoc.org/installing.html)
+>   [http://pandoc.org/installing.html](https://pandoc.org/installing.html#windows)
 
-Pandoc Demos
-============
+### Install Git and Download PanDoc Repository
+
+Download the `git`-installer from the Homepage of Git `[git-scm.com](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)`
+
+Then open terminal `CMD.exe` or `PowerShell` and change to your Documents folder:
+
+Change Hard drive if necessary:
+
+> `C:`
+
+Now you navigate to your documents folder e.g.
+
+> `cd \Users\USERNAME\Documents`
+
+Where `USERNAME` is your user name on your Windows Operating System
+
+### Clone this PanDoc-Repository
+
+Clone the online `PanDoc` repository:
+
+> `git clone https://github.com/niebert/PanDoc.git`
+
+### Install LaTeX
+
+Follow the LaTeX installation on the following website
+> `https://miktex.org/howto/install-miktex`
+
+Needed for converting/transcoding MediaWiki files to LaTeX or PDF.
+
+### Install Image Magick
+
+[Image Magick](https://www.imagemagick.org/script/advanced-windows-installation.php#download) is an command line image processing tool. In PanDocElectron and PanDocZenity it is used to split a PDF presentation into single images for a creating a web-based presentation
+
+### Pandoc Demos
 Demo calls of PanDoc can be found on:
 
 >   [http://pandoc.org/demos.html](http://pandoc.org/demos.html)
 
-Pandoc Online Converter
-=======================
+### Pandoc Online Converter
 Convert Files with PanDoc and standard templates on:
 
 >   [http://pandoc.org/try](http://pandoc.org/try)
 
-
-PanConvert (Optional)
-=====================
+### PanConvert (Optional)
 If you want to use PanDoc with a Graphical User Interface please
 innstall [PanConvert](https://sourceforge.net/projects/panconvert/) for Graphical User Interface for PanDoc:
 
 >   [https://sourceforge.net/projects/panconvert/](https://sourceforge.net/projects/panconvert/)
 
-ToDo Windows
-============
-Create a Windows Batch File PANDOCmenu.bat with zenity:
+### Install Script for Windows
+Create a Windows Batch File `install_pandoc.bat`:
 See following URL for command examples for Batch Files on Windows.
 
 >  [https://gist.github.com/breezhang/7732470](https://gist.github.com/breezhang/7732470)
 
 
-Main Folders
-============
+## Main Folders
 
 **Folder**            **Description**
 --------------------  -------------------------------------------------------------         
@@ -182,30 +215,44 @@ Main Folders
 `projects`            Contains all projects
 `bib`                 Contains all BibTeX Databases/Bib-Styles
 `help`                Contains Help Files for Installation et. al. if available
+`mathjax`             Contains MathJax Installation for Math Rendering
+`reveal`              Contains RevealJS Installation for HTML5 Presentations
 --------------------  -------------------------------------------------------------
 
-Folders
-=======
-Project ReadMe
---------------
+## Folders and Files
+
+### Project ReadMe
 The directory `project/readme` is one sample project that is used at
 the same time for the readme of this project.  
 
-Project Config
---------------
+### Project Config
 All subdirectory e.g. `project/topologie` contains a subdirectory
 `project/topologie/config` that contains author name and title for the project.
 
 
-Media Files
------------
+### Media Files
 If the input file includes media files, the create
 `/images`, `/videos`, `/audio` store the media files in the subdirectories.
 
-Software Development
-====================
-Atom and Electron
------------------
+## Software Development and Tool
+
+### Atom and Electron
 Create a Multiplattform Application with Atom and Electron for Linux Mac and Windows
 or with Intel XDK Cloud Programming Tool.
+>   [Website Atom Editor](http://electron.atom.io/)
+
+Can be used for Linux, MacOSX and Windows.
+
+### DocToc for Table of Contents
+This README.md has a table of contents. This is automatically generated with `doctoc` NPM modules
 >   [http://electron.atom.io/](http://electron.atom.io/)
+
+Install `doctoc` with NPM (assuming you have NPM/NodeJS already installed on your computer)
+
+> `npm install doctoc -g`
+
+Installation is global so that you can use it for other GitHub repositories as well.
+
+Create or Update the table of contents with the command:
+
+> `doctoc README.md`

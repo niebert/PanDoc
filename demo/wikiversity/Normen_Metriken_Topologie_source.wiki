@@ -19,7 +19,7 @@ In der Regel geht man davon aus, dass Topologien auf mathematischen Objekten def
 * unterschiede Wörter verwenden.
 Diese Ähnlichkeit der Semantik oder auch Syntax wird als Übung in "[[Topologie auf Texten]]" näher untersucht.
 
-== Hierachie Topologiescher Räume == 	
+== Hierachie Topologischer Räume == 	
 [[Datei:Beziehungen zwischen mathematischen Räumen.svg|mini|Hierarchie Topologischer Räume]]
 
 == Bedeutung: Notation Topologie ==
