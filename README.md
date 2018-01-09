@@ -6,6 +6,7 @@ PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other format
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
+- [News](#news)
 - [Other Repositories Depending on PanDoc Repository](#other-repositories-depending-on-pandoc-repository)
 - [Linux](#linux)
   - [Package Manager](#package-manager)
@@ -44,7 +45,8 @@ PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other format
   - [DocToc for Table of Contents](#doctoc-for-table-of-contents)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
+## News
+* CDN for MathJax maintained by Development Team is down (2017). The CDN link for remote script urls to that Javascript library had to. be changed.
 
 ## Other Repositories Depending on PanDoc Repository
 This repository contains adapted templates for <tt>pandoc</tt>. This repository is used by the following Open Source applications:
