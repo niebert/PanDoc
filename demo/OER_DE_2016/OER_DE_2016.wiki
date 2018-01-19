@@ -98,7 +98,7 @@ Abgesetzte mathematische Formeln <math> \displaystyle  \left( \sum_{k=1}^n a_k b
 * Schreibzugriff auf die Versionierung nur durch Gutachterteam
 * Gutachter-Innen nicht anonym
 
-== Tutorials für Markdown &amp; WikiMedia ==
+== Tutorials für Markdown und WikiMedia ==
 
 * Tutorial Markdown http://www.markdowntutorial.com
 * Tutorial WikiMedia https://en.wikipedia.org/wiki/Wikipedia:Tutorial

@@ -1,0 +1,40 @@
+{
+    "DOMID": {
+        "outputTITLE": "OER & Nutzung von PanDoc ",
+        "outputAUTHOR": "Engelbert Niehaus",
+        "inputSERVER": "en.wikiversity.org",
+        "wikiARTICLE": "User:Bert Niehaus/OER and Wikiversity/Slides_Wiki",
+        "inputWEBPROJECT": "presentation/kolloq_uwi_2018",
+        "inputFORMAT": "mediawiki",
+        "outputFORMAT": "odt2col",
+        "sWikiDomain": ".wikiversity.org",
+        "sWikiLanguage": "en",
+        "themeREVEAL": "beige",
+        "colorBG": "white",
+        "remoteMathJaxPath": "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2"
+    },
+    "InnerHTMLID": {
+        "bibFILE": "",
+        "cslFILE": "",
+        "inputFILE": "/Users/niehaus/Documents/PanDoc/demo/OER_DE_2016/OER_DE_2016.wiki",
+        "outputFILE": "/Users/niehaus/Documents/PanDoc/demo/OER_DE_2016/OER_DE_2016_odt2col.odt",
+        "divMediaWikiDOWNLOAD": "<hr><b>Download Media Files for URL: <a href=\"#\" onclick=\"openFileInBrowser('https://en.wikiversity.org/wiki/User:Bert_Niehaus/OER_and_Wikiversity/Slides_Wiki')\">https://en.wikiversity.org/wiki/User:Bert_Niehaus/OER_and_Wikiversity/Slides_Wiki</a></b>\n<ul>\n  <li>(1) \n <button onclick=\"downloadMediaClick('Global Open Educational Resources Logo.svg');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AGlobal Open Educational Resources Logo.svg')\">Global Open Educational Resources Logo.svg</a>\n  </li>\n  <li>(2) \n <button onclick=\"downloadMediaClick('Open Content Development Process.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AOpen Content Development Process.png')\">Open Content Development Process.png</a>\n  </li>\n  <li>(3) \n <button onclick=\"downloadMediaClick('Activity sourceforge stats.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AActivity sourceforge stats.png')\">Activity sourceforge stats.png</a>\n  </li>\n  <li>(4) \n <button onclick=\"downloadMediaClick('PanDocElectronMain.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3APanDocElectronMain.png')\">PanDocElectronMain.png</a>\n  </li>\n  <li>(5) \n <button onclick=\"downloadMediaClick('Solar Water Still Greenhouse.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3ASolar Water Still Greenhouse.png')\">Solar Water Still Greenhouse.png</a>\n  </li>\n  <li>(6) \n <button onclick=\"downloadMediaClick('Hugin result in aframe.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AHugin result in aframe.png')\">Hugin result in aframe.png</a>\n  </li>\n  <li>(7) \n <button onclick=\"downloadMediaClick('Wikijournal of medicine.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AWikijournal of medicine.png')\">Wikijournal of medicine.png</a>\n  </li>\n  <li>(8) \n <button onclick=\"downloadMediaClick('Dynamic spatiotemporal documents.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3ADynamic spatiotemporal documents.png')\">Dynamic spatiotemporal documents.png</a>\n  </li>\n  <li>(9) \n <button onclick=\"downloadMediaClick('KnitR in RStudio.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AKnitR in RStudio.png')\">KnitR in RStudio.png</a>\n  </li>\n  <li>(10) \n <button onclick=\"downloadMediaClick('Knitr integration.png');return false\">Download</button> <a href=\"#\" onclick=\"openFileInBrowser('https://commons.wikimedia.org/wiki/File%3AKnitr integration.png')\">Knitr integration.png</a>\n  </li>\n</ul><hr>",
+        "DEFAULTTPL": "/Users/niehaus/Documents/PanDoc/tpl/DEFAULT/md/input.md",
+        "revealTPL": "/Users/niehaus/Documents/PanDoc/tpl/reveal/tpldefault.html",
+        "audioslidesTPL": "/Users/niehaus/Documents/PanDoc/tpl/audioslides/tpldefault.html",
+        "dzslidesTPL": "/Users/niehaus/Documents/PanDoc/tpl/dzslides/tpldefault.html",
+        "latexTPL": "/Users/niehaus/Documents/PanDoc/tpl/latex/tpldefault.tex",
+        "odtTPL": "/Users/niehaus/Documents/PanDoc/tpl/odt/tpldefault.xml",
+        "odtREF": "/Users/niehaus/Documents/PanDoc/tpl/odt/tpldefault.odt",
+        "odt2colREF": "/Users/niehaus/Documents/PanDoc/tpl/odt2col/tpldefault.odt",
+        "docxREF": "/Users/niehaus/Documents/PanDoc/tpl/docx/tpldefault.docx",
+        "docx2colREF": "/Users/niehaus/Documents/PanDoc/tpl/docx2col/tpldefault.docx",
+        "htmlREF": "/Users/niehaus/Documents/PanDoc/tpl/html/tpldefault.css",
+        "mathjaxDIR": "/Users/niehaus/Documents/PanDoc/mathjax",
+        "revealDIR": "/Users/niehaus/Documents/PanDoc/reveal",
+        "pandoctemplateDIR": "/Users/niehaus/Documents/PanDoc/tpl/pandoctemplates"
+    },
+    "CheckBoxID": {
+        "checkImageLocal,inputFILTERUSE,inputPARAMSUSE,checkMathJaxNew,checkMathJax,checkAudioRecorder,checkAudioPlayer,checkWebInput,checkCitation,checkFolders,checkTemplates": false
+    }
+}

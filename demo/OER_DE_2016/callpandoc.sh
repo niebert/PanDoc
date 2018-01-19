@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /Users/niehausbert/ownCloudLD/PanDoc/demo/OER_DE_2016
-/usr/local/bin/pandoc -f mediawiki -t dzslides  /Users/niehausbert/ownCloudLD/PanDoc/demo/OER_DE_2016/OER_DE_2016.wiki -o /Users/niehausbert/ownCloudLD/PanDoc/demo/OER_DE_2016/OER_DE_2016_dzslides.html  --variable title="OER & Nutzung von PanDoc "  --variable author="Engelbert Niehaus"  --variable revealpath="../../../../Documents/PanDoc/reveal"  --variable theme=beige-i --mathml 
+cd /Users/niehaus/Documents/PanDoc/demo/OER_DE_2016
+/usr/local/bin/pandoc -f mediawiki -t odt  "/Users/niehaus/Documents/PanDoc/demo/OER_DE_2016/OER_DE_2016.wiki" -o "/Users/niehaus/Documents/PanDoc/demo/OER_DE_2016/OER_DE_2016_odt2col.odt"  --variable title="OER &amp; Nutzung von PanDoc "  --variable author="Engelbert Niehaus" -S --reference-odt /Users/niehaus/Documents/PanDoc/tpl/odt2col/tpldefault.odt
