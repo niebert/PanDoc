@@ -272,3 +272,37 @@ Installation is global so that you can use it for other GitHub repositories as w
 Create or Update the table of contents with the command:
 
 > `doctoc README.md`
+
+### Script Loader to Load RevealJS libraries 
+RevealJS and especially MathJax are large repositories that are needed only once on your computer and used for all Reveal presentations.
+Currently PanDocElectron creates the RevealJS presentations with an appropriate relative path.
+
+The libraries for Reveal can also loaded dynamically if the `document.location.href` is splited as a path by `.split("\")`. 
+If the directory  `PanDoc` was found in the path the relative directory can be identified by the number of subdirectories below `PanDoc`.
+
+* Reveal Presentation: `/home/myname/Documents/PanDoc/demo/my_pres/my_reveal_presentation.html`
+* Relative Path to RevealJS: `../../reveal/js/reveal.js`
+* Relative Path to MathJax: `../../mathjax/MathJax.js
+
+This requires a dynamic Javascript loading 
+
+```javascript
+var loadLibJS = function(pURL, pCallOnLoad, pNodeDOM){
+    //pURL is URL or path to the external library/file,  pCallOnLoad is the code
+    //to be called after the library was loaded, pNodeDOM is the location in the DOM tree to 
+    //insert the <script> element, e.g. pNodeDOM is the <head>...</head> or the body of the HTML file
+
+    var scriptTag = document.createElement('script');
+    scriptTag.src = pURL;
+
+    scriptTag.onload = pCallOnLoad;
+    scriptTag.onreadystatechange = pCallOnLoad;
+
+    pNodeDOM.appendChild(scriptTag);
+};
+function yourCodeCalled_AfterLoad() {
+	//your code goes here that is executed afte loading the script
+}
+
+loadLibJS('yourcode.js', yourCodeCalled_AfterLoad, document.body);
+```
