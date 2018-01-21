@@ -43,6 +43,7 @@ PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other format
 - [Software Development and Tool](#software-development-and-tool)
   - [Atom and Electron](#atom-and-electron)
   - [DocToc for Table of Contents](#doctoc-for-table-of-contents)
+  - [Script Loader to Load RevealJS libraries](#script-loader-to-load-revealjs-libraries)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ## News
@@ -300,6 +301,7 @@ var loadLibJS = function(pURL, pCallOnLoad, pNodeDOM){
 
     pNodeDOM.appendChild(scriptTag);
 };
+
 function yourCodeCalled_AfterLoad() {
 	//your code goes here that is executed afte loading the script
 }
