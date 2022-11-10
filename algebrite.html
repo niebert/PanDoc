@@ -237,6 +237,9 @@
         // Get the value from the editor
         console.log(JSON.stringify(editor.getValue(),null,4));
       });
+      document.addEventListener('load', function(){
+        MathJax.typeset()
+      })
     </script>
 
   </body>
