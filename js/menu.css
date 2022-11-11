@@ -1,0 +1,254 @@
+/* CSS File Content  - Appname: WebApp - Title: JSON-Editor - Date: 2020/07/27 11:13:14 */
+* {
+    box-sizing: border-box;
+}
+
+/*
+	light color: #F6F4E2
+	medium color:
+	dark brown:   #70420D
+*/
+
+body {
+  background: #f6f4e2; /*  app & desktop #F6F4E2; */
+  font-family:  sans-serif;
+  letter-spacing: 1px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1960px;
+  margin: 0 auto;
+}
+
+.btn4menu {
+  background: #e8a956;
+  background-image: -webkit-linear-gradient(top, #e8a956, #786316);
+  background-image: -moz-linear-gradient(top, #e8a956, #786316);
+  background-image: -ms-linear-gradient(top, #e8a956, #786316);
+  background-image: -o-linear-gradient(top, #e8a956, #786316);
+  background-image: linear-gradient(to bottom, #e8a956, #786316);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 6px 20px 6px 20px;
+  text-decoration: none;
+}
+
+.btn4menu:hover {
+  background: #d18428;
+  background-image: -webkit-linear-gradient(top, #d18428, #e4b363);
+  background-image: -moz-linear-gradient(top, #d18428, #e4b363);
+  background-image: -ms-linear-gradient(top, #d18428, #e4b363);
+  background-image: -o-linear-gradient(top, #d18428, #e4b363);
+  background-image: linear-gradient(to bottom, #d18428, #e4b363);
+  text-decoration: none;
+}
+
+.menu-icon {
+  margin-left: 1em;
+  margin-right: 1em;
+  width: 1.0em;
+  /* letter-spacing: 3px;
+  text-align: right;
+  color: rgba(255,255,255,.4);  */
+}
+
+.menu-logo {
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0;
+  padding-top: 24px;
+  padding-left: 20px;
+  /* text-transform: uppercase; */
+  font-weight: 700;
+  letter-spacing: 3px;
+  height: 65px;
+  background-color: #e4b363; /* DESKTOP: dark background logo & app menu bar #E4B363 - dark blue #0431B4  */
+}
+
+.menu-logo span {
+  font-weight: 400;
+}
+
+.menu-toggle {
+  position: absolute;
+  padding: 0.8em;
+  top: 1em;
+  right: .5em;
+  cursor: pointer;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  display: block;
+  background: #ebebd3; /* colors.app.background - logo color hamburger logo color - #f6f4e2 */
+  height: 3px;
+  width: 2em;
+  border-radius: 3px;
+  -webkit-transition: all ease-in-out 350ms;
+  transition: all ease-in-out 350ms;
+}
+
+.hamburger::before {
+  -webkit-transform: translateY(-7px);
+          transform: translateY(-7px);
+}
+
+.hamburger::after {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+.open .hamburger {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.open .hamburger::before {
+  display: none;
+}
+
+.open .hamburger::after {
+  -webkit-transform: translateY(-1px) rotate(-90deg);
+          transform: translateY(-1px) rotate(-90deg);
+}
+
+.nav-text {
+	display: inline;
+}
+
+
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+nav ul.opening {
+    display: block;
+    height: 30px;
+}
+
+nav li {
+  border-bottom: 1px solid #ebebd3; /* light grey brownisch color #EBEBD3 - before #f6f4e2 */
+}
+nav li:last-child {
+  border-bottom: none;
+}
+nav a {
+  color: #f6f4e2; /* menu.textcolor app & desktop like background #EBEBD3 */
+  background: #000000; /* MOBILE: before #333 */
+  display: block;
+  padding: 1.5em 4em 1.5em 3em;
+  /* text-transform: uppercase; */
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: #70420d; /* MOBILE: hover in App menu background in menu #E4B363 - 'settings.colors.menu.mobile.hover' */
+}
+nav a:focus {
+  background: #e4b363; /* MOBILE: focus background in App Menu #E4B363 'settings.colors.menu.mobile.focus'*/
+}
+
+.site-nav--icon {
+  font-size: 1.4em;
+  margin-right: 1em;
+  width: 1.1em;
+  text-align: right;
+  color: rgba(255,255,255,.4);
+}
+
+/* flex styles */
+
+
+
+
+/*
+  ---------------------------------------------
+  DESKTOP SETTINGS:
+  i.e. all devices with a minimum screen width of 780px
+  ---------------------------------------------
+*/
+@media (min-width: 780px) {
+
+/* hide the [X] resp. [=] menu toggle symbol
+   on navigation bar, if screen width exceeds 70px */
+  .menu-toggle {
+    display: none;
+  }
+
+
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  nav li {
+     flex: 1 1 auto;
+     border: none;
+ }
+
+   nav li a {
+       padding: 1.5em 1.3em 1.5em 1.3em;
+       margin: 0;
+       border: none;
+       background-color: #e4b363;   /* DESKTOP: desktop default menu background #E4B363 */
+    }
+    nav a:hover{
+      background-color: #d18428; /* DESKTOP: hover background desktop menu - before #d18428, rgba(255,255,255,.10); */
+    }
+    nav a:focus {
+      background-color: #472a07; /* DESKTOP: Focus background desktop menu - before #472a07; */
+    }
+
+
+
+  .logo {
+      flex: 0 0 200px;
+      margin: 0;
+      padding-left: 20px;
+  }
+
+
+    nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      text-align: center;
+      background-color: #e4b363;   /* DESKTOP background #E4B363;*/
+    }
+
+  /* .site-nav a:hover,
+  .site-nav a:focus {
+    background: transparent;
+  }
+*/
+  .site-nav--icon {
+    display: none;
+  }
+
+}
+
+.pages-app {
+	margin: 10px;
+}
