@@ -2,7 +2,7 @@
 PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other formats (e.g. OpenOffice or Word) with Templates.
 
 <h3><a href="https://niebert.github.io/PanDoc">Demos for Using PanDoc</h3>
-
+<h4>see also [Wikiversity:CAS4Wiki](https://en.wikiversity.org/wiki/CAS4Wiki)
 <h2> Table of Contents</h2>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
