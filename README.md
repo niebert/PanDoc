@@ -1,4 +1,4 @@
-# PanDoc
+# PanDoc - Demo Files for Wikiversity
 PanDoc convert Documents from one format (e.g. MarkDown or HTML) to other formats (e.g. OpenOffice or Word) with Templates.
 
 <h3><a href="https://niebert.github.io/PanDoc">Demos for Using PanDoc</h3>
