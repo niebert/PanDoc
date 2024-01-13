@@ -1,5 +1,5 @@
 # PanDoc - Demo Files for Wikiversity
-[PanDoc by John MacFarlane](https://www.pandoc.org PanDoc) converts as OpenSource software documents from one format (e.g. MarkDown or HTML) to other formats (e.g. [LibreOffice](https://www.libreoffice.org) or Reveal) with Templates.
+[PanDoc by John MacFarlane](https://www.pandoc.org) converts as OpenSource software documents from one format (e.g. MarkDown or HTML) to other formats (e.g. [LibreOffice](https://www.libreoffice.org) or Reveal) with Templates.
 
 <h3><a href="https://niebert.github.io/PanDoc">Demos for Using PanDoc</h3>
 <h4>see also <a href="https://en.wikiversity.org/wiki/CAS4Wiki" target="_blank">Wikiversity - CAS4Wiki</a>
