@@ -4,7 +4,9 @@
 <h3><a href="https://niebert.github.io/PanDoc">Demos for Using PanDoc</h3>
 
    <h4> - <a href="https://niebert.github.io/PanDoc/sceditor4wiki.html" target="_blank">SCE-Editor for Wiki</a> - </h4>
+
 * see SCEditor by Sam Clark URL: https://github.com/samclarke/SCEditor
+
    <h4> - <a href="https://en.wikiversity.org/wiki/CAS4Wiki" target="_blank">Wikiversity - CAS4Wiki</a></h4>
 
 <h2> Table of Contents</h2>
