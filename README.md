@@ -2,7 +2,9 @@
 [PanDoc by John MacFarlane](https://www.pandoc.org) converts as OpenSource software documents from one format (e.g. MarkDown or HTML) to other formats (e.g. [LibreOffice](https://www.libreoffice.org) or Reveal) with Templates.
 
 <h3><a href="https://niebert.github.io/PanDoc">Demos for Using PanDoc</h3>
-<h4>see also <a href="https://en.wikiversity.org/wiki/CAS4Wiki" target="_blank">Wikiversity - CAS4Wiki</a>
+* <h4> <a href="https://niebert.github.io/PanDoc/sceditor4wiki.html" target="_blank">SCE-Editor for Wiki</a>
+* <h4> <a href="https://en.wikiversity.org/wiki/CAS4Wiki" target="_blank">Wikiversity - CAS4Wiki</a>
+
 <h2> Table of Contents</h2>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
