@@ -7,7 +7,7 @@
 
 * see SCEditor by Sam Clark URL: https://github.com/samclarke/SCEditor
 
-<h4> - <a href="https://niebert.github.io/PanDoc/cas4wiki.html" target="_blank">CAS4Wiki</a></h4>
+<h4> - <a href="https://niebert.github.io/PanDoc/cas4web.html" target="_blank">CAS4Wiki</a></h4>
 
 * see [Wikiversity learning resouce about CAS4Wiki](https://en.wikiversity.org/wiki/CAS4Wiki)
 
