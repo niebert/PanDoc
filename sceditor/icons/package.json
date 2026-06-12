@@ -1,0 +1,46 @@
+{
+    "name": "json-editor-fs",
+    "title": "JSONEditorFS",
+    "description": "JSON Schema based editor",
+    "version": "1.4.2",
+    "exportvar": "JSONEditor",
+    "main": "dist/jsoneditor.js",
+    "author": {
+        "name": "Jeremy Dorn - forked by Engelbert Niehaus",
+        "url": "http://niebert.github.io/json-editor"
+    },
+    "bugs": {
+        "url": "https://github.com/niebert/json-editor/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/niebert/json-editor.git"
+    },
+    "keywords": [
+        "json",
+        "schema",
+        "jsonschema",
+        "editor"
+    ],
+    "license": "MIT",
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "devDependencies": {
+        "browserify": "^14.5.0",
+        "build4code": "^0.3.33",
+        "doctoc": "^1.3.0",
+        "file-concat-stream": "^0.1.3",
+        "uglify-js": "^2.6.2",
+        "watchify": "^3.9.0"
+    },
+    "scripts": {
+        "compress": "node ./build.js && uglifyjs dist/jsoneditor.clean.js --source-map -mc -o dist/jsoneditor.min.js",
+        "build": "node ./build.js",
+        "watch": "node ./build.js && watchify src/jsoneditor.js -o dist/jsoneditor.js && uglifyjs dist/jsoneditor.js -mc warnings=false > dist/jsoneditor.min.js",
+        "doctoc": "doctoc README.md",
+        "buildsh": "sh build.sh",
+        "browserify": "browserify src/jsoneditor.js -o dist/test.js",
+        "test": "node ./tests/jslint.mjs  ./dist/jsoneditor.js"
+    }
+}
