@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SCEditor4Wiki</title>
+    <script src="../dist/jsoneditor.js"></script>
+    <script src="mathjax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link href="css/main.css" rel="stylesheet">
+    <!-- MathJax Config Options: TeX-MML-AM_CHTML TeX-AMS_SVG
+    <script src="mathjax/MathJax.js?config=TeX-AMS_SVG"></script>
+    <script src="mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    -->
+    <!-- SCEditor -->
+    <link rel="stylesheet" href="sceditor/themes/default.css" id="theme-style" />
+    <!--
+    <script src="sceditor/formats/node4parser.js"></script>
+    <script src="sceditor/formats/section4parser.js"></script>
+    <script src="sceditor/sceditor.js"></script>
+    -->
+    <script src="js/sceditor4wiki.js"></script>
+    <script src="sceditor/icons/monocons.js"></script>
+    <script src="sceditor/formats/xhtml.js"></script>
+    <script src="sceditor/formats/bbcode.js"></script>
+    <script src="sceditor/formats/mediawiki.js"></script>
+    <!--
+    -->
+  </head>
+  <body>
+    <h1>SCEditor4Wiki - MediaWiki in Editor </h1>
+
+    <button id='submit'>Submit (console.log)</button>
+    <hr>
+    <div id='editor_holder' style="width:100%"></div>
+
+    <script>
+      // Initialize the editor with a JSON schema
+      var editor = new JSONEditor(document.getElementById('editor_holder'),{
+        "schema": {
+          "type": "object",
+          "title": "Wikiversity SCEditor",
+          "format":"grid",
+          "properties": {
+            "lang4wiki": {
+              "title":"Language Wikiversity",
+              "type":"string",
+              "format":"enum",
+              //"format":"enum",
+              "enum": ["en","de"],
+              "options": {
+                "enum_titles": ["English","German"],
+                "hidden":false
+              },
+              "default":"de"
+            },
+            "lang4translate": {
+              "title":"Language Translation",
+              "type":"string",
+              //"question":"Source language for translation",
+              "format":"enum",
+              //"format":"enum",
+              "enum": ["","en","de"],
+              "options": {
+                "enum_titles": ["-","English","German"],
+                "hidden":false
+              },
+              "default":""
+            },
+            "tplselector": {
+              "title":"Selector for Templates",
+              "type": "select4template",
+              //"editorid4select": "root.tplid", // is used as input for the selector ID "TPL2" coming from another selector
+              "editorid4input": "root", // uses the JSON from that editor path as input for the templates
+              // using editorid4input assumes the template markers
+              // are referring to that JSON e.g. {{title}} is the title of input JSON editor
+              "editorid4output": "root.tploutput", // defines where to write the generated output to
+              "editorid4boolean": "root.tplcond", // not used so far
+              "enum":[
+                {
+                  "value4enum": "\n\n== Zielsetzung ==\nnewline and [https://aframe.io Aframe Portal]\nand ''italics text'' with an [[internal link]] is used\ntest inline math ''multiline'' latex",
+                  "title4enum":"Test"
+                },
+                {
+                  "value4enum":" \n\n== Zielsetzung ==\nDie Zielsetzung der Lerneinheit zum Thema {{self.doctitle}} ist es, ",
+                  "title4enum":"Zielsetzung"
+                },
+                {
+                  "value4enum":" \n\n== Aufgabe ==\nDie Aufgabe der Lerneinheit zum Thema {{self.doctitle}} sind es, ",
+                  "title4enum":"Aufgaben"
+                },
+                {
+                  "value4enum":" \n\n== Siehe auch ==\n* [[Wiki2Reveal]]",
+                  "title4enum":"Siehe auch"
+                },
+                {
+                  "value4enum":" \n\n== Beweis ==\nDer Beweis zum Thema {{self.doctitle}} wird nun in 3 Schritten durchgeführt\n* Test '''(Schritt 1)''' after\n* '''(Schritt 2)''' \n* '''(Schritt 3)'''",
+                  "title4enum":"Beweis"
+                },
+                {
+                  "value4enum":" \n\n== Seiteninformationen ==\n\n=== Wikipedia2Wikiversity ===\nDiese Seite wurde auf Basis der folgenden [https://de.wikipedia.org/wiki/Swarm%20Intelligence Wikipedia-Quelle] erstellt:\n* [https://de.wikipedia.org/wiki/Swarm%20Intelligence Swarm Intelligence] https://de.wikipedia.org/wiki/Swarm%20Intelligence\n* Datum: 4.5.2024\n* [https://niebert.github.io/Wikipedia2Wikiversity Wikipedia2Wikiversity-Konverter]: https://niebert.github.io/Wikipedia2Wikiversity ",
+                  "title4enum":"Wiki2Reveal"
+                },
+                {
+                  "value4enum":"\n\n==Header 2==\nThis is the second template for year {{self.year}} and \n====Header 3====\nfor JSON editor with title {{title}} and value {{self.make}} in year {{self.year}}",
+                  "title4enum":"TPL2"
+                },
+                {
+                  "value4enum":"\n\n===Header 3===\nThis is the third template create in the year {{self.year}} and for JSON editor with title '{{title}}' and value {{self.make}} with model {{self.model}}",
+                  "title4enum":"TPL3"
+                }
+              ],
+              "options":{
+                "enable_execute_button":true,
+                "enable_preview_button":true,
+                "ask_overwrite":true,
+                "output_append":true
+              }
+            },
+            "tplcond": {
+                "type":"boolean",
+                "title":"Template Condition Test",
+                "question":"Question: Select Option for {{up.self.year}} in template",
+                "questionTemplate":"Question: Select Option for {{up.self.year}} in template",
+                "description":"Select Option for {{up.self.year}} in template",
+                "descriptionTemplate":"Select Option for {{up.self.year}} in template",
+                "default": true,
+                "options": {
+                  "hidden":true
+                }
+            },
+            "doctitle": {
+              "type": "string",
+              "format":"textarea",
+              "title": "Titel",
+              "description":"Enter the document title",
+              "default":"Document Title"
+            },
+            "objective": {
+              "type": "string",
+              "format":"textarea",
+              "title": "Zielsetzung",
+              "description":"Enter the document title",
+              "default":"Zielsetzung dieser Lerneinheit ist es, "
+            },
+            "tploutput": {
+              "type": "string",
+              "title": "SCEditor4Wiki - MediaWiki",
+              "format": "mediawiki",
+              //"default":"==Header 1==\n===Header2===\nText inline\n====Header 3====\nMy init\n* item 1\n* item 2\n '''bold text''' with \nnewline and [https://aframe.io Aframe Portal] and ''italics text''\nstart <b>with</b> mathematics comes next <math display=\"inline\"> sum_{k=0}^n\n 2^k </math> [[local latex]] notation. \n; Title 1\n: Explanation 1 - A large feline \n\n; Title 2\n: Explanation 2 - A sea serpent.",
+              //"default":"Description\nnotation. \n; Title 1\n: Explanation 1 - A large feline \n\n; Title 2\n: Explanation 2 - A sea serpent.",
+              //"default":"==Header 1==\nnewline and [https://aframe.io Aframe Portal] and\n* ''italics text'' with an\n* [[internal link]] is used\ntest inline math multiline latex $$ \\sum_{n\\in \\mathbb{N}} \n \\frac{1}{n} $$ start <b>with</b> inline mathematics comes next <math display=\"inline\"> \\sum_{k=0}^n\n 2^k </math> sea now block math expression <math display=\"block\"> \\int_{a}^b\n f(x)\, dx </math> after block math.",
+              "default":"==Zielsetzung==\nnewline and [https://aframe.io Aframe Portal] and ''italics text'' with an [[internal link]] is used\ntest inline math multiline latex $$ \\sum_{n\\in \\mathbb{N}} \n \\frac{1}{n} $$   start <b>with</b> inline mathematics comes next <math display=\"inline\"> \\begin{array}{rcl}\n  x & = & y \\\\ \n \\end{array}  </math> sea now block math expression <math display=\"block\"> \\int_{a}^b\n f(x)\, dx </math> after block math.\n<math display=\"block\">\n\\begin{array}{rrcl}\n   f: & \\mathbb{D}_1 \\times \\mathbb{R} & \\rightarrow & \\mathbb{R} \\\\ \n    &  \\left( x,y \\right)  & \\mapsto & f\\left( x,y \\right) =\n  \\end{array}  </math>\nNext expression\n<math display=\"block\">\n\\begin{array}{rrcl}\n   f: &  \\mathbb{R} & \\rightarrow & \\mathbb{R} \\\\ \n    &  x  & \\mapsto & f(x) =\n  \\end{array}\n  </math>\nNext expression",
+              "Xdefault": "and [https://aframe.io Aframe Portal] and ''italics text'' with an [[internal link]] is used\ntest inline math ''multiline'' latex",
+              "options": {
+                "extension4file":"wiki",
+                "width":"100%",
+                "height":"400",
+                "wysiwyg": 'sceditor'
+              }
+            }
+          }
+        }
+      });
+
+      // Hook up the submit button to log to the console
+      document.getElementById('submit').addEventListener('click',function() {
+        // Get the value from the editor
+        console.log(JSON.stringify(editor.getValue(),null,4));
+      });
+    </script>
+    </body>
+</html>
